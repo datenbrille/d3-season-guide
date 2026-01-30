@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Sunwuko TR Monk Plan</title>
+    <style>
+        :root {
+            --bg: #1a1a2e;
+            --card: #16213e;
+            --accent: #e94560;
+            --gold: #f4d03f;
+            --text: #eaeaea;
+            --text-dim: #888;
+            --success: #27ae60;
+        }
+        
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 16px;
+            padding-bottom: 100px;
+            line-height: 1.5;
+        }
+        
+        h1 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar {
+            background: var(--card);
+            border-radius: 10px;
+            height: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+        
+        .tab {
+            background: var(--card);
+            border: none;
+            color: var(--text-dim);
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tab.active {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .card h2 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .card h3 {
+            color: var(--accent);
+            font-size: 0.95rem;
+            margin: 16px 0 8px 0;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+        
+        .checklist input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            margin: 0;
+            flex-shrink: 0;
+            accent-color: var(--success);
+        }
+        
+        .checklist label {
+            flex: 1;
+            cursor: pointer;
+        }
+        
+        .checklist li.checked label {
+            text-decoration: line-through;
+            color: var(--text-dim);
+        }
+        
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .item-row:last-child {
+            border-bottom: none;
+        }
+        
+        .item-name {
+            font-weight: 500;
+        }
+        
+        .item-slot {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+        
+        .priority-high {
+            color: var(--gold);
+        }
+        
+        .priority-med {
+            color: var(--accent);
+        }
+        
+        .tag {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+        }
+        
+        .tag.owned {
+            background: var(--success);
+        }
+        
+        .tag.emanate {
+            background: #9b59b6;
+        }
+        
+        .info-box {
+            background: rgba(233, 69, 96, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 12px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip-box {
+            background: rgba(244, 208, 63, 0.1);
+            border-left: 3px solid var(--gold);
+            padding: 12px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        th {
+            text-align: left;
+            color: var(--gold);
+            padding: 8px 4px;
+            border-bottom: 1px solid var(--accent);
+        }
+        
+        td {
+            padding: 8px 4px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .reset-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+        }
+        
+        .emoji {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐵 Sunwuko Tempest Rush</h1>
+    <p class="subtitle">Season 37 Monk Guide</p>
+    
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+        <span class="progress-text" id="progressText">0%</span>
+    </div>
+    
+    <div class="tabs">
+        <button class="tab active" data-tab="journey">📜 Journey</button>
+        <button class="tab" data-tab="gear">⚔️ Gear</button>
+        <button class="tab" data-tab="enchantress">👩‍🦰 Follower</button>
+        <button class="tab" data-tab="farm">🎯 Farm</button>
+    </div>
+    
+    <!-- SEASON JOURNEY -->
+    <div class="section active" id="journey">
+        <div class="card">
+            <h2><span class="emoji">📗</span> Chapter II</h2>
+            <p style="color: var(--text-dim); font-size: 0.85rem;">Belohnung: Sunwuko's Crown + Paws (2-Piece)</p>
+            <ul class="checklist">
+                <li><input type="checkbox" id="c2-1"><label for="c2-1">Zoltun Kulle auf Hard+ töten</label></li>
+                <li><input type="checkbox" id="c2-2"><label for="c2-2">Maghda auf Hard+ töten</label></li>
+                <li><input type="checkbox" id="c2-3"><label for="c2-3">Blacksmith Level 10</label></li>
+                <li><input type="checkbox" id="c2-4"><label for="c2-4">Jeweler Level 10</label></li>
+                <li><input type="checkbox" id="c2-5"><label for="c2-5">Mystic freischalten</label></li>
+                <li><input type="checkbox" id="c2-6"><label for="c2-6">Nephalem Rift auf Expert+</label></li>
+                <li><input type="checkbox" id="c2-7"><label for="c2-7">Kanai's Cube holen (Act 3)</label></li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2><span class="emoji">📘</span> Chapter III</h2>
+            <p style="color: var(--text-dim); font-size: 0.85rem;">Belohnung: Sunwuko's Leggings + Balance (4-Piece)</p>
+            <ul class="checklist">
+                <li><input type="checkbox" id="c3-1"><label for="c3-1">Izual auf Master+ töten</label></li>
+                <li><input type="checkbox" id="c3-2"><label for="c3-2">Urzael auf Master+ töten</label></li>
+                <li><input type="checkbox" id="c3-3"><label for="c3-3">Nephalem Rift auf Master+</label></li>
+                <li><input type="checkbox" id="c3-4"><label for="c3-4">Blood Shards bei Kadala ausgeben</label></li>
+                <li><input type="checkbox" id="c3-5"><label for="c3-5">Greater Rift abschließen</label></li>
+                <li><input type="checkbox" id="c3-6"><label for="c3-6">1x Legendary extrahieren (Cube)</label></li>
+                <li><input type="checkbox" id="c3-7"><label for="c3-7">1x Item enchanten (Mystic)</label></li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2><span class="emoji">📙</span> Chapter IV</h2>
+            <p style="color: var(--text-dim); font-size: 0.85rem;">Belohnung: Sunwuko's Soul + Shines (6-Piece!)</p>
+            <ul class="checklist">
+                <li><input type="checkbox" id="c4-1"><label for="c4-1">⭐ Greater Rift 20 SOLO</label></li>
+                <li><input type="checkbox" id="c4-2"><label for="c4-2">Rakanoth auf T2+ töten</label></li>
+                <li><input type="checkbox" id="c4-3"><label for="c4-3">Belial auf T2+ töten</label></li>
+                <li><input type="checkbox" id="c4-4"><label for="c4-4">Nephalem Rift T2+ unter 6 Min</label></li>
+                <li><input type="checkbox" id="c4-5"><label for="c4-5">Legendary Gem auf Level 25</label></li>
+                <li><input type="checkbox" id="c4-6"><label for="c4-6">5x Legendaries cuben</label></li>
+            </ul>
+            <div class="tip-box">
+                <strong>GR20 Tipp:</strong> Sweeping Wind aktiv halten! Die Decoys (Klone) vom 4-Piece machen den Damage für dich.
+            </div>
+        </div>
+    </div>
+    
+    <!-- GEAR SECTION -->
+    <div class="section" id="gear">
+        <div class="card">
+            <h2><span class="emoji">⭐</span> Must-Have Items</h2>
+            <ul class="checklist">
+                <li class="checked"><input type="checkbox" id="g1" checked><label for="g1"><strong>Balance</strong> (Daibo) - +600% Flurry</label></li>
+                <li><input type="checkbox" id="g2"><label for="g2"><strong>Vengeful Wind</strong> (Fist) - +10 SW Stacks</label></li>
+                <li><input type="checkbox" id="g3"><label for="g3"><strong>Won Khim Lau</strong> (Fist) - +600% Lightning</label></li>
+                <li><input type="checkbox" id="g4"><label for="g4"><strong>Cesar's Memento</strong> (Bracers) - +800% TR</label></li>
+                <li><input type="checkbox" id="g5"><label for="g5"><strong>Ring of Royal Grandeur</strong> - Set -1</label></li>
+                <li><input type="checkbox" id="g6"><label for="g6"><strong>Convention of Elements</strong> - +200% Elem</label></li>
+                <li><input type="checkbox" id="g7"><label for="g7"><strong>Mantle of Channeling</strong> - +25% Dmg</label></li>
+                <li><input type="checkbox" id="g8"><label for="g8"><strong>Captain Crimson Plan</strong> - Crafting!</label></li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2><span class="emoji">👍</span> Sehr Nützlich</h2>
+            <ul class="checklist">
+                <li><input type="checkbox" id="g9"><label for="g9">Lefebvre's Soliloquy (Shoulders)</label></li>
+                <li><input type="checkbox" id="g10"><label for="g10">Obsidian Ring of the Zodiac</label></li>
+                <li><input type="checkbox" id="g11"><label for="g11">Stone Gauntlets (Gloves)</label></li>
+                <li><input type="checkbox" id="g12"><label for="g12">Kyoshiro's Soul (Belt)</label></li>
+                <li><input type="checkbox" id="g13"><label for="g13">Goldwrap (Belt)</label></li>
+                <li><input type="checkbox" id="g14"><label for="g14">Leoric's Crown (Helm)</label></li>
+                <li><input type="checkbox" id="g15"><label for="g15">Unity (Ring)</label></li>
+                <li><input type="checkbox" id="g16"><label for="g16">In-geom (Sword)</label></li>
+                <li><input type="checkbox" id="g17"><label for="g17">Squirt's Necklace</label></li>
+                <li><input type="checkbox" id="g18"><label for="g18">Nemesis Bracers</label></li>
+                <li><input type="checkbox" id="g19"><label for="g19">Avarice Band (Ring)</label></li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2><span class="emoji">📋</span> Final Build Cube</h2>
+            <table>
+                <tr><th>Slot</th><th>Power</th></tr>
+                <tr><td>1</td><td>Balance (oder equipped)</td></tr>
+                <tr><td>2</td><td>Mantle of Channeling</td></tr>
+                <tr><td>3</td><td>Ring of Royal Grandeur</td></tr>
+            </table>
+        </div>
+    </div>
+    
+    <!-- ENCHANTRESS SECTION -->
+    <div class="section" id="enchantress">
+        <div class="card">
+            <h2><span class="emoji">🔮</span> Follower Focus</h2>
+            <ul class="checklist">
+                <li><input type="checkbox" id="e1"><label for="e1"><strong>Smoking Thurible</strong> - Unsterblich! <span class="tag">GR Push</span></label></li>
+                <li><input type="checkbox" id="e2"><label for="e2"><strong>Hand of the Prophet</strong> - Alle 4 Skills <span class="tag">Speed</span></label></li>
+            </ul>
+            <div class="info-box">Nur EINES nötig! Smoking für Push, Hand für Speed.</div>
+        </div>
+        
+        <div class="card">
+            <h2><span class="emoji">💍</span> Schmuck</h2>
+            <ul class="checklist">
+                <li><input type="checkbox" id="e3"><label for="e3"><strong>Ring of Royal Grandeur</strong> - Sets brauchen -1 Teil! <span class="tag emanate">KEY!</span></label></li>
+                <li><input type="checkbox" id="e4"><label for="e4"><strong>Oculus Ring</strong> - +85% Damage Circle</label></li>
+                <li><input type="checkbox" id="e5"><label for="e5"><strong>Unity</strong> - 50% DR (2x Setup)</label></li>
+                <li><input type="checkbox" id="e6"><label for="e6"><strong>The Ess of Johan</strong> - Gruppiert Gegner</label></li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2><span class="emoji">✨</span> Emanate Items</h2>
+            <p style="color: var(--text-dim); font-size: 0.85rem;">Diese wirken auf DICH wenn Enchantress sie trägt!</p>
+            <ul class="checklist">
+                <li><input type="checkbox" id="e7"><label for="e7"><strong>Cain's Destiny</strong> (2pc mit RoRG) - +25% GR Keys <span class="tag emanate">EMANATE</span></label></li>
+                <li><input type="checkbox" id="e8"><label for="e8"><strong>Sage's Journey</strong> (2pc mit RoRG) - +1 Death's Breath <span class="tag emanate">EMANATE</span></label></li>
+                <li><input type="checkbox" id="e9"><label for="e9"><strong>Nemesis Bracers</strong> - Elites bei Shrines <span class="tag emanate">EMANATE</span></label></li>
+                <li><input type="checkbox" id="e10"><label for="e10"><strong>Gloves of Worship</strong> - 10 Min Shrine Buff <span class="tag emanate">EMANATE</span></label></li>
+                <li><input type="checkbox" id="e11"><label for="e11"><strong>Avarice Band</strong> - Pickup Radius <span class="tag emanate">EMANATE</span></label></li>
+            </ul>
+            <div class="tip-box">
+                <strong>Pro Setup:</strong> RoRG + Oculus + 2x Cain's = +25% GR Keys während du farmst!
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><span class="emoji">⚔️</span> Waffe & Gems</h2>
+            <ul class="checklist">
+                <li><input type="checkbox" id="e12"><label for="e12"><strong>Thunderfury</strong> - Proc + Slow</label></li>
+                <li><input type="checkbox" id="e13"><label for="e13"><strong>Esoteric Alteration</strong> Gem</label></li>
+                <li><input type="checkbox" id="e14"><label for="e14"><strong>Mutilation Guard</strong> Gem</label></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- FARM SECTION -->
+    <div class="section" id="farm">
+        <div class="card">
+            <h2><span class="emoji">🎰</span> Kadala Gambling</h2>
+            <table>
+                <tr><th>#</th><th>Slot</th><th>Ziel</th></tr>
+                <tr><td>1</td><td>Bracers</td><td>Cesar's Memento</td></tr>
+                <tr><td>2</td><td>Belt</td><td>Kyoshiro's Soul / Goldwrap</td></tr>
+                <tr><td>3</td><td>Shoulders</td><td>Mantle of Channeling</td></tr>
+                <tr><td>4</td><td>Gloves</td><td>Stone Gauntlets</td></tr>
+            </table>
+            <div class="info-box">Rings bei Kadala zu teuer (50 Shards) - besser aus Drops!</div>
+        </div>
+        
+        <div class="card">
+            <h2><span class="emoji">🔨</span> Cube Upgrade</h2>
+            <table>
+                <tr><th>#</th><th>Craft</th><th>Ziel</th></tr>
+                <tr><td>1</td><td>Rare Fist Weapon</td><td>Vengeful Wind / Won Khim Lau</td></tr>
+                <tr><td>2</td><td>Rare Daibo</td><td>✅ Balance hast du!</td></tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2><span class="emoji">🗺️</span> Bounties</h2>
+            <ul class="checklist">
+                <li><input type="checkbox" id="f1"><label for="f1"><strong>Act 1</strong> - Ring of Royal Grandeur ⭐⭐⭐</label></li>
+                <li><input type="checkbox" id="f2"><label for="f2"><strong>Act 2</strong> - Gloves of Worship</label></li>
+                <li><input type="checkbox" id="f3"><label for="f3"><strong>Act 3</strong> - Avarice Band</label></li>
+            </ul>
+            <div class="tip-box">
+                <strong>Priorität:</strong> Act 1 zuerst für RoRG - du brauchst es für Captain Crimson + Sunwuko Combo!
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><span class="emoji">📝</span> Crafting Plans</h2>
+            <ul class="checklist">
+                <li><input type="checkbox" id="f4"><label for="f4"><strong>Captain Crimson's</strong> - CORE für Build!</label></li>
+                <li><input type="checkbox" id="f5"><label for="f5"><strong>Sage's Journey</strong> - +1 DB</label></li>
+                <li><input type="checkbox" id="f6"><label for="f6"><strong>Cain's Destiny</strong> - +25% Keys</label></li>
+                <li><input type="checkbox" id="f7"><label for="f7"><strong>Aughild's Authority</strong> - Elite Dmg</label></li>
+            </ul>
+        </div>
+    </div>
+    
+    <button class="reset-btn" onclick="resetAll()">🔄 Reset</button>
+    
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+        
+        // Checkbox persistence
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        
+        // Load saved state
+        checkboxes.forEach(cb => {
+            const saved = localStorage.getItem(cb.id);
+            if (saved === 'true') {
+                cb.checked = true;
+                cb.closest('li')?.classList.add('checked');
+            }
+            
+            cb.addEventListener('change', () => {
+                localStorage.setItem(cb.id, cb.checked);
+                cb.closest('li')?.classList.toggle('checked', cb.checked);
+                updateProgress();
+            });
+        });
+        
+        // Progress bar
+        function updateProgress() {
+            const total = checkboxes.length;
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const percent = Math.round((checked / total) * 100);
+            document.getElementById('progressFill').style.width = percent + '%';
+            document.getElementById('progressText').textContent = checked + '/' + total + ' (' + percent + '%)';
+        }
+        
+        // Reset all
+        function resetAll() {
+            if (confirm('Alle Checkboxen zurücksetzen?')) {
+                checkboxes.forEach(cb => {
+                    cb.checked = false;
+                    cb.closest('li')?.classList.remove('checked');
+                    localStorage.removeItem(cb.id);
+                });
+                // Keep Balance checked
+                const balance = document.getElementById('g1');
+                if (balance) {
+                    balance.checked = true;
+                    balance.closest('li')?.classList.add('checked');
+                    localStorage.setItem('g1', 'true');
+                }
+                updateProgress();
+            }
+        }
+        
+        // Initial progress update
+        updateProgress();
+    </script>
+</body>
+</html>
