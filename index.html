@@ -15,17 +15,17 @@
             margin: 0 auto;
         }
         h1 { font-size: 1.3em; text-align: center; color: #f4a460; margin-bottom: 10px; }
-        .tabs { display: flex; gap: 5px; margin-bottom: 10px; flex-wrap: wrap; }
+        .tabs { display: flex; gap: 3px; margin-bottom: 10px; flex-wrap: wrap; }
         .tab { 
             flex: 1; 
-            padding: 8px 5px; 
+            padding: 8px 3px; 
             background: #16213e; 
             border: none; 
             color: #aaa; 
             border-radius: 5px;
             cursor: pointer;
-            font-size: 0.85em;
-            min-width: 70px;
+            font-size: 0.75em;
+            min-width: 55px;
         }
         .tab.active { background: #e94560; color: #fff; }
         .content { display: none; }
@@ -46,6 +46,26 @@
         .reset { background: #333; color: #888; border: none; padding: 8px 15px; border-radius: 5px; margin-top: 10px; cursor: pointer; font-size: 0.8em; }
         .reward { background: #2d4a3e; padding: 8px; border-radius: 5px; margin-top: 8px; font-size: 0.85em; }
         .reward strong { color: #4ade80; }
+        .info-box { background: #2a2a4e; padding: 10px; border-radius: 5px; margin: 8px 0; font-size: 0.85em; line-height: 1.5; }
+        .info-box strong { color: #f4a460; }
+        .skill-table { width: 100%; font-size: 0.85em; border-collapse: collapse; margin-top: 8px; }
+        .skill-table th, .skill-table td { padding: 6px 4px; text-align: left; border-bottom: 1px solid #333; }
+        .skill-table th { color: #f4a460; background: #1a1a2e; }
+        .skill-table td:first-child { color: #888; width: 50px; }
+        .gear-slot { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #222; font-size: 0.85em; }
+        .gear-slot:last-child { border-bottom: none; }
+        .gear-slot .slot { color: #888; width: 80px; }
+        .gear-slot .item-name { flex: 1; color: #eee; }
+        .gear-slot .stats { color: #4ade80; font-size: 0.8em; }
+        .cube-slot { background: #2d2a4e; padding: 8px; border-radius: 5px; margin: 5px 0; }
+        .cube-slot strong { color: #a78bfa; }
+        .paragon-section { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .paragon-box { background: #2a2a4e; padding: 10px; border-radius: 5px; }
+        .paragon-box h4 { color: #f4a460; font-size: 0.85em; margin-bottom: 5px; }
+        .paragon-box ol { margin-left: 15px; font-size: 0.8em; line-height: 1.6; }
+        .altar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; font-size: 0.75em; }
+        .altar-item { background: #2a2a4e; padding: 5px 8px; border-radius: 3px; }
+        .altar-item span { color: #888; }
     </style>
 </head>
 <body>
@@ -56,18 +76,20 @@
 
     <div class="tabs">
         <button class="tab active" data-tab="journey">Journey</button>
+        <button class="tab" data-tab="build">Build</button>
         <button class="tab" data-tab="gear">Gear</button>
-        <button class="tab" data-tab="follower">Follower</button>
+        <button class="tab" data-tab="altar">Altar</button>
         <button class="tab" data-tab="farm">Farm</button>
     </div>
 
+    <!-- JOURNEY TAB -->
     <div id="journey" class="content active">
         <div class="section">
             <h2>Chapter II → Haedrig #1</h2>
             <div class="reward"><strong>Reward:</strong> Sunwuko Crown + Paws (2pc: 50% DR)</div>
             <div class="item"><input type="checkbox" id="j1"><label for="j1">Nephalem Rift <span class="diff">(Expert)</span></label></div>
-            <div class="item"><input type="checkbox" id="j2"><label for="j2">Rakanoth töten <span class="diff">(Hard, Lvl 60+)</span></label></div>
-            <div class="item"><input type="checkbox" id="j3"><label for="j3">Skeleton King töten <span class="diff">(Hard, Lvl 60+)</span></label></div>
+            <div class="item"><input type="checkbox" id="j2"><label for="j2">Rakanoth töten <span class="diff">(Hard) - A4: Library of Fate</span></label></div>
+            <div class="item"><input type="checkbox" id="j3"><label for="j3">Skeleton King töten <span class="diff">(Hard) - A1: Royal Crypts</span></label></div>
             <div class="item"><input type="checkbox" id="j4"><label for="j4">Kanai's Cube freischalten</label></div>
             <div class="item"><input type="checkbox" id="j5"><label for="j5">Alle Artisans Level 12</label></div>
             <div class="item"><input type="checkbox" id="j6"><label for="j6">Follower voll ausrüsten</label></div>
@@ -81,8 +103,8 @@
             <h2>Chapter III → Haedrig #2</h2>
             <div class="reward"><strong>Reward:</strong> Sunwuko Leggings + Balance (4pc: Decoys)</div>
             <div class="item"><input type="checkbox" id="j11"><label for="j11">Nephalem Rift <span class="diff">(Master)</span></label></div>
-            <div class="item"><input type="checkbox" id="j12"><label for="j12">Adria töten <span class="diff">(Master, Lvl 70)</span></label></div>
-            <div class="item"><input type="checkbox" id="j13"><label for="j13">Siegebreaker töten <span class="diff">(Master, Lvl 70)</span></label></div>
+            <div class="item"><input type="checkbox" id="j12"><label for="j12">Adria töten <span class="diff">(Master) - A5: Ruins of Corvus</span></label></div>
+            <div class="item"><input type="checkbox" id="j13"><label for="j13">Siegebreaker töten <span class="diff">(Master) - A3: Edge of Abyss</span></label></div>
             <div class="item"><input type="checkbox" id="j14"><label for="j14">Bei Kadala kaufen</label></div>
             <div class="item"><input type="checkbox" id="j15"><label for="j15">1x Cube Power extrahieren</label></div>
             <div class="item"><input type="checkbox" id="j16"><label for="j16">Imperial Gem craften</label></div>
@@ -96,14 +118,14 @@
         <div class="section">
             <h2>Chapter IV → Haedrig #3</h2>
             <div class="reward"><strong>Reward:</strong> Sunwuko Soul + Shines (6pc: 19,500% TR)</div>
-            <div class="item"><input type="checkbox" id="j22"><label for="j22">Nephalem Rift <span class="diff">(Torment I, Lvl 70)</span></label></div>
+            <div class="item"><input type="checkbox" id="j22"><label for="j22">Nephalem Rift <span class="diff">(Torment I)</span></label></div>
             <div class="item"><input type="checkbox" id="j23"><label for="j23">⭐ GR20 Solo</label></div>
-            <div class="item"><input type="checkbox" id="j24"><label for="j24">Belial töten <span class="diff">(Torment II, Lvl 70)</span></label></div>
-            <div class="item"><input type="checkbox" id="j25"><label for="j25">Ghom töten <span class="diff">(Torment IV, Lvl 70)</span></label></div>
-            <div class="item"><input type="checkbox" id="j26"><label for="j26">Keywarden Act 1 - Odeg <span class="diff">(T4, Fields of Misery)</span></label></div>
-            <div class="item"><input type="checkbox" id="j27"><label for="j27">Keywarden Act 2 - Sokahr <span class="diff">(T4, Dahlgur Oasis)</span></label></div>
-            <div class="item"><input type="checkbox" id="j28"><label for="j28">Keywarden Act 3 - Xah'Rith <span class="diff">(T4, Stonefort)</span></label></div>
-            <div class="item"><input type="checkbox" id="j29"><label for="j29">Keywarden Act 4 - Nekarat <span class="diff">(T4, Gardens of Hope 2)</span></label></div>
+            <div class="item"><input type="checkbox" id="j24"><label for="j24">Belial töten <span class="diff">(T2) - A2: Imperial Palace</span></label></div>
+            <div class="item"><input type="checkbox" id="j25"><label for="j25">Ghom töten <span class="diff">(T4) - A3: The Larder</span></label></div>
+            <div class="item"><input type="checkbox" id="j26"><label for="j26">Keywarden A1 - Odeg <span class="diff">(T4) Fields of Misery</span></label></div>
+            <div class="item"><input type="checkbox" id="j27"><label for="j27">Keywarden A2 - Sokahr <span class="diff">(T4) Dahlgur Oasis</span></label></div>
+            <div class="item"><input type="checkbox" id="j28"><label for="j28">Keywarden A3 - Xah'Rith <span class="diff">(T4) Stonefort</span></label></div>
+            <div class="item"><input type="checkbox" id="j29"><label for="j29">Keywarden A4 - Nekarat <span class="diff">(T4) Gardens of Hope 2</span></label></div>
             <div class="item"><input type="checkbox" id="j30"><label for="j30">Rare → Legendary upgraden (Cube)</label></div>
             <div class="item"><input type="checkbox" id="j31"><label for="j31">Socket reforgen (Mystic)</label></div>
             <div class="item"><input type="checkbox" id="j32"><label for="j32">5 Blacksmith Recipes lernen</label></div>
@@ -111,80 +133,321 @@
         </div>
     </div>
 
+    <!-- BUILD TAB (Skills, Passives, Rotation) -->
+    <div id="build" class="content">
+        <div class="section">
+            <h2>⚔️ Active Skills</h2>
+            <table class="skill-table">
+                <tr><th>Slot</th><th>Skill</th><th>Rune</th></tr>
+                <tr><td>LMB</td><td><strong>Tempest Rush</strong></td><td>Flurry (Cold)</td></tr>
+                <tr><td>RMB</td><td><strong>Sweeping Wind</strong></td><td>Inner Storm (Spirit)</td></tr>
+                <tr><td>1</td><td><strong>Blinding Flash</strong></td><td>Faith in the Light (+29%)</td></tr>
+                <tr><td>2</td><td><strong>Epiphany</strong></td><td>Desert Shroud (50% DR)</td></tr>
+                <tr><td>3</td><td><strong>Mantra of Salvation</strong></td><td>Agility (+Dodge)</td></tr>
+                <tr><td>4</td><td><strong>Cyclone Strike</strong></td><td>Soothing Breeze (Heal)</td></tr>
+            </table>
+            <p class="note">💡 Cyclone Strike wird automatisch durch Won Khim Lau gecastet!</p>
+        </div>
+
+        <div class="section">
+            <h2>📜 Passive Skills</h2>
+            <div class="info-box">
+                <strong>1. Beacon of Ytar</strong> - 20% CDR (Pflicht für Epiphany)<br>
+                <strong>2. Harmony</strong> - +40% Single Res → All Res<br>
+                <strong>3. Seize the Initiative</strong> - +30% AS vs >75% HP Gegner<br>
+                <strong>4. Relentless Assault</strong> - +20% vs CC'd Gegner
+            </div>
+            <p class="note">Alternative: The Guardian's Path (+35% Dodge) für mehr Survivability</p>
+        </div>
+
+        <div class="section">
+            <h2>🎮 Gameplay Rotation</h2>
+            <div class="info-box">
+                <strong>1.</strong> Sweeping Wind aktivieren (baut zu 13 Stacks auf)<br>
+                <strong>2.</strong> Tempest Rush channeln (Flurry Stacks auf 100)<br>
+                <strong>3.</strong> Convention of Elements beobachten → Cold abwarten<br>
+                <strong>4.</strong> Blinding Flash auf Elites → Channel stoppt → Flurry explodiert!<br>
+                <strong>5.</strong> Epiphany on Cooldown für Defense<br>
+                <strong>6.</strong> Mantra aktiv bei Damage Spikes
+            </div>
+            <p class="note">⚠️ Flurry hat kleinen Radius - direkt auf Gegnern stehen!</p>
+        </div>
+
+        <div class="section">
+            <h2>💎 Legendary Gems</h2>
+            <div class="item"><input type="checkbox" id="lg1"><label for="lg1"><strong>Bane of the Trapped</strong> - Mehr Damage in Melee</label></div>
+            <div class="item"><input type="checkbox" id="lg2"><label for="lg2"><strong>Taeguk</strong> - Damage + Armor beim Channeln</label></div>
+            <div class="item"><input type="checkbox" id="lg3"><label for="lg3"><strong>Bane of the Stricken</strong> - Boss Killer (GR Push)</label></div>
+            <p class="note">Speed Alternative: Bane of the Powerful statt Stricken</p>
+        </div>
+
+        <div class="section">
+            <h2>💠 Kanai's Cube</h2>
+            <div class="cube-slot"><strong>⚔️ Weapon:</strong> Balance - +600% Flurry, garantierte Crits bei ≤3 Gegnern</div>
+            <div class="cube-slot"><strong>🛡️ Armor:</strong> Stone Gauntlets (Push) oder Lefebvre's Soliloquy (Easy)</div>
+            <div class="cube-slot"><strong>💍 Jewelry:</strong> Ring of Royal Grandeur - Set-Reduktion</div>
+        </div>
+
+        <div class="section">
+            <h2>📊 Paragon Points</h2>
+            <div class="paragon-section">
+                <div class="paragon-box">
+                    <h4>Core</h4>
+                    <ol>
+                        <li>Move Speed → 25%</li>
+                        <li>Dexterity</li>
+                        <li>Max Spirit</li>
+                        <li>Vitality</li>
+                    </ol>
+                </div>
+                <div class="paragon-box">
+                    <h4>Offense</h4>
+                    <ol>
+                        <li>CDR</li>
+                        <li>Crit Damage</li>
+                        <li>Crit Chance</li>
+                        <li>Attack Speed</li>
+                    </ol>
+                </div>
+                <div class="paragon-box">
+                    <h4>Defense</h4>
+                    <ol>
+                        <li>All Resistance</li>
+                        <li>Life %</li>
+                        <li>Armor</li>
+                        <li>Life Regen</li>
+                    </ol>
+                </div>
+                <div class="paragon-box">
+                    <h4>Utility</h4>
+                    <ol>
+                        <li>RCR</li>
+                        <li>Area Damage</li>
+                        <li>Life on Hit</li>
+                        <li>Globe Radius</li>
+                    </ol>
+                </div>
+            </div>
+            <p class="note">Ziel: 47% CDR (für Epiphany Uptime) + 45%+ RCR</p>
+        </div>
+    </div>
+
+    <!-- GEAR TAB -->
     <div id="gear" class="content">
         <div class="section">
-            <h2>Must-Have Items</h2>
-            <div class="item"><input type="checkbox" id="g1" checked><label for="g1">✅ Balance (Daibo) - +600% Flurry</label></div>
+            <h2>👕 Ausrüstung Slots</h2>
+            <div class="gear-slot">
+                <span class="slot">Helm</span>
+                <span class="item-name">Sunwuko's Crown</span>
+                <span class="stats">CHC, TR%</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">Shoulders</span>
+                <span class="item-name">Mantle of Channeling</span>
+                <span class="stats">RCR, AD</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">Chest</span>
+                <span class="item-name">Sunwuko's Soul</span>
+                <span class="stats">Vit, Elite DR</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">Gloves</span>
+                <span class="item-name">Sunwuko's Paws</span>
+                <span class="stats">CHC, CHD, RCR</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">Bracers</span>
+                <span class="item-name">Cesar's Memento</span>
+                <span class="stats">Cold%, CHC, LpH</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">Belt</span>
+                <span class="item-name">Cpt. Crimson's Silk Girdle</span>
+                <span class="stats">Vit, Armor</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">Pants</span>
+                <span class="item-name">Sunwuko's Leggings</span>
+                <span class="stats">Vit, Armor</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">Boots</span>
+                <span class="item-name">Cpt. Crimson's Waders</span>
+                <span class="stats">TR%, Vit</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">Amulet</span>
+                <span class="item-name">Sunwuko's Shines</span>
+                <span class="stats">Cold%, CHC, CHD</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">Ring 1</span>
+                <span class="item-name">Convention of Elements</span>
+                <span class="stats">CHC, CDR/AD</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">Ring 2</span>
+                <span class="item-name">Obsidian Ring of Zodiac</span>
+                <span class="stats">CHC, CDR, RCR</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">MH</span>
+                <span class="item-name">Won Khim Lau</span>
+                <span class="stats">Dmg%, AD</span>
+            </div>
+            <div class="gear-slot">
+                <span class="slot">OH</span>
+                <span class="item-name">Vengeful Wind</span>
+                <span class="stats">Dmg%, AD</span>
+            </div>
+            <p class="note">Gem im Helm: Flawless Royal Topaz (RCR)</p>
+        </div>
+
+        <div class="section">
+            <h2>✅ Gear Checklist</h2>
+            <div class="item"><input type="checkbox" id="g1" checked><label for="g1">Balance (Daibo für Cube)</label></div>
             <div class="item"><input type="checkbox" id="g2"><label for="g2">Vengeful Wind (Fist) - +10 SW Stacks</label></div>
-            <div class="item"><input type="checkbox" id="g3"><label for="g3">Won Khim Lau (Fist) - +600% Lightning</label></div>
-            <div class="item"><input type="checkbox" id="g4"><label for="g4">Cesar's Memento (Bracers) - +800% TR</label></div>
+            <div class="item"><input type="checkbox" id="g3"><label for="g3">Won Khim Lau (Fist) - +600% TR + Auto Cyclone</label></div>
+            <div class="item"><input type="checkbox" id="g4"><label for="g4">Cesar's Memento (Bracers) - +800% vs CC'd</label></div>
             <div class="item"><input type="checkbox" id="g5"><label for="g5">Ring of Royal Grandeur (A1 Bounty)</label></div>
             <div class="item"><input type="checkbox" id="g6"><label for="g6">Convention of Elements (Ring)</label></div>
-            <div class="item"><input type="checkbox" id="g7"><label for="g7">Kyoshiro's Soul (Belt) - Auto SW</label></div>
-            <div class="item"><input type="checkbox" id="g8"><label for="g8">Mantle of Channeling - +25% dmg</label></div>
+            <div class="item"><input type="checkbox" id="g7"><label for="g7">Obsidian Ring of the Zodiac</label></div>
+            <div class="item"><input type="checkbox" id="g8"><label for="g8">Mantle of Channeling - +25% dmg/DR</label></div>
+            <div class="item"><input type="checkbox" id="g9"><label for="g9">Stone Gauntlets ODER Lefebvre's (Cube)</label></div>
         </div>
 
         <div class="section">
-            <h2>Captain Crimson (Crafted)</h2>
-            <div class="item"><input type="checkbox" id="g9"><label for="g9">Plan: Captain Crimson's Trimmings</label></div>
-            <div class="item"><input type="checkbox" id="g10"><label for="g10">Craft Belt + Pants (need RoRG)</label></div>
+            <h2>🔨 Captain Crimson (Crafted)</h2>
+            <div class="item"><input type="checkbox" id="g10"><label for="g10">Plan: Captain Crimson's Trimmings</label></div>
+            <div class="item"><input type="checkbox" id="g11"><label for="g11">Craft Belt + Boots (braucht RoRG!)</label></div>
+            <p class="note">2pc: +20% CDR/RCR | 3pc: Damage + DR von CDR/RCR</p>
         </div>
 
         <div class="section">
-            <h2>Cube Powers (Final)</h2>
-            <div class="item"><input type="checkbox" id="g11"><label for="g11">Weapon: Balance (or equipped)</label></div>
-            <div class="item"><input type="checkbox" id="g12"><label for="g12">Armor: Mantle of Channeling</label></div>
-            <div class="item"><input type="checkbox" id="g13"><label for="g13">Jewelry: Ring of Royal Grandeur</label></div>
+            <h2>🧙 Follower (Enchantress)</h2>
+            <div class="item"><input type="checkbox" id="f1"><label for="f1">Hand of the Prophet (alle 4 Skills)</label></div>
+            <div class="item"><input type="checkbox" id="f2"><label for="f2">Ring of Royal Grandeur (auf Follower!)</label></div>
+            <div class="item"><input type="checkbox" id="f3"><label for="f3">Oculus Ring (+85% Damage Circle)</label></div>
+            <div class="item"><input type="checkbox" id="f4"><label for="f4">Nemesis Bracers (Elites bei Shrines)</label></div>
+            <div class="item"><input type="checkbox" id="f5"><label for="f5">Gloves of Worship (10min Shrine buffs)</label></div>
+            <div class="item"><input type="checkbox" id="f6"><label for="f6">Cain's 2pc (+25% GR Keys)</label></div>
+            <div class="item"><input type="checkbox" id="f7"><label for="f7">Sage's 2pc (+1 Death's Breath)</label></div>
         </div>
     </div>
 
-    <div id="follower" class="content">
+    <!-- ALTAR TAB -->
+    <div id="altar" class="content">
         <div class="section">
-            <h2>Enchantress Setup</h2>
-            <p class="note">RoRG auf Follower = 2pc Set-Bonus statt 3pc!</p>
-            
-            <h3>Focus (wähle eins)</h3>
-            <div class="item"><input type="checkbox" id="f1"><label for="f1">Hand of the Prophet (Speed) - alle 4 Skills</label></div>
-            <div class="item"><input type="checkbox" id="f2"><label for="f2">Smoking Thurible (Push) - unsterblich</label></div>
-            
-            <h3>Rings</h3>
-            <div class="item"><input type="checkbox" id="f3"><label for="f3">Ring of Royal Grandeur</label></div>
-            <div class="item"><input type="checkbox" id="f4"><label for="f4">Oculus Ring (+85% damage circle)</label></div>
-            
-            <h3>Emanate Items</h3>
-            <div class="item"><input type="checkbox" id="f5"><label for="f5">Nemesis Bracers (Elites bei Shrines)</label></div>
-            <div class="item"><input type="checkbox" id="f6"><label for="f6">Gloves of Worship (10min Shrine buffs)</label></div>
-            <div class="item"><input type="checkbox" id="f7"><label for="f7">Avarice Band (Pickup Radius)</label></div>
-            <div class="item"><input type="checkbox" id="f8"><label for="f8">Cain's Destiny 2pc (+25% GR Keys)</label></div>
-            <div class="item"><input type="checkbox" id="f9"><label for="f9">Sage's Journey 2pc (+1 Death's Breath)</label></div>
-            
-            <h3>Weapon</h3>
-            <div class="item"><input type="checkbox" id="f10"><label for="f10">Thunderfury / The Furnace</label></div>
+            <h2>⛩️ Altar of Rites</h2>
+            <p class="note">📍 Location: Act I, New Tristram - links vom Waypoint</p>
+            <div class="info-box">
+                26 Seals + 3 Potion Powers | Alle Powers permanent für Season<br>
+                Powers wirken auf alle Season-Charaktere!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Optimale Unlock-Reihenfolge</h2>
+            <div class="altar-grid">
+                <div class="altar-item"><span>1.</span> Gateway - 2x Kill Streak</div>
+                <div class="altar-item"><span>2.</span> Mother - Pools permanent</div>
+                <div class="altar-item"><span>3.</span> Anointed - No Lvl Req</div>
+                <div class="altar-item"><span>4.</span> Force - +100 Avg Dmg</div>
+                <div class="altar-item"><span>5.</span> Resistance - -5% Missile</div>
+                <div class="altar-item"><span>6.</span> Haste - +10% Move (uncap)</div>
+                <div class="altar-item"><span>7.</span> Destruction - +5% Elite Dmg</div>
+                <div class="altar-item"><span>8.</span> Bulwark - Globe Shield</div>
+                <div class="altar-item"><span>9.</span> Fortitude - -5% Melee</div>
+                <div class="altar-item"><span>10.</span> Inferno - +5% Ele Dmg</div>
+                <div class="altar-item"><span>11.</span> Decimation - +5% Elite</div>
+                <div class="altar-item"><span>12.</span> Might - +5% Damage</div>
+                <div class="altar-item"><span>13.</span> Reaping - 2x Death's Breath</div>
+                <div class="altar-item"><span>14.</span> Vigor - Crit = Resource</div>
+                <div class="altar-item"><span>15.</span> Bounty - 2x Cache</div>
+                <div class="altar-item"><span>16.</span> Efficiency - Auto Progress</div>
+                <div class="altar-item"><span>17.</span> Protection - -5% Elite</div>
+                <div class="altar-item"><span>18.</span> Power - +5% Damage</div>
+                <div class="altar-item"><span>19.</span> Freedom - CC Immunity</div>
+                <div class="altar-item"><span>20.</span> Passability - Walk thru</div>
+                <div class="altar-item"><span>21.</span> Reaping Pets - DB Pickup</div>
+                <div class="altar-item"><span>22.</span> Progress - +1 Orb</div>
+                <div class="altar-item"><span>23.</span> Execution - +5% Boss</div>
+                <div class="altar-item"><span>24.</span> Salvage Pets - Auto salvage</div>
+                <div class="altar-item"><span>25.</span> Evasion - +5% Dodge</div>
+                <div class="altar-item"><span>26.</span> Gambling - 2x Kadala Leg</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧪 Potion Powers (Primordial Ashes)</h2>
+            <div class="info-box">
+                <strong>AA (55 Ashes):</strong> Runic circles - Dmg/CDR/RCR<br>
+                <strong>AB (110 Ashes):</strong> Enemies deal 25% less damage<br>
+                <strong>AC (165 Ashes):</strong> Random shrine effect<br>
+                <strong>AD (Auto):</strong> Double Primal drops (nach 26 Seals)
+            </div>
+            <p class="note">Primordial Ashes = Primal (rote) Items salvagen</p>
+        </div>
+
+        <div class="section">
+            <h2>💰 Teure Unlock-Kosten</h2>
+            <div class="item"><input type="checkbox" id="a1"><label for="a1">Tier 4: Any Class Set Helm</label></div>
+            <div class="item"><input type="checkbox" id="a2"><label for="a2">Tier 5: 20 Forgotten Souls + Bounty Mats</label></div>
+            <div class="item"><input type="checkbox" id="a3"><label for="a3">Tier 6: Uber Boss Materials (Hellfire)</label></div>
+            <div class="item"><input type="checkbox" id="a4"><label for="a4">Tier 10: Flawless Royal Ruby + RoRG</label></div>
+            <div class="item"><input type="checkbox" id="a5"><label for="a5">Tier 15: Challenge Rift Cache ⚠️</label></div>
+            <div class="item"><input type="checkbox" id="a6"><label for="a6">Tier 18: Ancient Hellfire Amulet</label></div>
+            <div class="item"><input type="checkbox" id="a7"><label for="a7">Tier 19: 4 Set Dungeon Pages</label></div>
+            <div class="item"><input type="checkbox" id="a8"><label for="a8">Tier 25: Staff of Herding 😱</label></div>
         </div>
     </div>
 
+    <!-- FARM TAB -->
     <div id="farm" class="content">
         <div class="section">
-            <h2>Kadala Gambling (25 Shards)</h2>
+            <h2>🎰 Kadala Gambling (25 Shards)</h2>
             <p class="note">Priorität von oben nach unten</p>
             <div class="item"><input type="checkbox" id="k1"><label for="k1">1. Bracers → Cesar's Memento</label></div>
-            <div class="item"><input type="checkbox" id="k2"><label for="k2">2. Belt → Kyoshiro's Soul</label></div>
-            <div class="item"><input type="checkbox" id="k3"><label for="k3">3. Shoulders → Mantle of Channeling</label></div>
-            <div class="item"><input type="checkbox" id="k4"><label for="k4">4. Gloves → diverse</label></div>
+            <div class="item"><input type="checkbox" id="k2"><label for="k2">2. Shoulders → Mantle of Channeling</label></div>
+            <div class="item"><input type="checkbox" id="k3"><label for="k3">3. Rings → CoE, Zodiac</label></div>
         </div>
 
         <div class="section">
-            <h2>Cube Upgrade (Rare → Legendary)</h2>
+            <h2>🎲 Cube Upgrade (Rare → Legendary)</h2>
             <p class="note">25 Death's Breath + 50 Mats pro Versuch</p>
             <div class="item"><input type="checkbox" id="c1"><label for="c1">Fist Weapons → Vengeful Wind / WKL</label></div>
-            <div class="item"><input type="checkbox" id="c2"><label for="c2">Daibos → Balance (falls nicht vorhanden)</label></div>
+            <div class="item"><input type="checkbox" id="c2"><label for="c2">Daibos → Balance</label></div>
         </div>
 
         <div class="section">
-            <h2>Bounties</h2>
+            <h2>📦 Bounties</h2>
             <div class="item"><input type="checkbox" id="b1"><label for="b1">Act 1 → Ring of Royal Grandeur</label></div>
             <div class="item"><input type="checkbox" id="b2"><label for="b2">Act 2 → Gloves of Worship</label></div>
             <div class="item"><input type="checkbox" id="b3"><label for="b3">Act 3 → Avarice Band</label></div>
+        </div>
+
+        <div class="section">
+            <h2>👹 Boss Locations (Season Journey)</h2>
+            <div class="info-box">
+                <strong>Skeleton King</strong> - A1: Royal Crypts (via Leoric's Passage)<br>
+                <strong>Rakanoth</strong> - A4: Library of Fate (Gardens of Hope 1)<br>
+                <strong>Adria</strong> - A5: Ruins of Corvus → The Great Hall 🔴<br>
+                <strong>Siegebreaker</strong> - A3: Edge of the Abyss (Ende Rakkis Crossing)<br>
+                <strong>Belial</strong> - A2: Imperial Palace (City of Caldeum)<br>
+                <strong>Ghom</strong> - A3: The Larder (via Keep Depths 3)
+            </div>
+            <p class="note">🔴 = Demon Head Marker auf Waypoint Map</p>
+        </div>
+
+        <div class="section">
+            <h2>🗝️ Keywarden Locations</h2>
+            <div class="info-box">
+                <strong>Act 1:</strong> Odeg - Fields of Misery<br>
+                <strong>Act 2:</strong> Sokahr - Dahlgur Oasis<br>
+                <strong>Act 3:</strong> Xah'Rith - Stonefort<br>
+                <strong>Act 4:</strong> Nekarat - Gardens of Hope 2nd Tier
+            </div>
         </div>
     </div>
 
@@ -227,7 +490,7 @@
                     cb.checked = state[cb.id];
                 }
                 if (cb.checked) {
-                    cb.closest('.item').classList.add('checked');
+                    cb.closest('.item')?.classList.add('checked');
                 }
             });
             updateProgress();
@@ -235,7 +498,7 @@
 
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
             cb.addEventListener('change', () => {
-                cb.closest('.item').classList.toggle('checked', cb.checked);
+                cb.closest('.item')?.classList.toggle('checked', cb.checked);
                 saveState();
                 updateProgress();
             });
@@ -245,13 +508,13 @@
             if (confirm('Wirklich alles zurücksetzen?')) {
                 document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
                     cb.checked = false;
-                    cb.closest('.item').classList.remove('checked');
+                    cb.closest('.item')?.classList.remove('checked');
                 });
                 // Re-check Balance as user has it
                 const balance = document.getElementById('g1');
                 if (balance) {
                     balance.checked = true;
-                    balance.closest('.item').classList.add('checked');
+                    balance.closest('.item')?.classList.add('checked');
                 }
                 saveState();
                 updateProgress();
