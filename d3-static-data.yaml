@@ -350,40 +350,96 @@ difficulties:
     
   torment_4:
     name: "Torment IV"
-    monster_health: 3355
-    monster_damage: 1208
-    gold_bonus: 800
-    xp_bonus: 800
     legendary_bonus: 75
     legendary_bonus_rift: 119
     gr_equivalent: 35
     deaths_breath_chance: 53
-    
+
+  torment_5:
+    name: "Torment V"
+    legendary_bonus: 101
+    legendary_bonus_rift: 151
+    gr_equivalent: 40
+    deaths_breath_chance: 62
+
   torment_6:
     name: "Torment VI"
-    monster_health: 8590
-    monster_damage: 2540
-    gold_bonus: 1600
-    xp_bonus: 1600
     legendary_bonus: 131
     legendary_bonus_rift: 189
     gr_equivalent: 45
     deaths_breath_chance: 72
-    
+
+  torment_7:
+    name: "Torment VII"
+    legendary_bonus: 167
+    legendary_bonus_rift: 236
+    gr_equivalent: 50
+    deaths_breath_chance: 81
+
+  torment_8:
+    name: "Torment VIII"
+    legendary_bonus: 210
+    legendary_bonus_rift: 295
+    gr_equivalent: 55
+    deaths_breath_chance: 90
+
+  torment_9:
+    name: "Torment IX"
+    legendary_bonus: 261
+    legendary_bonus_rift: 368
+    gr_equivalent: 57
+    deaths_breath_chance: 99
+
   torment_10:
     name: "Torment X"
-    monster_health: 200082
-    monster_damage: 10194
-    gold_bonus: 2000
-    xp_bonus: 3300
+    legendary_bonus: 321
+    legendary_bonus_rift: 460
     gr_equivalent: 60
-    
+    deaths_breath_chance: 100
+    notes: "DB Drop garantiert ab hier"
+
+  torment_11:
+    name: "Torment XI"
+    legendary_bonus: 392
+    legendary_bonus_rift: 575
+    gr_equivalent: 65
+    deaths_breath_chance: 100
+
+  torment_12:
+    name: "Torment XII"
+    legendary_bonus: 476
+    legendary_bonus_rift: 719
+    gr_equivalent: 70
+    deaths_breath_chance: 100
+
+  torment_13:
+    name: "Torment XIII"
+    legendary_bonus: 575
+    legendary_bonus_rift: 899
+    gr_equivalent: 75
+    deaths_breath_chance: 100
+
+  torment_14:
+    name: "Torment XIV"
+    legendary_bonus: 692
+    legendary_bonus_rift: 1124
+    gr_equivalent: 80
+    deaths_breath_chance: 100
+
+  torment_15:
+    name: "Torment XV"
+    legendary_bonus: 831
+    legendary_bonus_rift: 1405
+    gr_equivalent: 85
+    deaths_breath_chance: 100
+
   torment_16:
     name: "Torment XVI"
-    monster_health: 8708556
-    monster_damage: 66421
+    legendary_bonus: 996
+    legendary_bonus_rift: 1756
     gr_equivalent: 90
-    notes: "Höchste reguläre Schwierigkeit"
+    deaths_breath_chance: 100
+    notes: "Höchste Schwierigkeit, 2+ DB pro Elite"
 
 # =============================================================================
 # ALTAR OF RITES
@@ -397,137 +453,139 @@ altar_of_rites:
   total_seals: 26
   potion_powers: 3
   
-  # Optimale Unlock-Reihenfolge
+  # Alle 26 Seals mit Unlock-Kosten
   unlock_order:
     - seal: 1
       name: "Gateway"
-      effect: "Double Kill Streak timer"
-      tier: 1
-      
+      effect: "2x Kill Streak Timer"
+      cost: "10 Reusable Parts"
+
     - seal: 2
-      name: "Mother"
-      effect: "Pools of Reflection last entire Season"
-      tier: 2
-      
-    - seal: 3
       name: "Anointed"
-      effect: "Items have no level requirement"
-      tier: 3
-      
+      effect: "Items haben KEINE Level-Anforderung"
+      cost: "1 Flawless Diamond, 15 Arcane Dust, 20 Reusable Parts"
+
+    - seal: 3
+      name: "Exodus"
+      effect: "+15% Movement Speed (uncapped)"
+      cost: "1 GR Keystone, 10 Death's Breath"
+
     - seal: 4
       name: "Force"
-      effect: "+100 base average damage"
-      tier: 4
-      
+      effect: "+100 Damage"
+      cost: "1 Klassen-Set-Helm (beliebig)"
+
     - seal: 5
-      name: "Resistance"
-      effect: "-5% missile damage taken"
-      tier: 5
-      
+      name: "Tenacity"
+      effect: "+25% Toughness"
+      cost: "20 Forgotten Souls, 10x jedes Bounty Mat"
+
     - seal: 6
-      name: "Haste"
-      effect: "+10% Movement Speed (uncapped)"
-      tier: 6
-      
+      name: "Numb"
+      effect: "-25% Damage genommen"
+      cost: "1x jedes Uber-Drop (Organ)"
+
     - seal: 7
-      name: "Destruction"
-      effect: "+5% damage vs Elites"
-      tier: 7
-      
+      name: "Malice"
+      effect: "+25% Damage"
+      cost: "Reaper's Wraps (Craft)"
+
     - seal: 8
-      name: "Bulwark"
-      effect: "Health Globes grant shield (5% max HP)"
-      tier: 8
-      
+      name: "Blood"
+      effect: "Life on Hit verdoppelt"
+      cost: "30 Forgotten Souls"
+
     - seal: 9
-      name: "Fortitude"
-      effect: "-5% melee damage taken"
-      tier: 9
-      
+      name: "Reverence"
+      effect: "+10% CHC"
+      cost: "1,100 Blood Shards"
+
     - seal: 10
-      name: "Inferno"
-      effect: "+5% Elemental damage"
-      tier: 10
-      
+      name: "Roar"
+      effect: "+50% CHD"
+      cost: "1 Flawless Royal Ruby, 20 DB, Ring of Royal Grandeur"
+
     - seal: 11
-      name: "Decimation"
-      effect: "+5% damage vs Elites"
-      tier: 11
-      
+      name: "Nature"
+      effect: "+50% Healing"
+      cost: "1 Flawless Royal Emerald, 30x jedes Bounty Mat"
+
     - seal: 12
-      name: "Might"
-      effect: "+5% damage dealt"
-      tier: 12
-      
+      name: "Command"
+      effect: "+20% CDR"
+      cost: "20 GR Keystones, 1 Ramaladni's Gift"
+
     - seal: 13
-      name: "Reaping"
-      effect: "Double Death's Breath drops"
-      tier: 13
-      
+      name: "Shadow"
+      effect: "+25% RCR"
+      cost: "1,300 Blood Shards"
+
     - seal: 14
-      name: "Vigor"
-      effect: "Critical hits restore resource"
-      tier: 14
-      
+      name: "Stillness"
+      effect: "Pets holen Gold + Progress Orbs"
+      cost: "1 Petrified Scream"
+
     - seal: 15
-      name: "Bounty"
-      effect: "Double Bounty Cache rewards"
-      tier: 15
-      
+      name: "Bountiful"
+      effect: "2x Bounty Cache Rewards"
+      cost: "1 Challenge Rift Cache"
+      warning: "Cache für Season-Start aufsparen!"
+
     - seal: 16
-      name: "Efficiency"
-      effect: "Auto pickup Death's Breath + Progress orbs"
-      tier: 16
-      
+      name: "Reach"
+      effect: "2x Death's Breath Drops"
+      cost: "250 Forgotten Souls"
+
     - seal: 17
-      name: "Protection"
-      effect: "-5% Elite damage taken"
-      tier: 17
-      
+      name: "Vigor"
+      effect: "Crits geben Resource"
+      cost: "1,400 Blood Shards"
+
     - seal: 18
-      name: "Power"
-      effect: "+5% damage dealt"
-      tier: 18
-      
+      name: "Elegance"
+      effect: "Pylons dauern doppelt"
+      cost: "1 Ancient Hellfire Amulet"
+
     - seal: 19
-      name: "Freedom"
-      effect: "CC immunity for 5 seconds after breaking CC"
-      tier: 19
-      
+      name: "Mirror"
+      effect: "Follower-Items Emanate"
+      cost: "4 Set Dungeon Pages"
+
     - seal: 20
-      name: "Passability"
-      effect: "Walk through enemies"
-      tier: 20
-      
+      name: "Revelation"
+      effect: "Gesamte Map aufgedeckt"
+      cost: "Ancient Puzzle Ring, 50x jedes Bounty Mat"
+
     - seal: 21
-      name: "Reaping Pets"
-      effect: "Pets pick up Death's Breath"
-      tier: 21
-      
+      name: "Reaper"
+      effect: "Pets salvagen Weiß/Blau/Gelb"
+      cost: "500 Death's Breath, 300 Forgotten Souls"
+
     - seal: 22
-      name: "Progress"
-      effect: "+1 Progress orb from Elites"
-      tier: 22
-      
+      name: "Omen"
+      effect: "+1 Progress Orb von Elites"
+      cost: "1,500 Blood Shards"
+
     - seal: 23
-      name: "Execution"
-      effect: "+5% damage vs Bosses"
-      tier: 23
-      
+      name: "Carrion"
+      effect: "+2 GR Levels nach Clear"
+      cost: "Rank 125 Whisper of Atonement"
+
     - seal: 24
-      name: "Salvage Pets"
-      effect: "Pets auto-salvage white/blue/yellow"
-      tier: 24
-      
+      name: "Husk"
+      effect: "Bei Clear: +1 Legendary Drop"
+      cost: "1 Augmented Weapon (beliebig)"
+
     - seal: 25
-      name: "Evasion"
-      effect: "+5% Dodge chance"
-      tier: 25
-      
+      name: "Pattern"
+      effect: "2x Legendary Chance bei Kadala"
+      cost: "Staff of Herding"
+      warning: "Aufwändig zu craften!"
+
     - seal: 26
-      name: "Gambling"
-      effect: "Double Legendary chance from Kadala"
-      tier: 26
+      name: "Warning"
+      effect: "2x Primal Ancient Drops"
+      cost: "1,600 Blood Shards"
 
   potion_powers:
     AA:
@@ -648,6 +706,18 @@ bounty_cache_items:
 # FOLLOWER SETUP (Static/Universal)
 # =============================================================================
 followers:
+  crafting_tip:
+    description: "Follower-Gear auf passendem Char craften für richtigen Mainstat!"
+    enchantress:
+      mainstat: "Intelligence"
+      craft_on: ["Wizard", "Witch Doctor", "Necromancer"]
+    templar:
+      mainstat: "Strength"
+      craft_on: ["Barbarian", "Crusader"]
+    scoundrel:
+      mainstat: "Dexterity"
+      craft_on: ["Monk", "Demon Hunter"]
+
   universal_emanate_items:
     - name: "Nemesis Bracers"
       slot: "Bracers"

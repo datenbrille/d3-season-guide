@@ -342,6 +342,10 @@ common_mistakes:
     consequence: "Weniger XP, weniger Death's Breath"
     fix: "Höchste Difficulty die noch smooth läuft"
 
+  - mistake: "Follower-Gear auf falschem Char craften"
+    consequence: "Falscher Mainstat (z.B. Dex statt Int)"
+    fix: "Enchantress-Gear auf Int-Char (Wiz/WD/Necro), Templar auf Str-Char (Barb/Sader), Scoundrel auf Dex-Char (Monk/DH)"
+
 # =============================================================================
 # ZEITLEISTE (Typischer Ablauf)
 # =============================================================================

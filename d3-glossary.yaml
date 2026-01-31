@@ -395,6 +395,12 @@ gameplay:
     deutsch: "Ausstrahlen"
     description: "Follower-Item wirkt auf Spieler"
 
+  Follower Crafting:
+    full: "Follower Gear Crafting"
+    deutsch: "Follower-Gear craften"
+    description: "Auf passendem Char craften für richtigen Mainstat"
+    notes: "Enchantress→Int (Wiz/WD/Necro), Templar→Str (Barb/Sader), Scoundrel→Dex (Monk/DH)"
+
   Quadfecta:
     full: "Quadfecta"
     deutsch: "Quadfecta"

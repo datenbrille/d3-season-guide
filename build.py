@@ -524,53 +524,50 @@ def _generate_altar_html(static: dict) -> str:
     """Generate the Altar tab HTML."""
     altar = static.get('altar_of_rites', {})
     unlock_order = altar.get('unlock_order', [])
-    expensive = altar.get('expensive_unlocks', {})
     potions = altar.get('potion_powers', {})
 
-    # Seal grid
+    # Seal list with costs as checkboxes
     seal_items = ''
     for seal in unlock_order:
         num = seal.get('seal', '?')
         name = seal.get('name', '?')
         effect = seal.get('effect', '')
-        # Shorten effect for grid
-        short_effect = effect[:25] + '...' if len(effect) > 28 else effect
-        seal_items += f'''                <div class="altar-item"><span>{num}.</span> {name}</div>\n'''
+        cost = seal.get('cost', '?')
+        warning = seal.get('warning', '')
 
-    # Expensive unlocks
-    expensive_items = ''
-    for tier, data in sorted(expensive.items(), key=lambda x: int(x[0].split('_')[1])):
-        tier_num = tier.split('_')[1]
-        cost = data.get('cost', '?')
-        expensive_items += f'''            <div class="item"><input type="checkbox" id="altar_{tier}"><label for="altar_{tier}">Tier {tier_num}: {cost}</label></div>\n'''
+        warning_html = f' <span style="color:#e94560">⚠️ {warning}</span>' if warning else ''
+
+        seal_items += f'''            <div class="item">
+                <input type="checkbox" id="altar_{num}">
+                <label for="altar_{num}">
+                    <strong style="color:#f4a460">{num}. {name}</strong><br>
+                    <span style="font-size:0.85em">{effect}</span><br>
+                    <span class="diff">Kosten: {cost}</span>{warning_html}
+                </label>
+            </div>\n'''
 
     return f'''        <div class="section">
             <h2>Altar of Rites</h2>
-            <p class="note">Location: Act I, New Tristram - links vom Waypoint</p>
+            <p class="note">📍 Act I, New Tristram - links vom Waypoint</p>
             <div class="info-box">
                 26 Seals + 3 Potion Powers | Alle Powers permanent für Season
             </div>
         </div>
 
         <div class="section">
-            <h2>Unlock-Reihenfolge</h2>
-            <div class="altar-grid">
-{seal_items}            </div>
-        </div>
+            <h2>Alle 26 Seals (mit Kosten)</h2>
+{seal_items}        </div>
 
         <div class="section">
-            <h2>Potion Powers</h2>
+            <h2>🧪 Potion Powers</h2>
             <div class="info-box">
                 <strong>AA (55 Ashes):</strong> Runic circles - Dmg/CDR/RCR<br>
                 <strong>AB (110 Ashes):</strong> Enemies deal 25% less damage<br>
                 <strong>AC (165 Ashes):</strong> Random shrine effect<br>
-                <strong>AD (Auto):</strong> Double Primal drops
+                <strong>AD (Auto nach 26 Seals):</strong> Double Primal drops
             </div>
-        </div>
-
-        <div class="section">
-            <h2>Teure Unlocks</h2>
-{expensive_items}        </div>'''
+            <p class="note">Primordial Ashes = Primal Items salvagen</p>
+        </div>'''
 
 
 def _generate_start_html(start_guide: dict) -> str:
@@ -780,6 +777,7 @@ def _generate_farm_html(static: dict, build: dict) -> str:
     """Generate the Farm tab HTML."""
     kadala = static.get('kadala', {})
     bounty = static.get('bounty_cache_items', {})
+    difficulties = static.get('difficulties', {})
 
     # Bounty items
     bounty_items = ''
@@ -790,7 +788,28 @@ def _generate_farm_html(static: dict, build: dict) -> str:
         for item in high_prio:
             bounty_items += f'''            <div class="item"><input type="checkbox" id="bounty_{act_key}"><label for="bounty_{act_key}">Act {act_num} → {item.get('name', '?')}</label></div>\n'''
 
+    # Difficulty drop rates table (alle Torment-Stufen)
+    diff_order = ['torment_1', 'torment_2', 'torment_3', 'torment_4', 'torment_5', 'torment_6', 'torment_7', 'torment_8', 'torment_9', 'torment_10', 'torment_11', 'torment_12', 'torment_13', 'torment_14', 'torment_15', 'torment_16']
+    diff_rows = ''
+    for diff_key in diff_order:
+        if diff_key in difficulties:
+            d = difficulties[diff_key]
+            name = d.get('name', diff_key)
+            leg_bonus = d.get('legendary_bonus', 0)
+            leg_rift = d.get('legendary_bonus_rift', 0)
+            db_chance = d.get('deaths_breath_chance', '-')
+            gr_eq = d.get('gr_equivalent', '-')
+            diff_rows += f'<tr><td>{name}</td><td>+{leg_bonus}%</td><td>+{leg_rift}%</td><td>{db_chance}%</td><td>GR{gr_eq}</td></tr>\n'
+
     return f'''        <div class="section">
+            <h2>Torment Drop Rates</h2>
+            <table class="skill-table">
+                <tr><th>Stufe</th><th>Leg%</th><th>Rift%</th><th>DB%</th><th>GR</th></tr>
+{diff_rows}            </table>
+            <p class="note">Leg% = Legendary Bonus (Open World), Rift% = in Nephalem Rifts, DB% = Death's Breath Chance</p>
+        </div>
+
+        <div class="section">
             <h2>Kadala Gambling</h2>
             <div class="info-box">
                 <strong>Billig (25):</strong> Helm, Gloves, Boots, Chest, Belt, Shoulders, Pants, Bracers<br>
@@ -810,6 +829,24 @@ def _generate_farm_html(static: dict, build: dict) -> str:
                 25 Death's Breath + 50 jeder Mat-Art<br>
                 <strong>Tipp:</strong> Weapons hier upgraden, nicht bei Kadala!
             </div>
+        </div>
+
+        <div class="section">
+            <h2>🧙 Follower Crafting (Enchantress)</h2>
+            <p class="note">⚠️ Auf INT-Char craften (Wiz/WD/Necro) für richtigen Mainstat!</p>
+            <div class="item"><input type="checkbox" id="fc1"><label for="fc1"><strong>Cain's Destiny</strong> (2pc) - Helm + Boots<br><span class="diff">+25% GR Key Drops (Emanate)</span></label></div>
+            <div class="item"><input type="checkbox" id="fc2"><label for="fc2"><strong>Sage's Journey</strong> (2pc) - Helm + Boots oder Gloves<br><span class="diff">+1 Death's Breath (Emanate)</span></label></div>
+            <div class="item"><input type="checkbox" id="fc3"><label for="fc3"><strong>Born's Command</strong> (2pc) - Chest + Shoulders<br><span class="diff">+20% XP, +15% CDR (Emanate)</span></label></div>
+            <div class="info-box">
+                <strong>Weitere Emanate Items:</strong><br>
+                • Nemesis Bracers - Elite bei Shrine<br>
+                • Gloves of Worship - 10min Shrine (A2 Bounty)<br>
+                • Flavor of Time - 2x Pylon Dauer<br>
+                • Ring of Royal Grandeur - Set -1 (A1 Bounty)<br>
+                • Oculus Ring - +85% Damage Circle<br>
+                • Avarice Band - 30yd Pickup (A3 Bounty)
+            </div>
+            <p class="note">Templar → STR-Char (Barb/Sader), Scoundrel → DEX-Char (Monk/DH)</p>
         </div>'''
 
 

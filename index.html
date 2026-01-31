@@ -519,69 +519,262 @@
     <div id="altar" class="content">
         <div class="section">
             <h2>Altar of Rites</h2>
-            <p class="note">Location: Act I, New Tristram - links vom Waypoint</p>
+            <p class="note">📍 Act I, New Tristram - links vom Waypoint</p>
             <div class="info-box">
                 26 Seals + 3 Potion Powers | Alle Powers permanent für Season
             </div>
         </div>
 
         <div class="section">
-            <h2>Unlock-Reihenfolge</h2>
-            <div class="altar-grid">
-                <div class="altar-item"><span>1.</span> Gateway</div>
-                <div class="altar-item"><span>2.</span> Mother</div>
-                <div class="altar-item"><span>3.</span> Anointed</div>
-                <div class="altar-item"><span>4.</span> Force</div>
-                <div class="altar-item"><span>5.</span> Resistance</div>
-                <div class="altar-item"><span>6.</span> Haste</div>
-                <div class="altar-item"><span>7.</span> Destruction</div>
-                <div class="altar-item"><span>8.</span> Bulwark</div>
-                <div class="altar-item"><span>9.</span> Fortitude</div>
-                <div class="altar-item"><span>10.</span> Inferno</div>
-                <div class="altar-item"><span>11.</span> Decimation</div>
-                <div class="altar-item"><span>12.</span> Might</div>
-                <div class="altar-item"><span>13.</span> Reaping</div>
-                <div class="altar-item"><span>14.</span> Vigor</div>
-                <div class="altar-item"><span>15.</span> Bounty</div>
-                <div class="altar-item"><span>16.</span> Efficiency</div>
-                <div class="altar-item"><span>17.</span> Protection</div>
-                <div class="altar-item"><span>18.</span> Power</div>
-                <div class="altar-item"><span>19.</span> Freedom</div>
-                <div class="altar-item"><span>20.</span> Passability</div>
-                <div class="altar-item"><span>21.</span> Reaping Pets</div>
-                <div class="altar-item"><span>22.</span> Progress</div>
-                <div class="altar-item"><span>23.</span> Execution</div>
-                <div class="altar-item"><span>24.</span> Salvage Pets</div>
-                <div class="altar-item"><span>25.</span> Evasion</div>
-                <div class="altar-item"><span>26.</span> Gambling</div>
+            <h2>Alle 26 Seals (mit Kosten)</h2>
+            <div class="item">
+                <input type="checkbox" id="altar_1">
+                <label for="altar_1">
+                    <strong style="color:#f4a460">1. Gateway</strong><br>
+                    <span style="font-size:0.85em">2x Kill Streak Timer</span><br>
+                    <span class="diff">Kosten: 10 Reusable Parts</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_2">
+                <label for="altar_2">
+                    <strong style="color:#f4a460">2. Anointed</strong><br>
+                    <span style="font-size:0.85em">Items haben KEINE Level-Anforderung</span><br>
+                    <span class="diff">Kosten: 1 Flawless Diamond, 15 Arcane Dust, 20 Reusable Parts</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_3">
+                <label for="altar_3">
+                    <strong style="color:#f4a460">3. Exodus</strong><br>
+                    <span style="font-size:0.85em">+15% Movement Speed (uncapped)</span><br>
+                    <span class="diff">Kosten: 1 GR Keystone, 10 Death's Breath</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_4">
+                <label for="altar_4">
+                    <strong style="color:#f4a460">4. Force</strong><br>
+                    <span style="font-size:0.85em">+100 Damage</span><br>
+                    <span class="diff">Kosten: 1 Klassen-Set-Helm (beliebig)</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_5">
+                <label for="altar_5">
+                    <strong style="color:#f4a460">5. Tenacity</strong><br>
+                    <span style="font-size:0.85em">+25% Toughness</span><br>
+                    <span class="diff">Kosten: 20 Forgotten Souls, 10x jedes Bounty Mat</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_6">
+                <label for="altar_6">
+                    <strong style="color:#f4a460">6. Numb</strong><br>
+                    <span style="font-size:0.85em">-25% Damage genommen</span><br>
+                    <span class="diff">Kosten: 1x jedes Uber-Drop (Organ)</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_7">
+                <label for="altar_7">
+                    <strong style="color:#f4a460">7. Malice</strong><br>
+                    <span style="font-size:0.85em">+25% Damage</span><br>
+                    <span class="diff">Kosten: Reaper's Wraps (Craft)</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_8">
+                <label for="altar_8">
+                    <strong style="color:#f4a460">8. Blood</strong><br>
+                    <span style="font-size:0.85em">Life on Hit verdoppelt</span><br>
+                    <span class="diff">Kosten: 30 Forgotten Souls</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_9">
+                <label for="altar_9">
+                    <strong style="color:#f4a460">9. Reverence</strong><br>
+                    <span style="font-size:0.85em">+10% CHC</span><br>
+                    <span class="diff">Kosten: 1,100 Blood Shards</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_10">
+                <label for="altar_10">
+                    <strong style="color:#f4a460">10. Roar</strong><br>
+                    <span style="font-size:0.85em">+50% CHD</span><br>
+                    <span class="diff">Kosten: 1 Flawless Royal Ruby, 20 DB, Ring of Royal Grandeur</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_11">
+                <label for="altar_11">
+                    <strong style="color:#f4a460">11. Nature</strong><br>
+                    <span style="font-size:0.85em">+50% Healing</span><br>
+                    <span class="diff">Kosten: 1 Flawless Royal Emerald, 30x jedes Bounty Mat</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_12">
+                <label for="altar_12">
+                    <strong style="color:#f4a460">12. Command</strong><br>
+                    <span style="font-size:0.85em">+20% CDR</span><br>
+                    <span class="diff">Kosten: 20 GR Keystones, 1 Ramaladni's Gift</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_13">
+                <label for="altar_13">
+                    <strong style="color:#f4a460">13. Shadow</strong><br>
+                    <span style="font-size:0.85em">+25% RCR</span><br>
+                    <span class="diff">Kosten: 1,300 Blood Shards</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_14">
+                <label for="altar_14">
+                    <strong style="color:#f4a460">14. Stillness</strong><br>
+                    <span style="font-size:0.85em">Pets holen Gold + Progress Orbs</span><br>
+                    <span class="diff">Kosten: 1 Petrified Scream</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_15">
+                <label for="altar_15">
+                    <strong style="color:#f4a460">15. Bountiful</strong><br>
+                    <span style="font-size:0.85em">2x Bounty Cache Rewards</span><br>
+                    <span class="diff">Kosten: 1 Challenge Rift Cache</span> <span style="color:#e94560">⚠️ Cache für Season-Start aufsparen!</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_16">
+                <label for="altar_16">
+                    <strong style="color:#f4a460">16. Reach</strong><br>
+                    <span style="font-size:0.85em">2x Death's Breath Drops</span><br>
+                    <span class="diff">Kosten: 250 Forgotten Souls</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_17">
+                <label for="altar_17">
+                    <strong style="color:#f4a460">17. Vigor</strong><br>
+                    <span style="font-size:0.85em">Crits geben Resource</span><br>
+                    <span class="diff">Kosten: 1,400 Blood Shards</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_18">
+                <label for="altar_18">
+                    <strong style="color:#f4a460">18. Elegance</strong><br>
+                    <span style="font-size:0.85em">Pylons dauern doppelt</span><br>
+                    <span class="diff">Kosten: 1 Ancient Hellfire Amulet</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_19">
+                <label for="altar_19">
+                    <strong style="color:#f4a460">19. Mirror</strong><br>
+                    <span style="font-size:0.85em">Follower-Items Emanate</span><br>
+                    <span class="diff">Kosten: 4 Set Dungeon Pages</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_20">
+                <label for="altar_20">
+                    <strong style="color:#f4a460">20. Revelation</strong><br>
+                    <span style="font-size:0.85em">Gesamte Map aufgedeckt</span><br>
+                    <span class="diff">Kosten: Ancient Puzzle Ring, 50x jedes Bounty Mat</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_21">
+                <label for="altar_21">
+                    <strong style="color:#f4a460">21. Reaper</strong><br>
+                    <span style="font-size:0.85em">Pets salvagen Weiß/Blau/Gelb</span><br>
+                    <span class="diff">Kosten: 500 Death's Breath, 300 Forgotten Souls</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_22">
+                <label for="altar_22">
+                    <strong style="color:#f4a460">22. Omen</strong><br>
+                    <span style="font-size:0.85em">+1 Progress Orb von Elites</span><br>
+                    <span class="diff">Kosten: 1,500 Blood Shards</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_23">
+                <label for="altar_23">
+                    <strong style="color:#f4a460">23. Carrion</strong><br>
+                    <span style="font-size:0.85em">+2 GR Levels nach Clear</span><br>
+                    <span class="diff">Kosten: Rank 125 Whisper of Atonement</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_24">
+                <label for="altar_24">
+                    <strong style="color:#f4a460">24. Husk</strong><br>
+                    <span style="font-size:0.85em">Bei Clear: +1 Legendary Drop</span><br>
+                    <span class="diff">Kosten: 1 Augmented Weapon (beliebig)</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_25">
+                <label for="altar_25">
+                    <strong style="color:#f4a460">25. Pattern</strong><br>
+                    <span style="font-size:0.85em">2x Legendary Chance bei Kadala</span><br>
+                    <span class="diff">Kosten: Staff of Herding</span> <span style="color:#e94560">⚠️ Aufwändig zu craften!</span>
+                </label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="altar_26">
+                <label for="altar_26">
+                    <strong style="color:#f4a460">26. Warning</strong><br>
+                    <span style="font-size:0.85em">2x Primal Ancient Drops</span><br>
+                    <span class="diff">Kosten: 1,600 Blood Shards</span>
+                </label>
             </div>
         </div>
 
         <div class="section">
-            <h2>Potion Powers</h2>
+            <h2>🧪 Potion Powers</h2>
             <div class="info-box">
                 <strong>AA (55 Ashes):</strong> Runic circles - Dmg/CDR/RCR<br>
                 <strong>AB (110 Ashes):</strong> Enemies deal 25% less damage<br>
                 <strong>AC (165 Ashes):</strong> Random shrine effect<br>
-                <strong>AD (Auto):</strong> Double Primal drops
+                <strong>AD (Auto nach 26 Seals):</strong> Double Primal drops
             </div>
-        </div>
-
-        <div class="section">
-            <h2>Teure Unlocks</h2>
-            <div class="item"><input type="checkbox" id="altar_tier_4"><label for="altar_tier_4">Tier 4: Any class Set Helm</label></div>
-            <div class="item"><input type="checkbox" id="altar_tier_5"><label for="altar_tier_5">Tier 5: 20 Forgotten Souls + all Bounty mats</label></div>
-            <div class="item"><input type="checkbox" id="altar_tier_6"><label for="altar_tier_6">Tier 6: Uber Boss Materials</label></div>
-            <div class="item"><input type="checkbox" id="altar_tier_10"><label for="altar_tier_10">Tier 10: Flawless Royal Ruby + Ring of Royal Grandeur</label></div>
-            <div class="item"><input type="checkbox" id="altar_tier_15"><label for="altar_tier_15">Tier 15: Challenge Rift Cache</label></div>
-            <div class="item"><input type="checkbox" id="altar_tier_18"><label for="altar_tier_18">Tier 18: Ancient Hellfire Amulet</label></div>
-            <div class="item"><input type="checkbox" id="altar_tier_19"><label for="altar_tier_19">Tier 19: 4 Set Dungeon achievement pages</label></div>
-            <div class="item"><input type="checkbox" id="altar_tier_25"><label for="altar_tier_25">Tier 25: Staff of Herding</label></div>
+            <p class="note">Primordial Ashes = Primal Items salvagen</p>
         </div>
     </div>
 
     <!-- FARM TAB -->
     <div id="farm" class="content">
+        <div class="section">
+            <h2>Torment Drop Rates</h2>
+            <table class="skill-table">
+                <tr><th>Stufe</th><th>Leg%</th><th>Rift%</th><th>DB%</th><th>GR</th></tr>
+<tr><td>Torment I</td><td>+15%</td><td>+44%</td><td>31%</td><td>GR20</td></tr>
+<tr><td>Torment II</td><td>+32%</td><td>+65%</td><td>37%</td><td>GR25</td></tr>
+<tr><td>Torment III</td><td>+52%</td><td>+90%</td><td>44%</td><td>GR30</td></tr>
+<tr><td>Torment IV</td><td>+75%</td><td>+119%</td><td>53%</td><td>GR35</td></tr>
+<tr><td>Torment V</td><td>+101%</td><td>+151%</td><td>62%</td><td>GR40</td></tr>
+<tr><td>Torment VI</td><td>+131%</td><td>+189%</td><td>72%</td><td>GR45</td></tr>
+<tr><td>Torment VII</td><td>+167%</td><td>+236%</td><td>81%</td><td>GR50</td></tr>
+<tr><td>Torment VIII</td><td>+210%</td><td>+295%</td><td>90%</td><td>GR55</td></tr>
+<tr><td>Torment IX</td><td>+261%</td><td>+368%</td><td>99%</td><td>GR57</td></tr>
+<tr><td>Torment X</td><td>+321%</td><td>+460%</td><td>100%</td><td>GR60</td></tr>
+<tr><td>Torment XI</td><td>+392%</td><td>+575%</td><td>100%</td><td>GR65</td></tr>
+<tr><td>Torment XII</td><td>+476%</td><td>+719%</td><td>100%</td><td>GR70</td></tr>
+<tr><td>Torment XIII</td><td>+575%</td><td>+899%</td><td>100%</td><td>GR75</td></tr>
+<tr><td>Torment XIV</td><td>+692%</td><td>+1124%</td><td>100%</td><td>GR80</td></tr>
+<tr><td>Torment XV</td><td>+831%</td><td>+1405%</td><td>100%</td><td>GR85</td></tr>
+<tr><td>Torment XVI</td><td>+996%</td><td>+1756%</td><td>100%</td><td>GR90</td></tr>
+            </table>
+            <p class="note">Leg% = Legendary Bonus (Open World), Rift% = in Nephalem Rifts, DB% = Death's Breath Chance</p>
+        </div>
+
         <div class="section">
             <h2>Kadala Gambling</h2>
             <div class="info-box">
@@ -606,6 +799,24 @@
                 <strong>Tipp:</strong> Weapons hier upgraden, nicht bei Kadala!
             </div>
         </div>
+
+        <div class="section">
+            <h2>🧙 Follower Crafting (Enchantress)</h2>
+            <p class="note">⚠️ Auf INT-Char craften (Wiz/WD/Necro) für richtigen Mainstat!</p>
+            <div class="item"><input type="checkbox" id="fc1"><label for="fc1"><strong>Cain's Destiny</strong> (2pc) - Helm + Boots<br><span class="diff">+25% GR Key Drops (Emanate)</span></label></div>
+            <div class="item"><input type="checkbox" id="fc2"><label for="fc2"><strong>Sage's Journey</strong> (2pc) - Helm + Boots oder Gloves<br><span class="diff">+1 Death's Breath (Emanate)</span></label></div>
+            <div class="item"><input type="checkbox" id="fc3"><label for="fc3"><strong>Born's Command</strong> (2pc) - Chest + Shoulders<br><span class="diff">+20% XP, +15% CDR (Emanate)</span></label></div>
+            <div class="info-box">
+                <strong>Weitere Emanate Items:</strong><br>
+                • Nemesis Bracers - Elite bei Shrine<br>
+                • Gloves of Worship - 10min Shrine (A2 Bounty)<br>
+                • Flavor of Time - 2x Pylon Dauer<br>
+                • Ring of Royal Grandeur - Set -1 (A1 Bounty)<br>
+                • Oculus Ring - +85% Damage Circle<br>
+                • Avarice Band - 30yd Pickup (A3 Bounty)
+            </div>
+            <p class="note">Templar → STR-Char (Barb/Sader), Scoundrel → DEX-Char (Monk/DH)</p>
+        </div>
     </div>
 
     <!-- GLOSSARY TAB -->
@@ -613,7 +824,7 @@
         <div class="section">
             <h2>Glossar / Abkürzungen</h2>
             <input type="text" id="glossarySearch" class="search-box" placeholder="Suchen... (z.B. CHC, CDR, GR, Primal)">
-            <p class="note">94 Einträge</p>
+            <p class="note">95 Einträge</p>
         </div>
             <div class="boss-card glossary-term">
                 <h4 style="color:#e94560">AD</h4>
@@ -823,6 +1034,13 @@
                 <div style="color:#f4a460">Fishing / Fischen</div>
                 <div style="color:#ccc;font-size:0.85em;margin-top:3px">GRs neustarten für bessere Map/Mobs</div>
                 
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Follower Crafting</h4>
+                <div style="color:#f4a460">Follower Gear Crafting / Follower-Gear craften</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Auf passendem Char craften für richtigen Mainstat</div>
+                <div class="notes" style="color:#888;font-size:0.8em;margin-top:3px">Enchantress→Int (Wiz/WD/Necro), Templar→Str (Barb/Sader), Scoundrel→Dex (Monk/DH)</div>
                 <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
             </div>
             <div class="boss-card glossary-term">
