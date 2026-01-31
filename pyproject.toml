@@ -1,0 +1,11 @@
+[project]
+name = "d3-season-guide"
+version = "1.0.0"
+description = "Diablo 3 Season Guide Generator"
+requires-python = ">=3.9"
+dependencies = [
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+build = "build:main"

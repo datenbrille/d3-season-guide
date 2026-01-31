@@ -1,0 +1,327 @@
+# Diablo 3 Season Journey Template
+# Aktualisiere nur die season-spezifischen Felder
+# Letzte Aktualisierung: 2026-01
+
+# =============================================================================
+# SEASON INFO (UPDATE EACH SEASON)
+# =============================================================================
+season:
+  number: 37
+  name: "The Forbidden Archives"
+  start_date: "2025-12-05"
+  theme: |
+    Kanai's Cube slots allow 3 additional Legendary powers 
+    that aren't restricted to their usual categories.
+  
+  haedrig_gifts:
+    barbarian: "Might of the Earth"
+    crusader: "Thorns of the Invoker"
+    demon_hunter: "The Shadow's Mantle"
+    monk: "Monkey King's Garb"
+    necromancer: "Grace of Inarius"
+    witch_doctor: "Raiment of the Jade Harvester"
+    wizard: "Firebird's Finery"
+
+# =============================================================================
+# CHAPTER II (Haedrig's Gift #1)
+# =============================================================================
+chapter_2:
+  reward: "Haedrig's Gift #1 (2pc Set)"
+  
+  tasks:
+    # Diese Tasks sind meist statisch
+    - id: "rift_expert"
+      name: "Complete a Nephalem Rift"
+      difficulty: "Expert"
+      type: "rift"
+      
+    - id: "boss_1"
+      name: "Kill Rakanoth"
+      difficulty: "Hard"
+      level_req: 60
+      boss: "rakanoth"
+      type: "boss_kill"
+      
+    - id: "boss_2"
+      name: "Kill Skeleton King"
+      difficulty: "Hard"
+      level_req: 60
+      boss: "skeleton_king"
+      type: "boss_kill"
+      
+    - id: "cube_unlock"
+      name: "Kanai's Cube freischalten"
+      location: "Ruins of Sescheron (Act 3)"
+      type: "unlock"
+      
+    - id: "artisans"
+      name: "Level all Artisans to 12"
+      type: "artisan"
+      
+    - id: "follower"
+      name: "Fully equip Follower"
+      type: "follower"
+      
+    - id: "craft_bs"
+      name: "Craft a level 70 item (Blacksmith)"
+      type: "craft"
+      
+    - id: "craft_jeweler"
+      name: "Craft a level 70 item (Jeweler)"
+      type: "craft"
+      
+    - id: "enchant"
+      name: "Enchant an item at the Mystic"
+      type: "mystic"
+      
+    - id: "transmog"
+      name: "Transmogrify an item"
+      type: "mystic"
+
+# =============================================================================
+# CHAPTER III (Haedrig's Gift #2)
+# =============================================================================
+chapter_3:
+  reward: "Haedrig's Gift #2 (4pc Set)"
+  
+  tasks:
+    - id: "rift_master"
+      name: "Complete a Nephalem Rift"
+      difficulty: "Master"
+      type: "rift"
+      
+    - id: "boss_1"
+      name: "Kill Adria"
+      difficulty: "Master"
+      level_req: 70
+      boss: "adria"
+      type: "boss_kill"
+      
+    - id: "boss_2"
+      name: "Kill Siegebreaker"
+      difficulty: "Master"
+      level_req: 70
+      boss: "siegebreaker"
+      type: "boss_kill"
+      
+    - id: "kadala"
+      name: "Buy an item from Kadala"
+      type: "kadala"
+      
+    - id: "cube_extract"
+      name: "Extract a Legendary power"
+      type: "cube"
+      
+    - id: "gem_imperial"
+      name: "Craft an Imperial gem"
+      type: "craft"
+      
+    - id: "bounty_a1"
+      name: "Complete Act I Bounties"
+      act: 1
+      type: "bounty"
+      
+    - id: "bounty_a2"
+      name: "Complete Act II Bounties"
+      act: 2
+      type: "bounty"
+      
+    - id: "bounty_a3"
+      name: "Complete Act III Bounties"
+      act: 3
+      type: "bounty"
+      
+    - id: "bounty_a4"
+      name: "Complete Act IV Bounties"
+      act: 4
+      type: "bounty"
+      
+    - id: "bounty_a5"
+      name: "Complete Act V Bounties"
+      act: 5
+      type: "bounty"
+
+# =============================================================================
+# CHAPTER IV (Haedrig's Gift #3)
+# =============================================================================
+chapter_4:
+  reward: "Haedrig's Gift #3 (6pc Set Complete)"
+  
+  tasks:
+    - id: "rift_t1"
+      name: "Complete a Nephalem Rift"
+      difficulty: "Torment I"
+      level_req: 70
+      type: "rift"
+      
+    - id: "gr_20"
+      name: "Complete a level 20 Greater Rift solo"
+      gr_level: 20
+      type: "greater_rift"
+      milestone: true
+      
+    - id: "boss_1"
+      name: "Kill Belial"
+      difficulty: "Torment II"
+      level_req: 70
+      boss: "belial"
+      type: "boss_kill"
+      
+    - id: "boss_2"
+      name: "Kill Ghom"
+      difficulty: "Torment IV"
+      level_req: 70
+      boss: "ghom"
+      type: "boss_kill"
+      
+    - id: "keywarden_a1"
+      name: "Kill Odeg the Keywarden"
+      difficulty: "Torment IV"
+      keywarden: "odeg"
+      type: "keywarden"
+      
+    - id: "keywarden_a2"
+      name: "Kill Sokahr the Keywarden"
+      difficulty: "Torment IV"
+      keywarden: "sokahr"
+      type: "keywarden"
+      
+    - id: "keywarden_a3"
+      name: "Kill Xah'Rith the Keywarden"
+      difficulty: "Torment IV"
+      keywarden: "xah_rith"
+      type: "keywarden"
+      
+    - id: "keywarden_a4"
+      name: "Kill Nekarat the Keywarden"
+      difficulty: "Torment IV"
+      keywarden: "nekarat"
+      type: "keywarden"
+      
+    - id: "cube_upgrade"
+      name: "Upgrade a Rare to Legendary"
+      type: "cube"
+      
+    - id: "mystic_socket"
+      name: "Replace a socket property"
+      type: "mystic"
+      
+    - id: "recipes_bs"
+      name: "Learn 5 Blacksmith recipes"
+      count: 5
+      type: "recipe"
+      
+    - id: "recipes_jeweler"
+      name: "Learn 5 Jeweler designs"
+      count: 5
+      type: "recipe"
+
+# =============================================================================
+# SLAYER (Post Chapter IV)
+# =============================================================================
+slayer:
+  tasks:
+    - id: "gr_30"
+      name: "Complete a level 30 Greater Rift solo"
+      gr_level: 30
+      type: "greater_rift"
+      
+    - id: "boss_t6"
+      name: "Kill a boss on Torment VI"
+      difficulty: "Torment VI"
+      type: "boss_kill"
+      
+    # Weitere Tasks je nach Season
+
+# =============================================================================
+# CHAMPION
+# =============================================================================
+champion:
+  tasks:
+    - id: "gr_40"
+      name: "Complete a level 40 Greater Rift solo"
+      gr_level: 40
+      type: "greater_rift"
+
+# =============================================================================
+# DESTROYER
+# =============================================================================
+destroyer:
+  tasks:
+    - id: "gr_50"
+      name: "Complete a level 50 Greater Rift solo"
+      gr_level: 50
+      type: "greater_rift"
+
+# =============================================================================
+# CONQUEROR
+# =============================================================================
+conqueror:
+  tasks:
+    - id: "gr_60"
+      name: "Complete a level 60 Greater Rift solo"
+      gr_level: 60
+      type: "greater_rift"
+      
+  rewards:
+    - "Extra Stash Tab (first 4 seasons per account)"
+
+# =============================================================================
+# GUARDIAN
+# =============================================================================
+guardian:
+  tasks:
+    - id: "gr_70"
+      name: "Complete a level 70 Greater Rift solo"
+      gr_level: 70
+      type: "greater_rift"
+
+# =============================================================================
+# SEASONAL CONQUESTS (UPDATE EACH SEASON)
+# =============================================================================
+conquests:
+  # Diese rotieren - hier Season 37
+  available:
+    - name: "Avarice"
+      description: "50M Gold Streak outside of Vault/Greed"
+      difficulty: "medium"
+      
+    - name: "Boss Mode"
+      description: "Kill all Act Bosses in 20 minutes on T10+"
+      difficulty: "medium"
+      
+    - name: "Sprinter"
+      description: "Complete Campaign in under 1 hour"
+      difficulty: "hard"
+      requires_group: true
+      
+    - name: "On a Good Day"
+      description: "Level 3 Legendary Gems to 65"
+      difficulty: "medium"
+      
+    - name: "Curses!"
+      description: "Kill 350+ enemies in Cursed Chest event on T10+"
+      difficulty: "medium"
+
+# =============================================================================
+# TIPS FOR EFFICIENT COMPLETION
+# =============================================================================
+tips:
+  chapter_2:
+    - "Challenge Rift Cache ERST nach Season-Start öffnen"
+    - "Sofort zu Adventure Mode wechseln"
+    - "Cube in Ruins of Sescheron (A3) holen"
+    
+  chapter_3:
+    - "Bounties können auf niedriger Schwierigkeit gemacht werden"
+    - "Ein Imperial Gem reicht - braucht Marquise + Gold"
+    
+  chapter_4:
+    - "GR20 ist der Milestone - mit 4pc Set machbar"
+    - "Keywardens spawnen nur auf T1+"
+    - "Ghom ist der härteste Kill (T4 required)"
+    
+  general:
+    - "Haedrig's Gift auf EINEM Character öffnen"
+    - "Schwierigkeit kann jederzeit gesenkt werden"
+    - "Pool of Reflection VOR GRs sammeln"

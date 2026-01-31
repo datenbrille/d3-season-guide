@@ -1,0 +1,461 @@
+# Diablo 3 Monk - Sunwuko Tempest Rush Build
+# Aktuell für Season 37+ (Forbidden Archives)
+# Letzte Aktualisierung: 2026-01
+
+build:
+  name: "Sunwuko Tempest Rush"
+  short_name: "SWK TR"
+  class: "Monk"
+  damage_type: "Cold"
+  playstyle: "Channeling"
+  difficulty: "Medium"
+  
+  viable_for:
+    speed_farming: true
+    gr_pushing: true
+    bounties: true
+    key_farming: true
+
+# =============================================================================
+# SKILLS
+# =============================================================================
+skills:
+  active:
+    - slot: "LMB"
+      skill: "Tempest Rush"
+      rune: "Flurry"
+      damage_type: "Cold"
+      notes: "Haupt-Damage Skill. Flurry baut bis 100 Stacks."
+      
+    - slot: "RMB"
+      skill: "Sweeping Wind"
+      rune: "Inner Storm"
+      notes: "Spirit Regeneration. Mit Vengeful Wind bis 13 Stacks."
+      
+    - slot: "1"
+      skill: "Blinding Flash"
+      rune: "Faith in the Light"
+      notes: "+29% Damage. Triggert Cesar's Memento (+800%)."
+      
+    - slot: "2"
+      skill: "Epiphany"
+      rune: "Desert Shroud"
+      notes: "50% DR. Uptime maximieren durch CDR."
+      
+    - slot: "3"
+      skill: "Mantra of Salvation"
+      rune: "Agility"
+      notes: "+35% Dodge. Aktivieren bei Damage Spikes."
+      
+    - slot: "4"
+      skill: "Cyclone Strike"
+      rune: "Soothing Breeze"
+      notes: "Wird automatisch durch Won Khim Lau gecastet!"
+
+  passives:
+    required:
+      - name: "Beacon of Ytar"
+        effect: "20% CDR"
+        notes: "Pflicht für Epiphany Uptime"
+        
+      - name: "Harmony"
+        effect: "+40% Single Res → All Res"
+        notes: "Massive Toughness"
+        
+    recommended:
+      - name: "Seize the Initiative"
+        effect: "+30% AS vs >75% HP enemies"
+        notes: "Gut für Trash Clear"
+        
+      - name: "Relentless Assault"
+        effect: "+20% damage vs CC'd enemies"
+        notes: "Synergie mit Blinding Flash"
+        
+    alternatives:
+      - name: "The Guardian's Path"
+        effect: "+35% Dodge (Dual Wield)"
+        notes: "Mehr Survivability"
+        
+      - name: "Near Death Experience"
+        effect: "Cheat Death"
+        notes: "Für Hardcore oder Learning"
+        
+      - name: "Momentum"
+        effect: "+20% damage after moving 25 yards"
+        notes: "Immer aktiv bei TR"
+
+# =============================================================================
+# GEAR
+# =============================================================================
+gear:
+  worn:
+    helm:
+      item: "Sunwuko's Crown"
+      set: "Monkey King's Garb"
+      stats_priority:
+        - "Dexterity"
+        - "Socket (Topaz für RCR)"
+        - "Crit Chance"
+        - "Tempest Rush %"
+      gem: "Flawless Royal Topaz"
+      gem_effect: "Resource Cost Reduction"
+      
+    shoulders:
+      item: "Mantle of Channeling"
+      legendary_power: "+25% damage, +25% DR while channeling"
+      stats_priority:
+        - "Dexterity"
+        - "Resource Cost Reduction"
+        - "Area Damage"
+        - "All Resistance (guaranteed)"
+      notes: "Nicht im Set - perfekt für diesen Slot"
+      
+    chest:
+      item: "Sunwuko's Soul"
+      set: "Monkey King's Garb"
+      stats_priority:
+        - "Dexterity"
+        - "3 Sockets"
+        - "Vitality"
+        - "Elite Damage Reduction"
+      gems: "3x Flawless Royal Emerald (Dex) oder Diamond (AR)"
+      
+    gloves:
+      item: "Sunwuko's Paws"
+      set: "Monkey King's Garb"
+      stats_priority:
+        - "Dexterity (oder Area Damage bei hohem Paragon)"
+        - "Crit Chance"
+        - "Crit Damage"
+        - "Resource Cost Reduction"
+      notes: "Quadfecta bei >2000 Paragon (CHC/CHD/RCR/AD)"
+      
+    bracers:
+      item: "Cesar's Memento"
+      legendary_power: "+800% damage to Blinded/Frozen/Stunned enemies"
+      stats_priority:
+        - "Cold Damage %"
+        - "Crit Chance"
+        - "Dexterity"
+        - "Life per Hit"
+      notes: "Kern des Builds! Synergie mit Blinding Flash"
+      
+    belt:
+      item: "Captain Crimson's Silk Girdle"
+      set: "Captain Crimson's Trimmings"
+      crafted: true
+      stats_priority:
+        - "Dexterity"
+        - "Vitality"
+        - "Armor"
+        - "Life %"
+        
+    pants:
+      item: "Sunwuko's Leggings"
+      set: "Monkey King's Garb"
+      stats_priority:
+        - "Dexterity"
+        - "2 Sockets"
+        - "Vitality"
+        - "Armor"
+      gems: "2x Flawless Royal Emerald oder Diamond"
+      
+    boots:
+      item: "Captain Crimson's Waders"
+      set: "Captain Crimson's Trimmings"
+      crafted: true
+      stats_priority:
+        - "Dexterity"
+        - "Tempest Rush %"
+        - "Vitality"
+        - "Armor"
+        
+    amulet:
+      item: "Sunwuko's Shines"
+      set: "Monkey King's Garb"
+      stats_priority:
+        - "Socket (guaranteed)"
+        - "Cold Damage %"
+        - "Crit Chance"
+        - "Crit Damage"
+      notes: "Kein Dex nötig - DPS Stats wichtiger"
+      
+    ring_1:
+      item: "Convention of Elements"
+      legendary_power: "+200% elemental damage (rotating)"
+      stats_priority:
+        - "Socket"
+        - "Crit Chance"
+        - "Crit Damage oder Area Damage"
+        - "CDR"
+      notes: "Burst während Cold Phase"
+      
+    ring_2:
+      item: "Obsidian Ring of the Zodiac"
+      legendary_power: "Resource spending reduces cooldowns"
+      stats_priority:
+        - "Socket"
+        - "Crit Chance"
+        - "CDR"
+        - "Resource Cost Reduction"
+      notes: "Essentiell für Epiphany Uptime"
+      
+    weapon_mh:
+      item: "Won Khim Lau"
+      type: "Fist Weapon"
+      legendary_power: "+600% Tempest Rush damage, auto-casts Cyclone Strike"
+      stats_priority:
+        - "High Weapon Damage"
+        - "Dexterity"
+        - "Socket (Ramaladni's Gift)"
+        - "Damage %"
+        - "Area Damage"
+      gem: "Flawless Royal Emerald"
+      gem_effect: "+130% Crit Damage"
+      
+    weapon_oh:
+      item: "Vengeful Wind"
+      type: "Fist Weapon"
+      legendary_power: "Sweeping Wind gains +10 max stacks (13 total)"
+      stats_priority:
+        - "High Weapon Damage"
+        - "Dexterity"
+        - "Socket (Ramaladni's Gift)"
+        - "Damage %"
+        - "Area Damage"
+      gem: "Flawless Royal Emerald"
+      notes: "13 Stacks = massive Sunwuko Damage"
+
+  set_bonuses:
+    sunwuko_6pc:
+      pieces_required: 6
+      pieces_worn: 5
+      rorg_required: true
+      bonus: "Sweeping Wind stacks increase damage by 1500% each (19,500% at 13 stacks)"
+      
+    captain_crimson_3pc:
+      pieces_required: 3
+      pieces_worn: 2
+      rorg_required: true
+      bonus_2pc: "+20% CDR, +20% RCR"
+      bonus_3pc: "Damage dealt increased by CDR%, Damage reduced by RCR%"
+
+# =============================================================================
+# KANAI'S CUBE
+# =============================================================================
+kanais_cube:
+  weapon:
+    item: "Balance"
+    type: "Daibo"
+    power: "+600% Tempest Rush damage, guaranteed crits vs ≤3 targets"
+    notes: "Essential für Rift Guardian DPS"
+    
+  armor:
+    primary:
+      item: "Stone Gauntlets"
+      power: "Stacking armor buff on hit (50 stacks)"
+      notes: "High-end GR pushing. Braucht gute CDR für Epiphany."
+      
+    alternative:
+      item: "Lefebvre's Soliloquy"
+      power: "Cyclone Strike gives 50% DR for 5 seconds"
+      notes: "Einfacher zu spielen - triggered durch WKL auto-cast"
+      
+  jewelry:
+    item: "Ring of Royal Grandeur"
+    power: "Set requirement -1"
+    source: "Act 1 Bounty Cache"
+    notes: "Ermöglicht 5pc Sunwuko + 2pc Captain Crimson"
+
+# =============================================================================
+# LEGENDARY GEMS
+# =============================================================================
+legendary_gems:
+  required:
+    - name: "Bane of the Trapped"
+      effect: "+60% damage to slowed/CC'd enemies"
+      rank_25_bonus: "Slow aura at 15 yards"
+      notes: "Self-procs in melee range"
+      socket: "Jewelry"
+      
+    - name: "Taeguk"
+      effect: "+2% damage per stack while channeling (max 10 stacks)"
+      rank_25_bonus: "+2% armor per stack"
+      notes: "Permanent uptime mit Tempest Rush"
+      socket: "Jewelry"
+      
+  pushing:
+    - name: "Bane of the Stricken"
+      effect: "+2.00% damage per hit vs same target"
+      rank_25_bonus: "+25% damage vs Rift Guardians"
+      notes: "Essentiell für Boss-Kills in high GRs"
+      socket: "Jewelry"
+      
+  speed_farming:
+    - name: "Bane of the Powerful"
+      effect: "+20% damage after Elite kill"
+      rank_25_bonus: "+15% damage to Elites"
+      notes: "Ersetzt Stricken für Speed Content"
+      socket: "Jewelry"
+
+# =============================================================================
+# STAT PRIORITIES
+# =============================================================================
+stat_priorities:
+  offensive:
+    1: "Cold Damage % (Bracers, Amulet)"
+    2: "Crit Chance"
+    3: "Crit Damage"
+    4: "Tempest Rush % (Helm, Boots)"
+    5: "Area Damage"
+    6: "Dexterity"
+    
+  defensive:
+    1: "All Resistance"
+    2: "Vitality"
+    3: "Armor"
+    4: "Life %"
+    5: "Life per Hit"
+    
+  utility:
+    1: "Cooldown Reduction"
+    2: "Resource Cost Reduction"
+    3: "Movement Speed"
+
+  breakpoints:
+    cdr_target: 47
+    cdr_notes: "Für hohe Epiphany Uptime"
+    cdr_sources:
+      - "Paragon: 10%"
+      - "Beacon of Ytar: 20%"
+      - "Captain Crimson 2pc: 20%"
+      - "Zodiac Ring: 8%"
+      - "1 additional gear roll: ~8%"
+      
+    rcr_target: 45
+    rcr_notes: "Für Spirit-Management"
+    rcr_sources:
+      - "Topaz in Helm: 12.5%"
+      - "Captain Crimson 2pc: 20%"
+      - "Shoulders: 8%"
+      - "Gloves: 8%"
+      - "Paragon: variable"
+      
+    life_target: 500000
+    life_target_push: 600000
+
+# =============================================================================
+# PARAGON POINTS
+# =============================================================================
+paragon:
+  core:
+    1: "Movement Speed (bis 25% Cap)"
+    2: "Dexterity"
+    3: "Maximum Spirit"
+    4: "Vitality"
+    notes: "MS Cap beachten - Rest in Dex"
+    
+  offense:
+    1: "Cooldown Reduction"
+    2: "Crit Damage"
+    3: "Crit Chance"
+    4: "Attack Speed"
+    notes: "CDR first für Epiphany!"
+    
+  defense:
+    1: "All Resistance"
+    2: "Life %"
+    3: "Armor"
+    4: "Life Regeneration"
+    
+  utility:
+    1: "Resource Cost Reduction"
+    2: "Area Damage"
+    3: "Life on Hit"
+    4: "Gold Find"
+    notes: "RCR vor Area Damage für Consistency"
+
+# =============================================================================
+# GAMEPLAY
+# =============================================================================
+gameplay:
+  rotation:
+    - step: 1
+      action: "Sweeping Wind aktivieren"
+      notes: "Baut automatisch zu 13 Stacks auf mit Vengeful Wind"
+      
+    - step: 2
+      action: "Tempest Rush starten"
+      notes: "Flurry baut Stacks bis 100"
+      
+    - step: 3
+      action: "Convention of Elements beobachten"
+      notes: "Cold = Burst Window"
+      
+    - step: 4
+      action: "Bei Cold: Blinding Flash → Channel stoppen"
+      notes: "Flurry explodiert + Cesar's +800%"
+      
+    - step: 5
+      action: "Epiphany on Cooldown"
+      notes: "50% DR - Uptime maximieren"
+      
+    - step: 6
+      action: "Mantra of Salvation bei Damage Spikes"
+      notes: "Aktives Pressing für extra Dodge"
+
+  tips:
+    - "Flurry hat kleinen Explosion Radius - direkt auf Gegnern stehen!"
+    - "Cyclone Strike wird automatisch durch Won Khim Lau gecastet"
+    - "In Oculus Circles stehen für +85% Damage"
+    - "Taeguk Stacks nicht verlieren - nicht zu lange pausieren"
+    
+  common_mistakes:
+    - "Channel zu früh stoppen (Flurry Stacks nicht voll)"
+    - "Blinding Flash außerhalb Cold Phase nutzen"
+    - "Epiphany vergessen → stirbt"
+    - "Zu weit von Gegnern - Flurry trifft nicht"
+
+# =============================================================================
+# VARIANTS
+# =============================================================================
+variants:
+  speed_farming:
+    changes:
+      - "Bane of the Powerful statt Stricken"
+      - "In-geom im Cube (Weapon) für CDR nach Elite Kills"
+      - "Goldwrap + Boon of the Hoarder für Toughness"
+    notes: "Für T16 und low GRs"
+    
+  group_support:
+    changes:
+      - "Inna Set statt Sunwuko für mehr Utility"
+    notes: "SWK TR ist primär Solo-Build"
+
+# =============================================================================
+# FOLLOWER RECOMMENDATION
+# =============================================================================
+follower:
+  recommended: "Enchantress"
+  alternative: "Scoundrel (für Crit Buff)"
+  
+  enchantress_setup:
+    focus: "Hand of the Prophet"
+    skills:
+      - "Temporal Pulse (Slow)"
+      - "Prophetic Harmony (CDR)"
+      - "Powered Shield"
+      - "Focused Mind (AS)"
+
+# =============================================================================
+# POTION
+# =============================================================================
+potion:
+  recommended: "Bottomless Potion of Kulle-Aid"
+  effect: "Destroys Waller walls on use"
+  notes: "Kritisch für Mobility-Build - Waller stoppt Tempest Rush"
+  
+  alternatives:
+    - name: "Bottomless Potion of the Tower"
+      effect: "+10% Armor"
+      use_case: "Mehr Toughness"

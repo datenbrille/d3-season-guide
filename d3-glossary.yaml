@@ -1,0 +1,526 @@
+# Diablo 3 Glossar / Abkürzungsverzeichnis
+# Alle gängigen Abkürzungen und Begriffe
+# Letzte Aktualisierung: 2026-01
+
+# =============================================================================
+# STATS & ATTRIBUTE
+# =============================================================================
+stats:
+  CHC:
+    full: "Critical Hit Chance"
+    deutsch: "Kritische Trefferchance"
+    description: "Chance auf kritischen Treffer"
+    max_roll: "6% (Handschuhe, Bracers, Ringe, Amulett, Helm)"
+
+  CHD:
+    full: "Critical Hit Damage"
+    deutsch: "Kritischer Trefferschaden"
+    description: "Bonus-Schaden bei kritischem Treffer"
+    base: "50%"
+    max_roll: "50% (Handschuhe, Ringe, Amulett)"
+
+  CDR:
+    full: "Cooldown Reduction"
+    deutsch: "Abklingzeitverringerung"
+    description: "Reduziert Cooldowns aller Skills"
+    max_roll: "8% (Schultern, Handschuhe, Ringe, Amulett, Waffe)"
+    notes: "Multiplikativ, nicht additiv"
+
+  RCR:
+    full: "Resource Cost Reduction"
+    deutsch: "Ressourcenkostenverringerung"
+    description: "Reduziert Kosten für Skills"
+    max_roll: "8% (Schultern, Handschuhe, Ringe, Amulett)"
+
+  AD:
+    full: "Area Damage"
+    deutsch: "Flächenschaden"
+    description: "20% Chance auf Splash-Damage an nahe Gegner"
+    max_roll: "24% (Schultern, Handschuhe, Ringe, Waffen)"
+    notes: "Skaliert mit Paragon (50 Punkte = 50%)"
+
+  AS:
+    full: "Attack Speed"
+    deutsch: "Angriffsgeschwindigkeit"
+    description: "Erhöht Angriffsfrequenz"
+    alias: ["IAS - Increased Attack Speed"]
+
+  DR:
+    full: "Damage Reduction"
+    deutsch: "Schadensverringerung"
+    description: "Prozentuale Schadensreduktion"
+    notes: "Multiplikativ mit anderen DR-Quellen"
+
+  AR:
+    full: "All Resistance"
+    deutsch: "Alle Widerstände"
+    description: "Widerstand gegen alle Elemente"
+    alias: ["Allres"]
+
+  MS:
+    full: "Movement Speed"
+    deutsch: "Bewegungsgeschwindigkeit"
+    description: "Laufgeschwindigkeit"
+    cap: "25% (aus Gear + Paragon)"
+    notes: "Skills können über Cap hinaus erhöhen"
+
+  LoH:
+    full: "Life on Hit"
+    deutsch: "Leben bei Treffer"
+    description: "Heilt bei jedem Treffer"
+    alias: ["LpH - Life per Hit"]
+
+  LpS:
+    full: "Life per Second"
+    deutsch: "Leben pro Sekunde"
+    description: "Passive Regeneration"
+    alias: ["Life Regen"]
+
+  LpK:
+    full: "Life per Kill"
+    deutsch: "Leben pro Kill"
+    description: "Heilt bei jedem Kill"
+
+  Vit:
+    full: "Vitality"
+    deutsch: "Vitalität"
+    description: "Erhöht maximales Leben"
+
+  Dex:
+    full: "Dexterity"
+    deutsch: "Geschicklichkeit"
+    description: "Hauptstat für Monk, Demon Hunter"
+    effect: "Damage + Armor"
+
+  Str:
+    full: "Strength"
+    deutsch: "Stärke"
+    description: "Hauptstat für Barbarian, Crusader"
+    effect: "Damage + Armor"
+
+  Int:
+    full: "Intelligence"
+    deutsch: "Intelligenz"
+    description: "Hauptstat für Wizard, Witch Doctor, Necromancer"
+    effect: "Damage + All Resistance"
+
+# =============================================================================
+# GAME MODES & CONTENT
+# =============================================================================
+content:
+  GR:
+    full: "Greater Rift"
+    deutsch: "Großer Rift"
+    description: "Endgame Rift mit Timer und Scaling"
+    notes: "Keine Drops bis Boss, Gem Upgrades"
+
+  NR:
+    full: "Nephalem Rift"
+    deutsch: "Nephalem Rift"
+    description: "Standard Rift mit Loot"
+    alias: ["Rift"]
+
+  T1-T16:
+    full: "Torment I - XVI"
+    deutsch: "Qual I - XVI"
+    description: "Schwierigkeitsgrade (T1=GR20, T16=GR90)"
+
+  HC:
+    full: "Hardcore"
+    deutsch: "Hardcore"
+    description: "Permadeath Modus"
+    alias: ["Perma"]
+
+  SC:
+    full: "Softcore"
+    deutsch: "Normal"
+    description: "Standard Modus (kein Permadeath)"
+
+  BoA:
+    full: "Bind on Account"
+    deutsch: "Accountgebunden"
+    description: "Item kann nicht gehandelt werden"
+
+  RG:
+    full: "Rift Guardian"
+    deutsch: "Rift-Wächter"
+    description: "Endboss eines Rifts"
+
+  RNG:
+    full: "Random Number Generator"
+    deutsch: "Zufallsgenerator"
+    description: "Glück/Pech bei Drops"
+    usage: "\"RNG war gut\" = gute Drops bekommen"
+
+# =============================================================================
+# ITEMS & GEAR
+# =============================================================================
+items:
+  BiS:
+    full: "Best in Slot"
+    deutsch: "Bestes Item für diesen Slot"
+    description: "Optimales Item für einen Build"
+
+  BoP:
+    full: "Bane of the Powerful"
+    deutsch: "Fluch der Mächtigen"
+    description: "Legendary Gem (+20% nach Elite Kill)"
+
+  BoT:
+    full: "Bane of the Trapped"
+    deutsch: "Fluch der Gefangenen"
+    description: "Legendary Gem (+60% vs Slowed)"
+
+  BoS:
+    full: "Bane of the Stricken"
+    deutsch: "Fluch der Geplagten"
+    description: "Legendary Gem (stacking Boss damage)"
+
+  CoE:
+    full: "Convention of Elements"
+    deutsch: "Konvention der Elemente"
+    description: "Ring mit rotierendem +200% Element"
+
+  RoRG:
+    full: "Ring of Royal Grandeur"
+    deutsch: "Ring der königlichen Pracht"
+    description: "Set-Bonus -1 Piece"
+    source: "Act 1 Bounty Cache"
+
+  ORotZ:
+    full: "Obsidian Ring of the Zodiac"
+    deutsch: "Obsidianring des Tierkreises"
+    description: "CDR bei Resource Spending"
+    alias: ["Zodiac", "ORoZ"]
+
+  F+R:
+    full: "Focus + Restraint"
+    deutsch: "Fokus + Fessel"
+    description: "Ring Set (+100% Damage)"
+
+  LoN:
+    full: "Legacy of Nightmares"
+    deutsch: "Erbe der Albträume"
+    description: "Ring Set (Ancient Bonus)"
+    alias: ["LoD - Legacy of Dreams (Gem Version)"]
+
+  WKL:
+    full: "Won Khim Lau"
+    deutsch: "Won Khim Lau"
+    description: "Monk Fist Weapon (+600% TR)"
+
+  SWK:
+    full: "Sunwuko / Monkey King's Garb"
+    deutsch: "Sunwuko Set"
+    description: "Monk Set (Sweeping Wind)"
+
+  TR:
+    full: "Tempest Rush"
+    deutsch: "Sturmansturm"
+    description: "Monk Channeling Skill"
+
+  SW:
+    full: "Sweeping Wind"
+    deutsch: "Wirbelwind"
+    description: "Monk Buff Skill"
+
+  EP:
+    full: "Exploding Palm"
+    deutsch: "Explodierende Handfläche"
+    description: "Monk DoT Skill"
+
+  MH:
+    full: "Main Hand"
+    deutsch: "Haupthand"
+    description: "Primäre Waffe"
+
+  OH:
+    full: "Off Hand"
+    deutsch: "Nebenhand"
+    description: "Sekundäre Waffe/Schild/Source"
+
+  DB:
+    full: "Death's Breath"
+    deutsch: "Hauch des Todes"
+    description: "Crafting Material (Elites)"
+
+  FS:
+    full: "Forgotten Soul"
+    deutsch: "Vergessene Seele"
+    description: "Crafting Material (Legendary Salvage)"
+
+  BS:
+    full: "Blood Shards"
+    deutsch: "Blutscherben"
+    description: "Währung für Kadala"
+
+  GoE:
+    full: "Gem of Ease"
+    deutsch: "Edelstein der Mühelosigkeit"
+    description: "Reduziert Level Requirement auf 1"
+
+  PA:
+    full: "Primal Ancient"
+    deutsch: "Uraltes Uritem"
+    description: "Perfekt gerolltes Ancient Item"
+    alias: ["Primal"]
+
+# =============================================================================
+# CUBE & CRAFTING
+# =============================================================================
+cube:
+  KC:
+    full: "Kanai's Cube"
+    deutsch: "Kanais Würfel"
+    description: "Crafting Station in Town"
+    location: "Ruins of Sescheron (Act 3)"
+
+  LoC:
+    full: "Law of Kulle"
+    deutsch: "Gesetz von Kulle"
+    description: "Cube Recipe: Reforge Legendary"
+
+  HoC:
+    full: "Hope of Cain"
+    deutsch: "Hoffnung von Kain"
+    description: "Cube Recipe: Upgrade Rare → Legendary"
+
+  AoTR:
+    full: "Archive of Tal Rasha"
+    deutsch: "Archiv von Tal Rasha"
+    description: "Cube Recipe: Extract Power"
+
+  WoC:
+    full: "Work of Cathan"
+    deutsch: "Werk von Cathan"
+    description: "Cube Recipe: Remove Level Requirement"
+
+# =============================================================================
+# GAMEPLAY & STRATEGY
+# =============================================================================
+gameplay:
+  DPS:
+    full: "Damage Per Second"
+    deutsch: "Schaden pro Sekunde"
+    description: "Schadensoutput"
+
+  HPS:
+    full: "Healing Per Second"
+    deutsch: "Heilung pro Sekunde"
+    description: "Heilungsrate"
+
+  CC:
+    full: "Crowd Control"
+    deutsch: "Massenkontrolle"
+    description: "Stun, Freeze, Blind, etc."
+    alias: ["Hard CC = Stun/Freeze", "Soft CC = Slow/Chill"]
+
+  AoE:
+    full: "Area of Effect"
+    deutsch: "Flächeneffekt"
+    description: "Skill trifft mehrere Gegner"
+
+  DoT:
+    full: "Damage over Time"
+    deutsch: "Schaden über Zeit"
+    description: "Tick-basierter Schaden"
+
+  HoT:
+    full: "Heal over Time"
+    deutsch: "Heilung über Zeit"
+    description: "Tick-basierte Heilung"
+
+  Proc:
+    full: "Programmed Random Occurrence"
+    deutsch: "Zufälliger Effekt"
+    description: "Chance-basierter Trigger"
+    example: "\"Procs Bane of the Trapped\""
+
+  Snapshot:
+    full: "Snapshot"
+    deutsch: "Snapshot"
+    description: "Buff-Werte werden beim Cast fixiert"
+    example: "Taeguk Stacks snapshotten beim Channel-Start"
+
+  Breakpoint:
+    full: "Breakpoint"
+    deutsch: "Schwellenwert"
+    description: "Punkt wo mehr Stat keinen Effekt hat"
+    example: "47% CDR für permanente Epiphany"
+
+  Fishing:
+    full: "Fishing"
+    deutsch: "Fischen"
+    description: "GRs neustarten für bessere Map/Mobs"
+
+  Push:
+    full: "Push / Pushing"
+    deutsch: "Pushen"
+    description: "Höchstmögliche GR-Stufe spielen"
+
+  Speed:
+    full: "Speed Run / Speedfarm"
+    deutsch: "Speedfarm"
+    description: "Schnelles Farmen auf niedriger Stufe"
+
+  Trash:
+    full: "Trash Mobs"
+    deutsch: "Trash"
+    description: "Normale Gegner (keine Elites)"
+
+  Elite:
+    full: "Elite Pack"
+    deutsch: "Elite-Gruppe"
+    description: "Blaue/Gelbe Champion-Gruppen"
+    types: ["Champion (Blau)", "Rare (Gelb)", "Unique (Lila)"]
+
+  Prog:
+    full: "Progress / Progression"
+    deutsch: "Fortschritt"
+    description: "GR Fortschrittsbalken"
+
+  Pylon:
+    full: "Pylon"
+    deutsch: "Pylon"
+    description: "GR Power-Up (Speed, Power, etc.)"
+    types: ["Power", "Conduit", "Channeling", "Shield", "Speed"]
+
+  Oculus:
+    full: "Oculus Ring Circle"
+    deutsch: "Oculus-Kreis"
+    description: "+85% Damage Zone vom Follower"
+
+  Emanate:
+    full: "Emanate"
+    deutsch: "Ausstrahlen"
+    description: "Follower-Item wirkt auf Spieler"
+
+  Quadfecta:
+    full: "Quadfecta"
+    deutsch: "Quadfecta"
+    description: "4 perfekte Offensive Stats"
+    stats: "CHC + CHD + AS + Mainstat (oder AD)"
+
+  Trifecta:
+    full: "Trifecta"
+    deutsch: "Trifecta"
+    description: "3 perfekte Offensive Stats"
+    stats: "CHC + CHD + AS"
+
+# =============================================================================
+# KLASSEN-ABKÜRZUNGEN
+# =============================================================================
+classes:
+  Barb:
+    full: "Barbarian"
+    deutsch: "Barbar"
+
+  Sader:
+    full: "Crusader"
+    deutsch: "Kreuzritter"
+    alias: ["Crus"]
+
+  DH:
+    full: "Demon Hunter"
+    deutsch: "Dämonenjäger"
+
+  Monk:
+    full: "Monk"
+    deutsch: "Mönch"
+
+  Necro:
+    full: "Necromancer"
+    deutsch: "Totenbeschwörer"
+
+  WD:
+    full: "Witch Doctor"
+    deutsch: "Hexendoktor"
+
+  Wiz:
+    full: "Wizard"
+    deutsch: "Zauberer"
+
+# =============================================================================
+# COMMUNITY & META
+# =============================================================================
+community:
+  Meta:
+    full: "Most Effective Tactics Available"
+    deutsch: "Meta"
+    description: "Aktuell beste Strategie/Build"
+
+  Tier:
+    full: "Tier List"
+    deutsch: "Rangliste"
+    description: "Ranking von Builds (S/A/B/C Tier)"
+
+  zDPS:
+    full: "Zero DPS / Support"
+    deutsch: "Support Build"
+    description: "Build ohne Schaden, nur Buffs"
+
+  zBarb:
+    full: "Support Barbarian"
+    deutsch: "Support Barbar"
+    description: "IP Barb für Gruppen"
+
+  zMonk:
+    full: "Support Monk"
+    deutsch: "Support Mönch"
+    description: "Inner Sanctuary Monk"
+
+  zNec:
+    full: "Support Necromancer"
+    deutsch: "Support Necro"
+    description: "Meist Curse-basiert"
+
+  Rat:
+    full: "Rathma Runs"
+    deutsch: "Rathma Runs"
+    description: "Schnelle GR Gruppe (4x Necro)"
+    alias: ["Rats"]
+
+  Solo:
+    full: "Solo Play"
+    deutsch: "Solo"
+    description: "Alleine spielen"
+
+  Group:
+    full: "Group Play"
+    deutsch: "Gruppe"
+    description: "2-4 Spieler"
+
+  Carry:
+    full: "Carry / Boosting"
+    deutsch: "Ziehen"
+    description: "Schwacher Spieler wird mitgezogen"
+
+  Leech:
+    full: "Leech"
+    deutsch: "Leech"
+    description: "Spieler der nur Loot sammelt"
+
+  GG:
+    full: "Good Game / Godly Gear"
+    deutsch: "Gutes Spiel / Perfektes Item"
+    context_dependent: true
+
+  GL:
+    full: "Good Luck"
+    deutsch: "Viel Glück"
+
+  WTS:
+    full: "Want to Sell"
+    deutsch: "Möchte verkaufen"
+
+  WTB:
+    full: "Want to Buy"
+    deutsch: "Möchte kaufen"
+
+  LFG:
+    full: "Looking for Group"
+    deutsch: "Suche Gruppe"
+
+  LFM:
+    full: "Looking for More"
+    deutsch: "Suche Mitspieler"

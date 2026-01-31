@@ -1,0 +1,378 @@
+# Diablo 3 Season Start Guide
+# Optimale Strategie für den schnellsten Start
+# Basiert auf Maxroll.gg und Community-Strategien
+# Letzte Aktualisierung: 2026-01
+
+# =============================================================================
+# VOR DEM SEASON START (Vorbereitung)
+# =============================================================================
+preparation:
+  challenge_rift:
+    title: "Challenge Rift vorbereiten"
+    timing: "Donnerstag/Freitag VOR Season Start"
+    steps:
+      - step: 1
+        action: "Challenge Rift starten (Non-Season)"
+        notes: "Rift Guardian spawnen lassen, NICHT töten!"
+
+      - step: 2
+        action: "Warten bis Season startet"
+        notes: "Season Start ist immer Freitag 17:00 Uhr (EU) / 5PM PT (NA)"
+
+      - step: 3
+        action: "Nach Season Start: Rift Guardian sofort töten"
+        notes: "Cache wird automatisch Season-Character zugeordnet"
+
+    cache_contents:
+      blood_shards: 475
+      gold: "5.1 Millionen"
+      deaths_breath: 35
+      reusable_parts: 300
+      arcane_dust: 300
+      veiled_crystal: 300
+      bounty_mats: "15 von jedem Act"
+
+    decision:
+      use_immediately:
+        benefit: "30-60 Minuten schnelleres Leveling"
+        recommended_for: "Casual Spieler, wenig Zeit am Wochenende"
+
+      save_for_altar:
+        benefit: "Altar Tier 15 freischalten (ohne auf 2. Challenge Rift zu warten)"
+        recommended_for: "Hardcore Grinder (15+ Stunden am ersten Wochenende)"
+        wait_time_na: "68 Stunden bis 2. Challenge Rift"
+        wait_time_eu: "83 Stunden bis 2. Challenge Rift"
+
+  other_prep:
+    - "Builds recherchieren (welches Set bekommt deine Klasse?)"
+    - "Leveling Route planen"
+    - "Discord Server joinen für Gruppen (Maxroll, wudijo)"
+
+# =============================================================================
+# SEASON START - SCHRITT FÜR SCHRITT
+# =============================================================================
+season_start_steps:
+
+  # ----- PHASE 1: Sofort nach Login -----
+  phase_1:
+    name: "Sofort nach Login (Level 1)"
+    duration: "5-10 Minuten"
+
+    steps:
+      - step: 1
+        action: "Season Character erstellen"
+        class: "Necromancer (zum Leveln)"
+        notes: "Necro ist die beste Leveling-Klasse wegen Corpse Explosion"
+
+      - step: 2
+        action: "Challenge Rift abschließen (falls vorbereitet)"
+        notes: "Oder jetzt starten und abschließen"
+
+      - step: 3
+        action: "Challenge Rift Cache holen"
+        location: "In der Stadt beim Mail-Icon"
+        warning: "NUR mit Season Character einloggen bevor du öffnest!"
+
+      - step: 4
+        action: "Follower Gear klauen"
+        details:
+          - item: "Templar's Shield"
+            action: "Salvagen → Reusable Parts"
+          - item: "Scoundrel's Bow"
+            action: "Salvagen → Reusable Parts"
+          - item: "Enchantress Staff"
+            action: "Behalten oder salvagen"
+        notes: "Gibt 10+ Reusable Parts für Altar Gateway"
+
+  # ----- PHASE 2: Altar of Rites -----
+  phase_2:
+    name: "Altar of Rites (Frühe Unlocks)"
+    location: "Act 1, New Tristram - links vom Waypoint"
+
+    steps:
+      - step: 1
+        action: "Gateway freischalten"
+        cost: "10 Reusable Parts"
+        effect: "Verdoppelt Massacre Streak Bonus-XP"
+        source: "Follower Gear salvagen"
+        priority: 1
+
+      - step: 2
+        action: "2x Diamond Gems besorgen"
+        method: "Bounties auf Normal (Zoltun Kulle oder Maghda)"
+        notes: "Diamonds droppen aus Bounty Caches"
+
+      - step: 3
+        action: "Diamonds upgraden zu Flawless"
+        location: "Jeweler"
+
+      - step: 4
+        action: "Anointed freischalten"
+        cost: "2x Flawless Diamond"
+        effect: "ALLE Items haben KEINE Level-Anforderung mehr!"
+        priority: 2
+        game_changer: true
+
+    warning: |
+      ACHTUNG: Nach Anointed zeigen Items nicht mehr ihr Original-Level!
+      Follower können trotzdem nur Items ihres Levels tragen (Bug/Feature).
+
+  # ----- PHASE 3: Level 70 Gear craften -----
+  phase_3:
+    name: "Level 70 Gear bei Level 1"
+    prerequisite: "Anointed Seal muss aktiv sein!"
+
+    steps:
+      - step: 1
+        action: "Blacksmith auf Level 12 upgraden"
+        cost: "Gold aus Challenge Cache"
+        notes: "Braucht ca. 2-3 Millionen Gold"
+
+      - step: 2
+        action: "Level 70 Rare Weapon craften"
+        recommended:
+          necromancer: "Two-Handed Scythe"
+          monk: "Daibo oder Fist Weapon"
+          barbarian: "Two-Handed Mighty Weapon"
+          crusader: "Two-Handed Flail"
+          demon_hunter: "Hand Crossbow oder Bow"
+          witch_doctor: "Ceremonial Knife"
+          wizard: "Wand"
+
+      - step: 3
+        action: "Weitere Level 70 Rares craften"
+        priority:
+          - "Helm (für Leoric's Crown später)"
+          - "Boots"
+          - "Gloves"
+          - "Chest"
+
+      - step: 4
+        action: "Rare Weapon upgraden (Cube)"
+        recipe: "Hope of Cain (Recipe 3)"
+        cost: "25 Death's Breath + 50 jeder Mat"
+        notes: "Hoffe auf gute Legendary!"
+
+  # ----- PHASE 4: Kanai's Cube holen -----
+  phase_4:
+    name: "Kanai's Cube freischalten"
+    target_level: 18
+
+    steps:
+      - step: 1
+        action: "Teleport zu Ruins of Sescheron (Act 3)"
+        difficulty: "Hard oder Expert"
+
+      - step: 2
+        action: "Zum Elder Sanctum durchkämpfen"
+        tips:
+          - "Massacre Streak halten für XP Bonus (Gateway verdoppelt!)"
+          - "Cursed Chests mitnehmen"
+          - "Nicht sterben - bricht Streak"
+
+      - step: 3
+        action: "Kanai's Cube einsammeln"
+        location: "Elder Sanctum (am Ende)"
+        notes: "Cube ist in einer Ecke des Raums"
+
+      - step: 4
+        action: "Falls unter Level 18"
+        fallback: "Temple of the Firstborn für mehr XP"
+
+    why_level_18: |
+      Level 18 ist wichtig weil:
+      - Alle wichtigen Skills verfügbar
+      - Höhere Torment-Stufen spielbar
+      - Cube-Rezepte effektiv nutzbar
+
+  # ----- PHASE 5: Leveln mit Necro -----
+  phase_5:
+    name: "Speed Leveling (18 → 70)"
+    class: "Necromancer"
+    method: "Nephalem Rifts + Massacre Streaks"
+
+    necro_build:
+      skills:
+        - skill: "Corpse Explosion"
+          rune: "Close Quarters"
+          notes: "Hauptschaden - explodiert Leichen"
+
+        - skill: "Skeletal Mage"
+          rune: "Singularity"
+          notes: "Erzeugt Leichen"
+
+        - skill: "Command Skeletons"
+          rune: "Frenzy"
+          notes: "Passive DPS + Leichen"
+
+        - skill: "Bone Armor"
+          rune: "Dislocation"
+          notes: "Defense + Stun"
+
+      passives:
+        - "Final Service (Cheat Death)"
+        - "Life from Death (Healing)"
+        - "Fueled by Death (Speed)"
+
+    gambling_priority:
+      level_1:
+        - slot: "Gloves"
+          target: "Grasps of Essence"
+          chance: "100% (nur 1 Legendary Glove)"
+          effect: "+2000% Corpse Explosion Damage"
+
+        - slot: "Rings"
+          target: "Circle of Nailuj's Evol"
+          effect: "Doppelte Skeletal Mages"
+
+    cube_upgrade:
+      slot: "Two-Handed Scythe"
+      targets:
+        - name: "Bloodtide Blade"
+          effect: "Death Nova Explosion bei Nahkampf"
+        - name: "Reilena's Shadowhook"
+          effect: "Massive Damage basierend auf Max Essence"
+        - name: "Maltorius' Petrified Spike"
+          effect: "Bone Spear Nuke"
+      success_rate: "25% pro Ziel (4 Scythes im Pool)"
+
+    leveling_route:
+      - activity: "Nephalem Rifts"
+        difficulty: "Highest you can handle (T1-T6)"
+        notes: "Mehr Torment = mehr XP + Death's Breath"
+
+      - activity: "Massacre Streaks halten"
+        bonus: "Gateway verdoppelt den Bonus!"
+        tips:
+          - "Nicht zu schnell durch Rift rennen"
+          - "Adds nicht überspringen"
+          - "Elites mitnehmen für Progress"
+
+  # ----- PHASE 6: Main Character -----
+  phase_6:
+    name: "Main Character erstellen"
+    when: "Level 70 erreicht ODER genug Gear gesammelt"
+
+    steps:
+      - step: 1
+        action: "Gewünschte Klasse erstellen"
+        notes: "Die Klasse für die Season Journey"
+
+      - step: 2
+        action: "Level 70 Gear vom Necro übertragen"
+        method: "Stash (geteiltes Inventar)"
+        transferable:
+          - "Weapons (klassenübergreifend nutzbar)"
+          - "Armor (alle Klassen)"
+          - "Jewelry"
+          - "Gems"
+
+      - step: 3
+        action: "Klassenspezifisches Gear craften"
+        example_monk:
+          - "Daibo (Two-Handed)"
+          - "Fist Weapons (wenn Dual Wield)"
+
+      - step: 4
+        action: "Leveln bis 70"
+        methods:
+          - "Rifts (schnell mit gutem Gear)"
+          - "GR Carries (falls Freunde helfen)"
+          - "Massacre Bonus weiter nutzen"
+
+# =============================================================================
+# SPEZIELLE STRATEGIEN
+# =============================================================================
+special_strategies:
+
+  challenge_cache_trade:
+    name: "Challenge Cache Trade"
+    description: |
+      Für Hardcore-Grinder die BEIDES wollen:
+      - Schnelles Leveling mit Cache
+      - Altar Tier 15 ohne Warten
+    method:
+      - "Partner in anderer Region finden (Discord)"
+      - "Gegenseitig Caches öffnen und Items traden"
+      - "EU ↔ NA Zeitunterschied nutzen"
+    where: "Maxroll Discord, wudijo Discord, Raxxanterax Discord"
+
+  group_leveling:
+    name: "Gruppen-Leveling mit Necro"
+    description: |
+      Ein Necro kann 4 Spieler durch T1-T4 Rifts ziehen.
+      Andere Spieler müssen nur hinterherlaufen.
+    roles:
+      necro:
+        job: "Damage + Corpse Explosion"
+        gear: "Grasps of Essence + Bloodtide Blade"
+      others:
+        job: "Support, Items aufsammeln, nicht sterben"
+        tips:
+          - "In der Nähe des Necro bleiben"
+          - "Globes aufsammeln"
+          - "Shrines aktivieren"
+    expected_time: "30-45 Minuten bis Level 70"
+
+# =============================================================================
+# HÄUFIGE FEHLER
+# =============================================================================
+common_mistakes:
+  - mistake: "Challenge Cache VOR Season-Start öffnen"
+    consequence: "Cache geht an Non-Season Character!"
+    fix: "Immer ERST Season Character erstellen und einloggen"
+
+  - mistake: "Anointed Seal zu spät freischalten"
+    consequence: "Kein Level 70 Gear bei Low Level"
+    fix: "Direkt nach Gateway freischalten (Bounties für Diamonds)"
+
+  - mistake: "Massacre Streak brechen lassen"
+    consequence: "Viel weniger XP"
+    fix: "Gateway Seal holen, Gegner nicht überspringen"
+
+  - mistake: "Falsche Klasse zum Leveln"
+    consequence: "Langsamer als nötig"
+    fix: "Necromancer ist IMMER die beste Leveling-Klasse"
+
+  - mistake: "Cube vergessen"
+    consequence: "Keine Legendary Powers"
+    fix: "Bei Level 18 sofort Ruins of Sescheron"
+
+  - mistake: "Zu niedrige Difficulty"
+    consequence: "Weniger XP, weniger Death's Breath"
+    fix: "Höchste Difficulty die noch smooth läuft"
+
+# =============================================================================
+# ZEITLEISTE (Typischer Ablauf)
+# =============================================================================
+timeline:
+  solo:
+    "0:00": "Season Start - Character erstellen"
+    "0:05": "Challenge Cache öffnen, Follower Gear salvagen"
+    "0:10": "Altar Gateway + Anointed freischalten"
+    "0:20": "Level 70 Gear craften, Cube holen"
+    "0:30": "Erstes Legendary aus Cube Upgrade"
+    "1:00": "Level 30-40"
+    "2:00": "Level 60-65"
+    "2:30": "Level 70 erreicht"
+    "3:00": "Haedrig's Gift #1 (Chapter 2)"
+    "4:00": "Haedrig's Gift #2 (Chapter 3)"
+    "5:00": "Haedrig's Gift #3 + GR20 (Chapter 4)"
+
+  group_with_necro:
+    "0:00": "Season Start"
+    "0:15": "Altar Seals, Gear craften"
+    "0:30": "Gruppen-Rifts starten"
+    "0:45": "Level 70 für alle"
+    "1:30": "Alle haben 6pc Set"
+
+# =============================================================================
+# QUELLEN
+# =============================================================================
+sources:
+  - name: "Maxroll.gg Season Start Guide"
+    url: "https://maxroll.gg/d3/resources/season-start-1-70-leveling-guide"
+  - name: "Maxroll.gg Altar of Rites"
+    url: "https://maxroll.gg/d3/resources/altar-of-rites-explained"
+  - name: "Icy Veins Seasonal Leveling"
+    url: "https://www.icy-veins.com/d3/seasonal-leveling-guide"

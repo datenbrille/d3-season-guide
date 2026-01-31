@@ -1,0 +1,793 @@
+# Diablo 3 Static Game Data
+# Diese Daten ändern sich nicht zwischen Seasons
+# Letzte Aktualisierung: 2026-01
+
+# =============================================================================
+# BOSS LOCATIONS
+# =============================================================================
+bosses:
+  story_bosses:
+    # ===== ACT 1 =====
+    skeleton_king:
+      name: "Skeleton King"
+      name_de: "Skelettkönig"
+      act: 1
+      location: "Royal Crypts"
+      waypoint: "Leoric's Passage"
+      notes: "Am Ende der Royal Crypts"
+
+    queen_araneae:
+      name: "Queen Araneae"
+      name_de: "Königin Araneae"
+      act: 1
+      location: "Caverns of Araneae"
+      waypoint: "Cathedral Level 2"
+      notes: "Spider Queen - optionaler Boss"
+
+    butcher:
+      name: "The Butcher"
+      name_de: "Der Schlächter"
+      act: 1
+      location: "Halls of Agony Level 3"
+      waypoint: "Halls of Agony Level 2"
+      notes: "Act 1 Endboss"
+
+    # ===== ACT 2 =====
+    maghda:
+      name: "Maghda"
+      act: 2
+      location: "Lair of the Witch"
+      waypoint: "Road to Alcarnus"
+
+    zoltun_kulle:
+      name: "Zoltun Kulle"
+      act: 2
+      location: "Soulstone Chamber"
+      waypoint: "Archives of Zoltun Kulle"
+      notes: "Nach dem Zusammensetzen des Soulstone"
+
+    belial:
+      name: "Belial"
+      name_de: "Belial"
+      act: 2
+      location: "Imperial Palace"
+      waypoint: "City of Caldeum"
+      notes: "Act 2 Endboss - 3 Phasen Kampf"
+
+    # ===== ACT 3 =====
+    ghom:
+      name: "Ghom"
+      act: 3
+      location: "The Larder"
+      waypoint: "Keep Depths Level 3"
+      notes: "Durch Keep Depths 3 gehen - Poison Boss"
+
+    siegebreaker:
+      name: "Siegebreaker Assault Beast"
+      name_de: "Belagerungsbrecher"
+      act: 3
+      location: "Edge of the Abyss"
+      waypoint: "Rakkis Crossing"
+      notes: "Am Ende von Rakkis Crossing"
+
+    cydaea:
+      name: "Cydaea"
+      name_de: "Cydaea"
+      act: 3
+      location: "Heart of the Damned"
+      waypoint: "Tower of the Cursed Level 1"
+      notes: "Spider Mistress"
+
+    azmodan:
+      name: "Azmodan"
+      act: 3
+      location: "Heart of Sin"
+      waypoint: "Core of Arreat"
+      notes: "Act 3 Endboss"
+
+    # ===== ACT 4 =====
+    rakanoth:
+      name: "Rakanoth"
+      act: 4
+      location: "Library of Fate"
+      waypoint: "Gardens of Hope 1st Tier"
+      notes: "In der Library of Fate - teleportiert viel"
+
+    izual:
+      name: "Izual"
+      act: 4
+      location: "Crystal Colonnade"
+      waypoint: "Crystal Colonnade"
+      notes: "Fallen Angel"
+
+    diablo:
+      name: "Diablo"
+      act: 4
+      location: "Pinnacle of Heaven"
+      waypoint: "Pinnacle of Heaven"
+      notes: "Act 4 Endboss - mehrere Phasen"
+
+    # ===== ACT 5 =====
+    urzael:
+      name: "Urzael"
+      act: 5
+      location: "Tower of Korelan"
+      waypoint: "Tower of Korelan"
+      notes: "Feuer-Boss mit Flammenwerfer"
+
+    adria:
+      name: "Adria"
+      act: 5
+      location: "The Great Hall"
+      waypoint: "Ruins of Corvus"
+      notes: "Durch Ruins of Corvus - roter Demon Head Marker"
+      map_marker: "demon_head"
+
+    malthael:
+      name: "Malthael"
+      name_de: "Malthael"
+      act: 5
+      location: "Heart of the Fortress"
+      waypoint: "Heart of the Fortress"
+      notes: "Act 5 Endboss - Angel of Death"
+
+  # ===== UBER BOSSES (Infernal Machine) =====
+  uber_bosses:
+    uber_king_leoric:
+      name: "Uber King Leoric"
+      name_de: "Uber Skelettkönig"
+      realm: "Realm of Discord"
+      machine: "Infernal Machine of Bones"
+      paired_with: "Maghda"
+      drops: "Leoric's Regret"
+
+    uber_maghda:
+      name: "Uber Maghda"
+      realm: "Realm of Discord"
+      machine: "Infernal Machine of Bones"
+      paired_with: "King Leoric"
+      drops: "Vial of Putridness"
+
+    uber_ghom:
+      name: "Uber Ghom"
+      realm: "Realm of Chaos"
+      machine: "Infernal Machine of Gluttony"
+      paired_with: "Rakanoth"
+      drops: "Idol of Terror"
+
+    uber_rakanoth:
+      name: "Uber Rakanoth"
+      realm: "Realm of Chaos"
+      machine: "Infernal Machine of Gluttony"
+      paired_with: "Ghom"
+      drops: "Heart of Evil"
+
+    uber_siegebreaker:
+      name: "Uber Siegebreaker"
+      realm: "Realm of Turmoil"
+      machine: "Infernal Machine of War"
+      paired_with: "Zoltun Kulle"
+      drops: "Writhing Spine"
+
+    uber_zoltun_kulle:
+      name: "Uber Zoltun Kulle"
+      realm: "Realm of Turmoil"
+      machine: "Infernal Machine of War"
+      paired_with: "Siegebreaker"
+      drops: "Devil's Fang"
+
+    uber_diablo:
+      name: "Uber Diablo"
+      name_de: "Uber Diablo"
+      realm: "Realm of Fright"
+      machine: "Infernal Machine of Evil"
+      paired_with: "None"
+      drops: "Smoldering Core"
+      notes: "Solo Boss - alle anderen sind Paare"
+
+  # ===== SPECIAL / EVENT BOSSES =====
+  special_bosses:
+    greed:
+      name: "Greed"
+      name_de: "Die Gier"
+      location: "The Vault"
+      access: "Goblin Portal oder Puzzle Ring im Cube"
+      notes: "Droppt Boon of the Hoarder Gem"
+
+    princess_lilian:
+      name: "Princess Lilian"
+      location: "Whimsyshire"
+      access: "Staff of Herding"
+      notes: "Rainbow Goblin oder Staff of Herding"
+
+    sir_william:
+      name: "Sir William"
+      location: "Whimsydale"
+      access: "Rainbow Goblin Portal"
+      notes: "Super rare Cosmic Wings drop"
+
+    the_cow_king:
+      name: "The Cow King"
+      location: "Not The Cow Level"
+      access: "Bovine Bardiche im Cube"
+      notes: "Easter Egg Level"
+
+  # ===== BOUNTY BOSSES (häufig in Bounties) =====
+  bounty_bosses:
+    zoltun_kulle_bounty:
+      name: "Zoltun Kulle (Bounty)"
+      act: 2
+      location: "Archives of Zoltun Kulle"
+      waypoint: "Archives of Zoltun Kulle"
+      notes: "Separate Bounty Version"
+
+    vidian:
+      name: "Vidian, Lord of Envy"
+      act: 5
+      location: "Briarthorn Cemetery"
+      waypoint: "Westmarch Commons"
+      notes: "Bounty Boss"
+
+    hammermash:
+      name: "Hammermash"
+      act: 3
+      location: "Fields of Slaughter"
+      waypoint: "Fields of Slaughter"
+      notes: "Bounty Boss - großer Demon"
+
+# =============================================================================
+# KEYWARDENS
+# =============================================================================
+keywardens:
+  odeg:
+    name: "Odeg the Keywarden"
+    act: 1
+    location: "Fields of Misery"
+    waypoint: "Fields of Misery"
+    drops: "Key of Bones"
+    
+  sokahr:
+    name: "Sokahr the Keywarden"
+    act: 2
+    location: "Dahlgur Oasis"
+    waypoint: "Dahlgur Oasis"
+    drops: "Key of Gluttony"
+    
+  xah_rith:
+    name: "Xah'Rith the Keywarden"
+    act: 3
+    location: "Stonefort"
+    waypoint: "Stonefort"
+    drops: "Key of War"
+    
+  nekarat:
+    name: "Nekarat the Keywarden"
+    act: 4
+    location: "Gardens of Hope 2nd Tier"
+    waypoint: "Gardens of Hope 2nd Tier"
+    drops: "Key of Evil"
+    notes: "Dropped alle 4 Keys vor Patch, jetzt nur Key of Evil"
+
+# =============================================================================
+# DIFFICULTY SETTINGS
+# =============================================================================
+difficulties:
+  normal:
+    name: "Normal"
+    monster_health: 100
+    monster_damage: 100
+    gold_bonus: 0
+    xp_bonus: 0
+    legendary_bonus: 0
+    legendary_bonus_rift: 25
+    gr_equivalent: 1
+    
+  hard:
+    name: "Hard"
+    monster_health: 200
+    monster_damage: 130
+    gold_bonus: 75
+    xp_bonus: 75
+    legendary_bonus: 0
+    legendary_bonus_rift: 25
+    gr_equivalent: 5
+    
+  expert:
+    name: "Expert"
+    monster_health: 320
+    monster_damage: 189
+    gold_bonus: 100
+    xp_bonus: 100
+    legendary_bonus: 0
+    legendary_bonus_rift: 25
+    gr_equivalent: 10
+    notes: "Bounty currency doubled ab hier"
+    
+  master:
+    name: "Master"
+    monster_health: 512
+    monster_damage: 273
+    gold_bonus: 200
+    xp_bonus: 200
+    legendary_bonus: 0
+    legendary_bonus_rift: 25
+    gr_equivalent: 15
+    notes: "Imperial gems können droppen"
+    
+  torment_1:
+    name: "Torment I"
+    monster_health: 819
+    monster_damage: 396
+    gold_bonus: 300
+    xp_bonus: 300
+    legendary_bonus: 15
+    legendary_bonus_rift: 44
+    gr_equivalent: 20
+    deaths_breath_chance: 31
+    notes: "Erster Legendary-Bonus! Torment-only Items droppen ab hier"
+    
+  torment_2:
+    name: "Torment II"
+    monster_health: 1311
+    monster_damage: 575
+    gold_bonus: 400
+    xp_bonus: 400
+    legendary_bonus: 32
+    legendary_bonus_rift: 65
+    gr_equivalent: 25
+    deaths_breath_chance: 37
+    
+  torment_3:
+    name: "Torment III"
+    monster_health: 2097
+    monster_damage: 833
+    gold_bonus: 550
+    xp_bonus: 550
+    legendary_bonus: 52
+    legendary_bonus_rift: 90
+    gr_equivalent: 30
+    deaths_breath_chance: 44
+    
+  torment_4:
+    name: "Torment IV"
+    monster_health: 3355
+    monster_damage: 1208
+    gold_bonus: 800
+    xp_bonus: 800
+    legendary_bonus: 75
+    legendary_bonus_rift: 119
+    gr_equivalent: 35
+    deaths_breath_chance: 53
+    
+  torment_6:
+    name: "Torment VI"
+    monster_health: 8590
+    monster_damage: 2540
+    gold_bonus: 1600
+    xp_bonus: 1600
+    legendary_bonus: 131
+    legendary_bonus_rift: 189
+    gr_equivalent: 45
+    deaths_breath_chance: 72
+    
+  torment_10:
+    name: "Torment X"
+    monster_health: 200082
+    monster_damage: 10194
+    gold_bonus: 2000
+    xp_bonus: 3300
+    gr_equivalent: 60
+    
+  torment_16:
+    name: "Torment XVI"
+    monster_health: 8708556
+    monster_damage: 66421
+    gr_equivalent: 90
+    notes: "Höchste reguläre Schwierigkeit"
+
+# =============================================================================
+# ALTAR OF RITES
+# =============================================================================
+altar_of_rites:
+  location:
+    act: 1
+    zone: "New Tristram"
+    position: "Links vom Waypoint"
+    
+  total_seals: 26
+  potion_powers: 3
+  
+  # Optimale Unlock-Reihenfolge
+  unlock_order:
+    - seal: 1
+      name: "Gateway"
+      effect: "Double Kill Streak timer"
+      tier: 1
+      
+    - seal: 2
+      name: "Mother"
+      effect: "Pools of Reflection last entire Season"
+      tier: 2
+      
+    - seal: 3
+      name: "Anointed"
+      effect: "Items have no level requirement"
+      tier: 3
+      
+    - seal: 4
+      name: "Force"
+      effect: "+100 base average damage"
+      tier: 4
+      
+    - seal: 5
+      name: "Resistance"
+      effect: "-5% missile damage taken"
+      tier: 5
+      
+    - seal: 6
+      name: "Haste"
+      effect: "+10% Movement Speed (uncapped)"
+      tier: 6
+      
+    - seal: 7
+      name: "Destruction"
+      effect: "+5% damage vs Elites"
+      tier: 7
+      
+    - seal: 8
+      name: "Bulwark"
+      effect: "Health Globes grant shield (5% max HP)"
+      tier: 8
+      
+    - seal: 9
+      name: "Fortitude"
+      effect: "-5% melee damage taken"
+      tier: 9
+      
+    - seal: 10
+      name: "Inferno"
+      effect: "+5% Elemental damage"
+      tier: 10
+      
+    - seal: 11
+      name: "Decimation"
+      effect: "+5% damage vs Elites"
+      tier: 11
+      
+    - seal: 12
+      name: "Might"
+      effect: "+5% damage dealt"
+      tier: 12
+      
+    - seal: 13
+      name: "Reaping"
+      effect: "Double Death's Breath drops"
+      tier: 13
+      
+    - seal: 14
+      name: "Vigor"
+      effect: "Critical hits restore resource"
+      tier: 14
+      
+    - seal: 15
+      name: "Bounty"
+      effect: "Double Bounty Cache rewards"
+      tier: 15
+      
+    - seal: 16
+      name: "Efficiency"
+      effect: "Auto pickup Death's Breath + Progress orbs"
+      tier: 16
+      
+    - seal: 17
+      name: "Protection"
+      effect: "-5% Elite damage taken"
+      tier: 17
+      
+    - seal: 18
+      name: "Power"
+      effect: "+5% damage dealt"
+      tier: 18
+      
+    - seal: 19
+      name: "Freedom"
+      effect: "CC immunity for 5 seconds after breaking CC"
+      tier: 19
+      
+    - seal: 20
+      name: "Passability"
+      effect: "Walk through enemies"
+      tier: 20
+      
+    - seal: 21
+      name: "Reaping Pets"
+      effect: "Pets pick up Death's Breath"
+      tier: 21
+      
+    - seal: 22
+      name: "Progress"
+      effect: "+1 Progress orb from Elites"
+      tier: 22
+      
+    - seal: 23
+      name: "Execution"
+      effect: "+5% damage vs Bosses"
+      tier: 23
+      
+    - seal: 24
+      name: "Salvage Pets"
+      effect: "Pets auto-salvage white/blue/yellow"
+      tier: 24
+      
+    - seal: 25
+      name: "Evasion"
+      effect: "+5% Dodge chance"
+      tier: 25
+      
+    - seal: 26
+      name: "Gambling"
+      effect: "Double Legendary chance from Kadala"
+      tier: 26
+
+  potion_powers:
+    AA:
+      cost: 55
+      currency: "Primordial Ashes"
+      effect: "Spawns runic circles (Damage/CDR/RCR)"
+      
+    AB:
+      cost: 110
+      currency: "Primordial Ashes"
+      effect: "Enemies deal 25% less damage"
+      
+    AC:
+      cost: 165
+      currency: "Primordial Ashes"
+      effect: "Random shrine effect on potion"
+      
+    AD:
+      cost: 0
+      currency: "Auto after 26 seals"
+      effect: "Double Primal Ancient drop chance"
+
+  expensive_unlocks:
+    tier_4:
+      cost: "Any class Set Helm"
+      notes: "Kann von Haedrig's Gift kommen"
+      
+    tier_5:
+      cost: "20 Forgotten Souls + all Bounty mats"
+      
+    tier_6:
+      cost: "Uber Boss Materials"
+      notes: "Für Hellfire Ring/Amulet"
+      
+    tier_10:
+      cost: "Flawless Royal Ruby + Ring of Royal Grandeur"
+      notes: "RoRG = Act 1 Bounty"
+      
+    tier_15:
+      cost: "Challenge Rift Cache"
+      notes: "⚠️ Nicht vor Season-Start öffnen!"
+      
+    tier_18:
+      cost: "Ancient Hellfire Amulet"
+      notes: "Reroll bei Squirt falls nötig"
+      
+    tier_19:
+      cost: "4 Set Dungeon achievement pages"
+      
+    tier_25:
+      cost: "Staff of Herding"
+      notes: "😱 Aufwändig zu farmen"
+
+# =============================================================================
+# BOUNTY CACHE LEGENDARIES
+# =============================================================================
+bounty_cache_items:
+  act_1:
+    - name: "Ring of Royal Grandeur"
+      type: "Ring"
+      effect: "Reduces set requirements by 1"
+      priority: "high"
+      
+    - name: "Sanguinary Vambraces"
+      type: "Bracers"
+      
+    - name: "Mad Monarch's Scepter"
+      type: "Mace"
+      
+    - name: "Pauldrons of the Skeleton King"
+      type: "Shoulders"
+      
+  act_2:
+    - name: "Gloves of Worship"
+      type: "Gloves"
+      effect: "Shrine effects last 10 minutes"
+      priority: "high"
+      notes: "Für Follower (Emanate)"
+      
+    - name: "Coven's Criterion"
+      type: "Shield"
+      
+    - name: "Cloak of Deception"
+      type: "Chest"
+      
+  act_3:
+    - name: "Avarice Band"
+      type: "Ring"
+      effect: "Massive pickup radius after gold pickup"
+      priority: "high"
+      notes: "Für Follower (Emanate)"
+      
+    - name: "Burst of Wrath"
+      type: "2H Axe"
+      
+    - name: "Pride's Fall"
+      type: "Helm"
+      
+    - name: "Envious Blade"
+      type: "Dagger"
+      
+  act_4:
+    - name: "Can drop any Act 1-3 items"
+      notes: "Keine unique items"
+      
+  act_5:
+    - name: "Illusory Boots"
+      type: "Boots"
+      effect: "Walk through enemies"
+      
+    - name: "Helltrapper"
+      type: "Hand Crossbow"
+      
+    - name: "Death's Bargain"
+      type: "Pants"
+
+# =============================================================================
+# FOLLOWER SETUP (Static/Universal)
+# =============================================================================
+followers:
+  universal_emanate_items:
+    - name: "Nemesis Bracers"
+      slot: "Bracers"
+      effect: "Shrines spawn Elite pack"
+      priority: 1
+      
+    - name: "Gloves of Worship"
+      slot: "Gloves"
+      effect: "Shrine effects last 10 minutes"
+      source: "Act 2 Bounty"
+      priority: 2
+      
+    - name: "Avarice Band"
+      slot: "Ring"
+      effect: "30 yard pickup after gold"
+      source: "Act 3 Bounty"
+      priority: 3
+      
+    - name: "Ring of Royal Grandeur"
+      slot: "Ring"
+      effect: "Set requirement -1 (for follower sets)"
+      source: "Act 1 Bounty"
+      priority: 4
+      
+    - name: "Flavor of Time"
+      slot: "Amulet"
+      effect: "Pylon effects last double"
+      priority: 5
+      
+    - name: "Cain's Destiny (2pc)"
+      slots: ["Helm", "Boots", "Gloves"]
+      effect: "+25% Greater Rift Key drops"
+      priority: 6
+      
+    - name: "Sage's Journey (2pc)"
+      slots: ["Helm", "Boots", "Gloves"]
+      effect: "+1 Death's Breath drop"
+      priority: 7
+
+  enchantress:
+    focus_options:
+      speed:
+        name: "Hand of the Prophet"
+        effect: "All 4 Enchantress skills active"
+        
+      push:
+        name: "Smoking Thurible"
+        effect: "Follower cannot die"
+        
+    recommended_skills:
+      - "Temporal Pulse (Slow)"
+      - "Prophetic Harmony (CDR)"
+      - "Powered Shield (Shield)"
+      - "Focused Mind (AS)"
+
+  scoundrel:
+    focus_options:
+      - name: "Slipka's Letter Opener"
+        effect: "All 4 Scoundrel skills"
+        
+    recommended_skills:
+      - "Crippling Shot (Slow)"
+      - "Anatomy (Crit)"
+      - "Piercing Shot (Damage)"
+      - "Night's Veil (Blind)"
+
+  templar:
+    focus_options:
+      - name: "Enchanting Favor"
+        effect: "All 4 Templar skills"
+        
+    recommended_skills:
+      - "Heal"
+      - "Loyalty (Regen)"
+      - "Charge"
+      - "Guardian (Cheat Death)"
+
+# =============================================================================
+# CRAFTING PLANS (Important)
+# =============================================================================
+crafting_plans:
+  captain_crimson:
+    name: "Captain Crimson's Trimmings"
+    type: "Crafted Set"
+    pieces: ["Belt", "Pants", "Boots"]
+    set_bonuses:
+      2pc: "+20% CDR, +20% RCR"
+      3pc: "Damage dealt increased by CDR%, Damage reduced by RCR%"
+    notes: "Extrem wichtig für viele Builds"
+    
+  aughild:
+    name: "Aughild's Authority"
+    type: "Crafted Set"
+    pieces: ["Bracers", "Chest", "Shoulders", "Helm"]
+    set_bonuses:
+      2pc: "+15% damage to Elites, -15% damage from Elites"
+      3pc: "+30% damage to Elites, -30% damage from Elites"
+      
+  sage:
+    name: "Sage's Journey"
+    type: "Crafted Set"
+    pieces: ["Helm", "Boots", "Gloves"]
+    set_bonuses:
+      2pc: "+1 Death's Breath drop"
+      3pc: "+250 Dex/Str/Int"
+    notes: "Für Follower (Emanate)"
+    
+  cain:
+    name: "Cain's Destiny"
+    type: "Crafted Set"
+    pieces: ["Helm", "Boots", "Gloves"]
+    set_bonuses:
+      2pc: "+25% Greater Rift Key drop"
+      3pc: "+8% AS"
+    notes: "Für Follower (Emanate)"
+
+# =============================================================================
+# KADALA GAMBLING COSTS
+# =============================================================================
+kadala:
+  costs:
+    one_handed: 75
+    two_handed: 75
+    quiver: 75
+    orb: 75
+    mojo: 75
+    phylactery: 75
+    helm: 25
+    gloves: 25
+    boots: 25
+    chest: 25
+    belt: 25
+    shoulders: 25
+    pants: 25
+    bracers: 25
+    shield: 25
+    ring: 50
+    amulet: 100
+    
+  tips:
+    - "Bracers und Belt haben kleineren Loot-Pool = bessere Chancen"
+    - "Weapons sind teuer (75) - besser im Cube upgraden"
+    - "Rings (50) und Amulets (100) sind ineffizient"

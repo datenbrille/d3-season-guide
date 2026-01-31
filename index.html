@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3 S37 Sunwuko TR Monk</title>
+    <title>D3 S37 SWK TR</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
+        body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #1a1a2e; 
-            color: #eee; 
+            background: #1a1a2e;
+            color: #eee;
             padding: 10px;
             max-width: 600px;
             margin: 0 auto;
         }
         h1 { font-size: 1.3em; text-align: center; color: #f4a460; margin-bottom: 10px; }
         .tabs { display: flex; gap: 3px; margin-bottom: 10px; flex-wrap: wrap; }
-        .tab { 
-            flex: 1; 
-            padding: 8px 3px; 
-            background: #16213e; 
-            border: none; 
-            color: #aaa; 
+        .tab {
+            flex: 1;
+            padding: 8px 3px;
+            background: #16213e;
+            border: none;
+            color: #aaa;
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.75em;
-            min-width: 55px;
+            min-width: 50px;
         }
         .tab.active { background: #e94560; color: #fff; }
         .content { display: none; }
@@ -35,7 +35,7 @@
         .section h3 { font-size: 0.9em; color: #888; margin: 10px 0 5px 0; }
         .item { display: flex; align-items: center; padding: 6px 0; border-bottom: 1px solid #222; }
         .item:last-child { border-bottom: none; }
-        .item input { margin-right: 10px; width: 20px; height: 20px; accent-color: #e94560; }
+        .item input[type="checkbox"] { margin-right: 10px; width: 20px; height: 20px; accent-color: #e94560; }
         .item label { flex: 1; font-size: 0.9em; }
         .item .diff { font-size: 0.75em; color: #888; margin-left: 5px; }
         .item.checked label { text-decoration: line-through; color: #666; }
@@ -66,392 +66,1229 @@
         .altar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; font-size: 0.75em; }
         .altar-item { background: #2a2a4e; padding: 5px 8px; border-radius: 3px; }
         .altar-item span { color: #888; }
+        .search-box { width: 100%; padding: 10px; border: none; border-radius: 5px; background: #2a2a4e; color: #eee; font-size: 0.9em; margin-bottom: 10px; }
+        .search-box::placeholder { color: #666; }
+        .boss-card { background: #2a2a4e; padding: 10px; border-radius: 5px; margin-bottom: 8px; }
+        .boss-card.hidden { display: none; }
+        .boss-card h4 { color: #f4a460; margin-bottom: 5px; }
+        .boss-card .location { color: #4ade80; font-size: 0.85em; }
+        .boss-card .waypoint { color: #888; font-size: 0.8em; }
+        .boss-card .notes { color: #aaa; font-size: 0.8em; margin-top: 5px; font-style: italic; }
+        .act-badge { display: inline-block; background: #e94560; color: #fff; padding: 2px 6px; border-radius: 3px; font-size: 0.7em; margin-left: 5px; }
     </style>
 </head>
 <body>
-    <h1>🐵 Sunwuko TR Monk - S37</h1>
-    
+    <h1>🐵 SWK TR - S37</h1>
+
     <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
     <div class="progress-text" id="progressText">0 / 0</div>
 
     <div class="tabs">
-        <button class="tab active" data-tab="journey">Journey</button>
+        <button class="tab active" data-tab="start">Start</button>
+        <button class="tab" data-tab="journey">Journey</button>
         <button class="tab" data-tab="build">Build</button>
         <button class="tab" data-tab="gear">Gear</button>
+        <button class="tab" data-tab="bosses">Bosses</button>
         <button class="tab" data-tab="altar">Altar</button>
         <button class="tab" data-tab="farm">Farm</button>
+        <button class="tab" data-tab="glossary">A-Z</button>
+    </div>
+
+    <!-- START TAB -->
+    <div id="start" class="content active">
+        <div class="section">
+            <h2>Challenge Rift Cache</h2>
+            <div class="info-box">
+                <strong>Inhalt:</strong><br>
+                💰 5.1 Millionen Gold<br>
+                🩸 475 Blood Shards<br>
+                💀 35 Death's Breath<br>
+                📦 300 Reusable Parts + Arcane Dust + Veiled Crystal<br>
+                🗺️ 15x Bounty Mats (jeder Act)
+            </div>
+            <p class="note">⚠️ WICHTIG: Erst NACH Season-Start öffnen! Vorher Season-Char erstellen!</p>
+        </div>
+
+        <div class="section">
+            <h2>Phase 1: Nach Login</h2>
+            <div class="item"><input type="checkbox" id="start_p1_1"><label for="start_p1_1">Season Character erstellen <span class="diff">Necro ist die beste Leveling-Klasse wegen Corpse Explosion</span></label></div>
+            <div class="item"><input type="checkbox" id="start_p1_2"><label for="start_p1_2">Challenge Rift abschließen (falls vorbereitet) <span class="diff">Oder jetzt starten und abschließen</span></label></div>
+            <div class="item"><input type="checkbox" id="start_p1_3"><label for="start_p1_3">Challenge Rift Cache holen </label></div>
+            <div class="item"><input type="checkbox" id="start_p1_4"><label for="start_p1_4">Follower Gear klauen <span class="diff">Gibt 10+ Reusable Parts für Altar Gateway</span></label></div>
+        </div>
+
+        <div class="section">
+            <h2>Phase 2: Altar of Rites</h2>
+            <p class="note">📍 Act 1, New Tristram - links vom Waypoint</p>
+            <div class="item"><input type="checkbox" id="start_p2_1"><label for="start_p2_1">Gateway freischalten <span class="diff">(10 Reusable Parts)</span></label></div>
+            <p class="note">Verdoppelt Massacre Streak Bonus-XP</p>
+            <div class="item"><input type="checkbox" id="start_p2_2"><label for="start_p2_2">2x Diamond Gems besorgen </label></div>
+            <div class="item"><input type="checkbox" id="start_p2_3"><label for="start_p2_3">Diamonds upgraden zu Flawless </label></div>
+            <div class="item"><input type="checkbox" id="start_p2_4"><label for="start_p2_4">Anointed freischalten <span class="diff">(2x Flawless Diamond)</span></label></div>
+            <p class="note">ALLE Items haben KEINE Level-Anforderung mehr!</p>
+        </div>
+
+        <div class="section">
+            <h2>Phase 3: Level 70 Gear craften</h2>
+            <p class="note">⚠️ Braucht Anointed Seal!</p>
+            <div class="item"><input type="checkbox" id="start_p3_1"><label for="start_p3_1">Blacksmith auf Level 12 upgraden <span class="diff">Braucht ca. 2-3 Millionen Gold</span></label></div>
+            <div class="item"><input type="checkbox" id="start_p3_2"><label for="start_p3_2">Level 70 Rare Weapon craften </label></div>
+            <div class="item"><input type="checkbox" id="start_p3_3"><label for="start_p3_3">Weitere Level 70 Rares craften </label></div>
+            <div class="item"><input type="checkbox" id="start_p3_4"><label for="start_p3_4">Rare Weapon upgraden (Cube) <span class="diff">Hoffe auf gute Legendary!</span></label></div>
+        </div>
+
+        <div class="section">
+            <h2>Phase 4: Kanai's Cube</h2>
+            <p class="note">📍 Act 3, Ruins of Sescheron → Elder Sanctum</p>
+            <div class="item"><input type="checkbox" id="start_p4_1"><label for="start_p4_1">Teleport zu Ruins of Sescheron (Act 3) </label></div>
+            <div class="item"><input type="checkbox" id="start_p4_2"><label for="start_p4_2">Zum Elder Sanctum durchkämpfen </label></div>
+            <div class="item"><input type="checkbox" id="start_p4_3"><label for="start_p4_3">Kanai's Cube einsammeln <span class="diff">Elder Sanctum (am Ende)</span></label></div>
+            <div class="item"><input type="checkbox" id="start_p4_4"><label for="start_p4_4">Falls unter Level 18 </label></div>
+        </div>
+
+        <div class="section">
+            <h2>Phase 5: Necro Gambling (Level 1)</h2>
+            <p class="note">Necro hat die besten Level-1-Gambling Optionen!</p>
+            <div class="item"><input type="checkbox" id="start_gamble_Gloves"><label for="start_gamble_Gloves"><strong>Gloves</strong> → Grasps of Essence</label></div>
+            <p class="note">+2000% Corpse Explosion Damage</p>
+            <div class="item"><input type="checkbox" id="start_gamble_Rings"><label for="start_gamble_Rings"><strong>Rings</strong> → Circle of Nailuj's Evol</label></div>
+            <p class="note">Doppelte Skeletal Mages</p>
+        </div>
+
+        <div class="section">
+            <h2>⏱️ Zeitleiste (Solo)</h2>
+            <div class="info-box">
+<strong>0:00</strong> - Season Start - Character erstellen<br>
+<strong>0:05</strong> - Challenge Cache öffnen, Follower Gear salvagen<br>
+<strong>0:10</strong> - Altar Gateway + Anointed freischalten<br>
+<strong>0:20</strong> - Level 70 Gear craften, Cube holen<br>
+<strong>0:30</strong> - Erstes Legendary aus Cube Upgrade<br>
+<strong>1:00</strong> - Level 30-40<br>
+<strong>2:00</strong> - Level 60-65<br>
+<strong>2:30</strong> - Level 70 erreicht<br>
+<strong>3:00</strong> - Haedrig's Gift #1 (Chapter 2)<br>
+<strong>4:00</strong> - Haedrig's Gift #2 (Chapter 3)<br>
+<strong>5:00</strong> - Haedrig's Gift #3 + GR20 (Chapter 4)<br>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚠️ Häufige Fehler</h2>
+            <div class="info-box">
+<strong>❌ Challenge Cache VOR Season-Start öffnen</strong><br>✅ Immer ERST Season Character erstellen und einloggen<br><br>
+<strong>❌ Anointed Seal zu spät freischalten</strong><br>✅ Direkt nach Gateway freischalten (Bounties für Diamonds)<br><br>
+<strong>❌ Massacre Streak brechen lassen</strong><br>✅ Gateway Seal holen, Gegner nicht überspringen<br><br>
+<strong>❌ Falsche Klasse zum Leveln</strong><br>✅ Necromancer ist IMMER die beste Leveling-Klasse<br><br>
+<strong>❌ Cube vergessen</strong><br>✅ Bei Level 18 sofort Ruins of Sescheron<br><br>
+            </div>
+        </div>
     </div>
 
     <!-- JOURNEY TAB -->
-    <div id="journey" class="content active">
+    <div id="journey" class="content">
         <div class="section">
             <h2>Chapter II → Haedrig #1</h2>
-            <div class="reward"><strong>Reward:</strong> Sunwuko Crown + Paws (2pc: 50% DR)</div>
-            <div class="item"><input type="checkbox" id="j1"><label for="j1">Nephalem Rift <span class="diff">(Expert)</span></label></div>
-            <div class="item"><input type="checkbox" id="j2"><label for="j2">Rakanoth töten <span class="diff">(Hard) - A4: Library of Fate</span></label></div>
-            <div class="item"><input type="checkbox" id="j3"><label for="j3">Skeleton King töten <span class="diff">(Hard) - A1: Royal Crypts</span></label></div>
-            <div class="item"><input type="checkbox" id="j4"><label for="j4">Kanai's Cube freischalten</label></div>
-            <div class="item"><input type="checkbox" id="j5"><label for="j5">Alle Artisans Level 12</label></div>
-            <div class="item"><input type="checkbox" id="j6"><label for="j6">Follower voll ausrüsten</label></div>
-            <div class="item"><input type="checkbox" id="j7"><label for="j7">Craft lvl70 Item (Blacksmith)</label></div>
-            <div class="item"><input type="checkbox" id="j8"><label for="j8">Craft lvl70 Item (Jeweler)</label></div>
-            <div class="item"><input type="checkbox" id="j9"><label for="j9">Enchant bei Mystic</label></div>
-            <div class="item"><input type="checkbox" id="j10"><label for="j10">Transmogrify bei Mystic</label></div>
+            <div class="reward"><strong>Reward:</strong> Monkey King's Garb 2pc</div>
+            <div class="item"><input type="checkbox" id="j1"><label for="j1">Complete a Nephalem Rift <span class="diff">(Expert)</span></label></div>
+            <div class="item"><input type="checkbox" id="j2"><label for="j2">Kill Rakanoth <span class="diff">(Hard) - A4: Library of Fate</span></label></div>
+            <div class="item"><input type="checkbox" id="j3"><label for="j3">Kill Skeleton King <span class="diff">(Hard) - A1: Royal Crypts</span></label></div>
+            <div class="item"><input type="checkbox" id="j4"><label for="j4">Kanai's Cube freischalten </label></div>
+            <div class="item"><input type="checkbox" id="j5"><label for="j5">Level all Artisans to 12 </label></div>
+            <div class="item"><input type="checkbox" id="j6"><label for="j6">Fully equip Follower </label></div>
+            <div class="item"><input type="checkbox" id="j7"><label for="j7">Craft a level 70 item (Blacksmith) </label></div>
+            <div class="item"><input type="checkbox" id="j8"><label for="j8">Craft a level 70 item (Jeweler) </label></div>
+            <div class="item"><input type="checkbox" id="j9"><label for="j9">Enchant an item at the Mystic </label></div>
+            <div class="item"><input type="checkbox" id="j10"><label for="j10">Transmogrify an item </label></div>
         </div>
 
         <div class="section">
             <h2>Chapter III → Haedrig #2</h2>
-            <div class="reward"><strong>Reward:</strong> Sunwuko Leggings + Balance (4pc: Decoys)</div>
-            <div class="item"><input type="checkbox" id="j11"><label for="j11">Nephalem Rift <span class="diff">(Master)</span></label></div>
-            <div class="item"><input type="checkbox" id="j12"><label for="j12">Adria töten <span class="diff">(Master) - A5: Ruins of Corvus</span></label></div>
-            <div class="item"><input type="checkbox" id="j13"><label for="j13">Siegebreaker töten <span class="diff">(Master) - A3: Edge of Abyss</span></label></div>
-            <div class="item"><input type="checkbox" id="j14"><label for="j14">Bei Kadala kaufen</label></div>
-            <div class="item"><input type="checkbox" id="j15"><label for="j15">1x Cube Power extrahieren</label></div>
-            <div class="item"><input type="checkbox" id="j16"><label for="j16">Imperial Gem craften</label></div>
-            <div class="item"><input type="checkbox" id="j17"><label for="j17">Bounty Cache Act I</label></div>
-            <div class="item"><input type="checkbox" id="j18"><label for="j18">Bounty Cache Act II</label></div>
-            <div class="item"><input type="checkbox" id="j19"><label for="j19">Bounty Cache Act III</label></div>
-            <div class="item"><input type="checkbox" id="j20"><label for="j20">Bounty Cache Act IV</label></div>
-            <div class="item"><input type="checkbox" id="j21"><label for="j21">Bounty Cache Act V</label></div>
+            <div class="reward"><strong>Reward:</strong> Monkey King's Garb 4pc</div>
+            <div class="item"><input type="checkbox" id="j20"><label for="j20">Complete a Nephalem Rift <span class="diff">(Master)</span></label></div>
+            <div class="item"><input type="checkbox" id="j21"><label for="j21">Kill Adria <span class="diff">(Master) - A5: The Great Hall</span></label></div>
+            <div class="item"><input type="checkbox" id="j22"><label for="j22">Kill Siegebreaker <span class="diff">(Master) - A3: Edge of the Abyss</span></label></div>
+            <div class="item"><input type="checkbox" id="j23"><label for="j23">Buy an item from Kadala </label></div>
+            <div class="item"><input type="checkbox" id="j24"><label for="j24">Extract a Legendary power </label></div>
+            <div class="item"><input type="checkbox" id="j25"><label for="j25">Craft an Imperial gem </label></div>
+            <div class="item"><input type="checkbox" id="j26"><label for="j26">Complete Act I Bounties </label></div>
+            <div class="item"><input type="checkbox" id="j27"><label for="j27">Complete Act II Bounties </label></div>
+            <div class="item"><input type="checkbox" id="j28"><label for="j28">Complete Act III Bounties </label></div>
+            <div class="item"><input type="checkbox" id="j29"><label for="j29">Complete Act IV Bounties </label></div>
+            <div class="item"><input type="checkbox" id="j30"><label for="j30">Complete Act V Bounties </label></div>
         </div>
 
         <div class="section">
             <h2>Chapter IV → Haedrig #3</h2>
-            <div class="reward"><strong>Reward:</strong> Sunwuko Soul + Shines (6pc: 19,500% TR)</div>
-            <div class="item"><input type="checkbox" id="j22"><label for="j22">Nephalem Rift <span class="diff">(Torment I)</span></label></div>
-            <div class="item"><input type="checkbox" id="j23"><label for="j23">⭐ GR20 Solo</label></div>
-            <div class="item"><input type="checkbox" id="j24"><label for="j24">Belial töten <span class="diff">(T2) - A2: Imperial Palace</span></label></div>
-            <div class="item"><input type="checkbox" id="j25"><label for="j25">Ghom töten <span class="diff">(T4) - A3: The Larder</span></label></div>
-            <div class="item"><input type="checkbox" id="j26"><label for="j26">Keywarden A1 - Odeg <span class="diff">(T4) Fields of Misery</span></label></div>
-            <div class="item"><input type="checkbox" id="j27"><label for="j27">Keywarden A2 - Sokahr <span class="diff">(T4) Dahlgur Oasis</span></label></div>
-            <div class="item"><input type="checkbox" id="j28"><label for="j28">Keywarden A3 - Xah'Rith <span class="diff">(T4) Stonefort</span></label></div>
-            <div class="item"><input type="checkbox" id="j29"><label for="j29">Keywarden A4 - Nekarat <span class="diff">(T4) Gardens of Hope 2</span></label></div>
-            <div class="item"><input type="checkbox" id="j30"><label for="j30">Rare → Legendary upgraden (Cube)</label></div>
-            <div class="item"><input type="checkbox" id="j31"><label for="j31">Socket reforgen (Mystic)</label></div>
-            <div class="item"><input type="checkbox" id="j32"><label for="j32">5 Blacksmith Recipes lernen</label></div>
-            <div class="item"><input type="checkbox" id="j33"><label for="j33">5 Jeweler Designs lernen</label></div>
+            <div class="reward"><strong>Reward:</strong> Monkey King's Garb 6pc</div>
+            <div class="item"><input type="checkbox" id="j40"><label for="j40">Complete a Nephalem Rift <span class="diff">(Torment I)</span></label></div>
+            <div class="item"><input type="checkbox" id="j41"><label for="j41">⭐ Complete a level 20 Greater Rift solo </label></div>
+            <div class="item"><input type="checkbox" id="j42"><label for="j42">Kill Belial <span class="diff">(Torment II) - A2: Imperial Palace</span></label></div>
+            <div class="item"><input type="checkbox" id="j43"><label for="j43">Kill Ghom <span class="diff">(Torment IV) - A3: The Larder</span></label></div>
+            <div class="item"><input type="checkbox" id="j44"><label for="j44">Kill Odeg the Keywarden <span class="diff">(Torment IV) - A1: Fields of Misery</span></label></div>
+            <div class="item"><input type="checkbox" id="j45"><label for="j45">Kill Sokahr the Keywarden <span class="diff">(Torment IV) - A2: Dahlgur Oasis</span></label></div>
+            <div class="item"><input type="checkbox" id="j46"><label for="j46">Kill Xah'Rith the Keywarden <span class="diff">(Torment IV) - A3: Stonefort</span></label></div>
+            <div class="item"><input type="checkbox" id="j47"><label for="j47">Kill Nekarat the Keywarden <span class="diff">(Torment IV) - A4: Gardens of Hope 2nd Tier</span></label></div>
+            <div class="item"><input type="checkbox" id="j48"><label for="j48">Upgrade a Rare to Legendary </label></div>
+            <div class="item"><input type="checkbox" id="j49"><label for="j49">Replace a socket property </label></div>
+            <div class="item"><input type="checkbox" id="j50"><label for="j50">Learn 5 Blacksmith recipes </label></div>
+            <div class="item"><input type="checkbox" id="j51"><label for="j51">Learn 5 Jeweler designs </label></div>
         </div>
     </div>
 
-    <!-- BUILD TAB (Skills, Passives, Rotation) -->
+    <!-- BUILD TAB -->
     <div id="build" class="content">
         <div class="section">
-            <h2>⚔️ Active Skills</h2>
+            <h2>Active Skills</h2>
             <table class="skill-table">
                 <tr><th>Slot</th><th>Skill</th><th>Rune</th></tr>
-                <tr><td>LMB</td><td><strong>Tempest Rush</strong></td><td>Flurry (Cold)</td></tr>
-                <tr><td>RMB</td><td><strong>Sweeping Wind</strong></td><td>Inner Storm (Spirit)</td></tr>
-                <tr><td>1</td><td><strong>Blinding Flash</strong></td><td>Faith in the Light (+29%)</td></tr>
-                <tr><td>2</td><td><strong>Epiphany</strong></td><td>Desert Shroud (50% DR)</td></tr>
-                <tr><td>3</td><td><strong>Mantra of Salvation</strong></td><td>Agility (+Dodge)</td></tr>
-                <tr><td>4</td><td><strong>Cyclone Strike</strong></td><td>Soothing Breeze (Heal)</td></tr>
+                <tr><td>LMB</td><td><strong>Tempest Rush</strong></td><td>Flurry</td></tr>
+                <tr><td>RMB</td><td><strong>Sweeping Wind</strong></td><td>Inner Storm</td></tr>
+                <tr><td>1</td><td><strong>Blinding Flash</strong></td><td>Faith in the Light</td></tr>
+                <tr><td>2</td><td><strong>Epiphany</strong></td><td>Desert Shroud</td></tr>
+                <tr><td>3</td><td><strong>Mantra of Salvation</strong></td><td>Agility</td></tr>
+                <tr><td>4</td><td><strong>Cyclone Strike</strong></td><td>Soothing Breeze</td></tr>
             </table>
-            <p class="note">💡 Cyclone Strike wird automatisch durch Won Khim Lau gecastet!</p>
         </div>
 
         <div class="section">
-            <h2>📜 Passive Skills</h2>
+            <h2>Passive Skills</h2>
             <div class="info-box">
-                <strong>1. Beacon of Ytar</strong> - 20% CDR (Pflicht für Epiphany)<br>
+                <strong>1. Beacon of Ytar</strong> - 20% CDR<br>
                 <strong>2. Harmony</strong> - +40% Single Res → All Res<br>
-                <strong>3. Seize the Initiative</strong> - +30% AS vs >75% HP Gegner<br>
-                <strong>4. Relentless Assault</strong> - +20% vs CC'd Gegner
+                <strong>3. Seize the Initiative</strong> - +30% AS vs >75% HP enemies<br>
+                <strong>4. Relentless Assault</strong> - +20% damage vs CC'd enemies<br>
             </div>
-            <p class="note">Alternative: The Guardian's Path (+35% Dodge) für mehr Survivability</p>
+        </div>
+
+        <div class="section">
+            <h2>Legendary Gems</h2>
+            <div class="item"><input type="checkbox" id="lg1"><label for="lg1"><strong>Bane of the Trapped</strong> - Self-procs in melee range</label></div>
+            <div class="item"><input type="checkbox" id="lg2"><label for="lg2"><strong>Taeguk</strong> - Permanent uptime mit Tempest Rush</label></div>
+            <div class="item"><input type="checkbox" id="lg3"><label for="lg3"><strong>Bane of the Stricken</strong> - Essentiell für Boss-Kills in high GRs</label></div>
+        </div>
+
+        <div class="section">
+            <h2>Kanai's Cube</h2>
+            <div class="cube-slot"><strong>Weapon:</strong> Balance - +600% Tempest Rush damage, guaranteed crits vs ≤3 targets</div>
+            <div class="cube-slot"><strong>Armor:</strong> Stone Gauntlets - High-end GR pushing. Braucht gute CDR für Epiphany.</div>
+            <div class="cube-slot"><strong>Jewelry:</strong> Ring of Royal Grandeur - Set requirement -1</div>
+        </div>
+
+        <div class="section">
+            <h2>Paragon Points</h2>
+            <div class="paragon-section">
+                <div class="paragon-box">
+                    <h4>Core</h4>
+                    <ol><li>?</li><li>?</li><li>?</li><li>?</li></ol>
+                </div>
+                <div class="paragon-box">
+                    <h4>Offense</h4>
+                    <ol><li>?</li><li>?</li><li>?</li><li>?</li></ol>
+                </div>
+                <div class="paragon-box">
+                    <h4>Defense</h4>
+                    <ol><li>?</li><li>?</li><li>?</li><li>?</li></ol>
+                </div>
+                <div class="paragon-box">
+                    <h4>Utility</h4>
+                    <ol><li>?</li><li>?</li><li>?</li><li>?</li></ol>
+                </div>
+            </div>
         </div>
 
         <div class="section">
             <h2>🎮 Gameplay Rotation</h2>
             <div class="info-box">
-                <strong>1.</strong> Sweeping Wind aktivieren (baut zu 13 Stacks auf)<br>
-                <strong>2.</strong> Tempest Rush channeln (Flurry Stacks auf 100)<br>
-                <strong>3.</strong> Convention of Elements beobachten → Cold abwarten<br>
-                <strong>4.</strong> Blinding Flash auf Elites → Channel stoppt → Flurry explodiert!<br>
-                <strong>5.</strong> Epiphany on Cooldown für Defense<br>
-                <strong>6.</strong> Mantra aktiv bei Damage Spikes
+<strong>1.</strong> Sweeping Wind aktivieren<br><span style="color:#888;font-size:0.85em">Baut automatisch zu 13 Stacks auf mit Vengeful Wind</span><br>
+<strong>2.</strong> Tempest Rush starten<br><span style="color:#888;font-size:0.85em">Flurry baut Stacks bis 100</span><br>
+<strong>3.</strong> Convention of Elements beobachten<br><span style="color:#888;font-size:0.85em">Cold = Burst Window</span><br>
+<strong>4.</strong> Bei Cold: Blinding Flash → Channel stoppen<br><span style="color:#888;font-size:0.85em">Flurry explodiert + Cesar's +800%</span><br>
+<strong>5.</strong> Epiphany on Cooldown<br><span style="color:#888;font-size:0.85em">50% DR - Uptime maximieren</span><br>
+<strong>6.</strong> Mantra of Salvation bei Damage Spikes<br><span style="color:#888;font-size:0.85em">Aktives Pressing für extra Dodge</span><br>
             </div>
-            <p class="note">⚠️ Flurry hat kleinen Radius - direkt auf Gegnern stehen!</p>
         </div>
 
         <div class="section">
-            <h2>💎 Legendary Gems</h2>
-            <div class="item"><input type="checkbox" id="lg1"><label for="lg1"><strong>Bane of the Trapped</strong> - Mehr Damage in Melee</label></div>
-            <div class="item"><input type="checkbox" id="lg2"><label for="lg2"><strong>Taeguk</strong> - Damage + Armor beim Channeln</label></div>
-            <div class="item"><input type="checkbox" id="lg3"><label for="lg3"><strong>Bane of the Stricken</strong> - Boss Killer (GR Push)</label></div>
-            <p class="note">Speed Alternative: Bane of the Powerful statt Stricken</p>
-        </div>
-
-        <div class="section">
-            <h2>💠 Kanai's Cube</h2>
-            <div class="cube-slot"><strong>⚔️ Weapon:</strong> Balance - +600% Flurry, garantierte Crits bei ≤3 Gegnern</div>
-            <div class="cube-slot"><strong>🛡️ Armor:</strong> Stone Gauntlets (Push) oder Lefebvre's Soliloquy (Easy)</div>
-            <div class="cube-slot"><strong>💍 Jewelry:</strong> Ring of Royal Grandeur - Set-Reduktion</div>
-        </div>
-
-        <div class="section">
-            <h2>📊 Paragon Points</h2>
-            <div class="paragon-section">
-                <div class="paragon-box">
-                    <h4>Core</h4>
-                    <ol>
-                        <li>Move Speed → 25%</li>
-                        <li>Dexterity</li>
-                        <li>Max Spirit</li>
-                        <li>Vitality</li>
-                    </ol>
-                </div>
-                <div class="paragon-box">
-                    <h4>Offense</h4>
-                    <ol>
-                        <li>CDR</li>
-                        <li>Crit Damage</li>
-                        <li>Crit Chance</li>
-                        <li>Attack Speed</li>
-                    </ol>
-                </div>
-                <div class="paragon-box">
-                    <h4>Defense</h4>
-                    <ol>
-                        <li>All Resistance</li>
-                        <li>Life %</li>
-                        <li>Armor</li>
-                        <li>Life Regen</li>
-                    </ol>
-                </div>
-                <div class="paragon-box">
-                    <h4>Utility</h4>
-                    <ol>
-                        <li>RCR</li>
-                        <li>Area Damage</li>
-                        <li>Life on Hit</li>
-                        <li>Globe Radius</li>
-                    </ol>
-                </div>
-            </div>
-            <p class="note">Ziel: 47% CDR (für Epiphany Uptime) + 45%+ RCR</p>
+            <h2>💡 Tipps</h2>
+            <ul style="margin-left: 15px; font-size: 0.9em; line-height: 1.6;">
+<li>Flurry hat kleinen Explosion Radius - direkt auf Gegnern stehen!</li><li>Cyclone Strike wird automatisch durch Won Khim Lau gecastet</li><li>In Oculus Circles stehen für +85% Damage</li><li>Taeguk Stacks nicht verlieren - nicht zu lange pausieren</li>            </ul>
         </div>
     </div>
 
     <!-- GEAR TAB -->
     <div id="gear" class="content">
         <div class="section">
-            <h2>👕 Ausrüstung Slots</h2>
+            <h2>Gear Slots</h2>
             <div class="gear-slot">
                 <span class="slot">Helm</span>
                 <span class="item-name">Sunwuko's Crown</span>
-                <span class="stats">CHC, TR%</span>
+                <span class="stats">Dexterity, Socket (Topaz für RCR), Crit Chance</span>
             </div>
             <div class="gear-slot">
                 <span class="slot">Shoulders</span>
                 <span class="item-name">Mantle of Channeling</span>
-                <span class="stats">RCR, AD</span>
+                <span class="stats">Dexterity, Resource Cost Reduction, Area Damage</span>
             </div>
             <div class="gear-slot">
                 <span class="slot">Chest</span>
                 <span class="item-name">Sunwuko's Soul</span>
-                <span class="stats">Vit, Elite DR</span>
+                <span class="stats">Dexterity, 3 Sockets, Vitality</span>
             </div>
             <div class="gear-slot">
                 <span class="slot">Gloves</span>
                 <span class="item-name">Sunwuko's Paws</span>
-                <span class="stats">CHC, CHD, RCR</span>
+                <span class="stats">Dexterity (oder Area Damage bei hohem Paragon), Crit Chance, Crit Damage</span>
             </div>
             <div class="gear-slot">
                 <span class="slot">Bracers</span>
                 <span class="item-name">Cesar's Memento</span>
-                <span class="stats">Cold%, CHC, LpH</span>
+                <span class="stats">Cold Damage %, Crit Chance, Dexterity</span>
             </div>
             <div class="gear-slot">
                 <span class="slot">Belt</span>
-                <span class="item-name">Cpt. Crimson's Silk Girdle</span>
-                <span class="stats">Vit, Armor</span>
+                <span class="item-name">Captain Crimson's Silk Girdle</span>
+                <span class="stats">Dexterity, Vitality, Armor</span>
             </div>
             <div class="gear-slot">
                 <span class="slot">Pants</span>
                 <span class="item-name">Sunwuko's Leggings</span>
-                <span class="stats">Vit, Armor</span>
+                <span class="stats">Dexterity, 2 Sockets, Vitality</span>
             </div>
             <div class="gear-slot">
                 <span class="slot">Boots</span>
-                <span class="item-name">Cpt. Crimson's Waders</span>
-                <span class="stats">TR%, Vit</span>
+                <span class="item-name">Captain Crimson's Waders</span>
+                <span class="stats">Dexterity, Tempest Rush %, Vitality</span>
             </div>
             <div class="gear-slot">
                 <span class="slot">Amulet</span>
                 <span class="item-name">Sunwuko's Shines</span>
-                <span class="stats">Cold%, CHC, CHD</span>
+                <span class="stats">Socket (guaranteed), Cold Damage %, Crit Chance</span>
             </div>
             <div class="gear-slot">
                 <span class="slot">Ring 1</span>
                 <span class="item-name">Convention of Elements</span>
-                <span class="stats">CHC, CDR/AD</span>
+                <span class="stats">Socket, Crit Chance, Crit Damage oder Area Damage</span>
             </div>
             <div class="gear-slot">
                 <span class="slot">Ring 2</span>
-                <span class="item-name">Obsidian Ring of Zodiac</span>
-                <span class="stats">CHC, CDR, RCR</span>
+                <span class="item-name">Obsidian Ring of the Zodiac</span>
+                <span class="stats">Socket, Crit Chance, CDR</span>
             </div>
             <div class="gear-slot">
-                <span class="slot">MH</span>
+                <span class="slot">Weapon Mh</span>
                 <span class="item-name">Won Khim Lau</span>
-                <span class="stats">Dmg%, AD</span>
+                <span class="stats">High Weapon Damage, Dexterity, Socket (Ramaladni's Gift)</span>
             </div>
             <div class="gear-slot">
-                <span class="slot">OH</span>
+                <span class="slot">Weapon Oh</span>
                 <span class="item-name">Vengeful Wind</span>
-                <span class="stats">Dmg%, AD</span>
+                <span class="stats">High Weapon Damage, Dexterity, Socket (Ramaladni's Gift)</span>
             </div>
-            <p class="note">Gem im Helm: Flawless Royal Topaz (RCR)</p>
         </div>
+    </div>
 
+    <!-- BOSSES TAB -->
+    <div id="bosses" class="content">
         <div class="section">
-            <h2>✅ Gear Checklist</h2>
-            <div class="item"><input type="checkbox" id="g1" checked><label for="g1">Balance (Daibo für Cube)</label></div>
-            <div class="item"><input type="checkbox" id="g2"><label for="g2">Vengeful Wind (Fist) - +10 SW Stacks</label></div>
-            <div class="item"><input type="checkbox" id="g3"><label for="g3">Won Khim Lau (Fist) - +600% TR + Auto Cyclone</label></div>
-            <div class="item"><input type="checkbox" id="g4"><label for="g4">Cesar's Memento (Bracers) - +800% vs CC'd</label></div>
-            <div class="item"><input type="checkbox" id="g5"><label for="g5">Ring of Royal Grandeur (A1 Bounty)</label></div>
-            <div class="item"><input type="checkbox" id="g6"><label for="g6">Convention of Elements (Ring)</label></div>
-            <div class="item"><input type="checkbox" id="g7"><label for="g7">Obsidian Ring of the Zodiac</label></div>
-            <div class="item"><input type="checkbox" id="g8"><label for="g8">Mantle of Channeling - +25% dmg/DR</label></div>
-            <div class="item"><input type="checkbox" id="g9"><label for="g9">Stone Gauntlets ODER Lefebvre's (Cube)</label></div>
+            <h2>Boss & Keywarden Suche</h2>
+            <input type="text" id="bossSearch" class="search-box" placeholder="Boss suchen... (z.B. Belial, Act 3, Oasis)">
         </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Queen Araneae (Königin Araneae) <span class="act-badge">Act 1</span></h4>
+                <div class="location">Caverns of Araneae</div>
+                <div class="waypoint">WP: Cathedral Level 2</div>
+                <div class="notes">Spider Queen - optionaler Boss</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Skeleton King (Skelettkönig) <span class="act-badge">Act 1</span></h4>
+                <div class="location">Royal Crypts</div>
+                <div class="waypoint">WP: Leoric's Passage</div>
+                <div class="notes">Am Ende der Royal Crypts</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>The Butcher (Der Schlächter) <span class="act-badge">Act 1</span></h4>
+                <div class="location">Halls of Agony Level 3</div>
+                <div class="waypoint">WP: Halls of Agony Level 2</div>
+                <div class="notes">Act 1 Endboss</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Belial (Belial) <span class="act-badge">Act 2</span></h4>
+                <div class="location">Imperial Palace</div>
+                <div class="waypoint">WP: City of Caldeum</div>
+                <div class="notes">Act 2 Endboss - 3 Phasen Kampf</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Maghda <span class="act-badge">Act 2</span></h4>
+                <div class="location">Lair of the Witch</div>
+                <div class="waypoint">WP: Road to Alcarnus</div>
+                
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Zoltun Kulle <span class="act-badge">Act 2</span></h4>
+                <div class="location">Soulstone Chamber</div>
+                <div class="waypoint">WP: Archives of Zoltun Kulle</div>
+                <div class="notes">Nach dem Zusammensetzen des Soulstone</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Azmodan <span class="act-badge">Act 3</span></h4>
+                <div class="location">Heart of Sin</div>
+                <div class="waypoint">WP: Core of Arreat</div>
+                <div class="notes">Act 3 Endboss</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Cydaea (Cydaea) <span class="act-badge">Act 3</span></h4>
+                <div class="location">Heart of the Damned</div>
+                <div class="waypoint">WP: Tower of the Cursed Level 1</div>
+                <div class="notes">Spider Mistress</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Ghom <span class="act-badge">Act 3</span></h4>
+                <div class="location">The Larder</div>
+                <div class="waypoint">WP: Keep Depths Level 3</div>
+                <div class="notes">Durch Keep Depths 3 gehen - Poison Boss</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Siegebreaker Assault Beast (Belagerungsbrecher) <span class="act-badge">Act 3</span></h4>
+                <div class="location">Edge of the Abyss</div>
+                <div class="waypoint">WP: Rakkis Crossing</div>
+                <div class="notes">Am Ende von Rakkis Crossing</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Diablo <span class="act-badge">Act 4</span></h4>
+                <div class="location">Pinnacle of Heaven</div>
+                <div class="waypoint">WP: Pinnacle of Heaven</div>
+                <div class="notes">Act 4 Endboss - mehrere Phasen</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Izual <span class="act-badge">Act 4</span></h4>
+                <div class="location">Crystal Colonnade</div>
+                <div class="waypoint">WP: Crystal Colonnade</div>
+                <div class="notes">Fallen Angel</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Rakanoth <span class="act-badge">Act 4</span></h4>
+                <div class="location">Library of Fate</div>
+                <div class="waypoint">WP: Gardens of Hope 1st Tier</div>
+                <div class="notes">In der Library of Fate - teleportiert viel</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Adria <span class="act-badge">Act 5</span></h4>
+                <div class="location">The Great Hall</div>
+                <div class="waypoint">WP: Ruins of Corvus</div>
+                <div class="notes">Durch Ruins of Corvus - roter Demon Head Marker</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Malthael (Malthael) <span class="act-badge">Act 5</span></h4>
+                <div class="location">Heart of the Fortress</div>
+                <div class="waypoint">WP: Heart of the Fortress</div>
+                <div class="notes">Act 5 Endboss - Angel of Death</div>
+            </div>
+            <div class="boss-card" data-type="boss">
+                <h4>Urzael <span class="act-badge">Act 5</span></h4>
+                <div class="location">Tower of Korelan</div>
+                <div class="waypoint">WP: Tower of Korelan</div>
+                <div class="notes">Feuer-Boss mit Flammenwerfer</div>
+            </div>
+            <div class="section" style="margin-top: 15px; padding: 0;">
+                <h2 style="padding: 12px 12px 8px 12px;">Keywardens</h2>
+            </div>
+            <div class="boss-card" data-type="keywarden">
+                <h4>Odeg the Keywarden <span class="act-badge">Act 1</span></h4>
+                <div class="location">Fields of Misery</div>
+                <div class="waypoint">Drops: Key of Bones</div>
+            </div>
+            <div class="boss-card" data-type="keywarden">
+                <h4>Sokahr the Keywarden <span class="act-badge">Act 2</span></h4>
+                <div class="location">Dahlgur Oasis</div>
+                <div class="waypoint">Drops: Key of Gluttony</div>
+            </div>
+            <div class="boss-card" data-type="keywarden">
+                <h4>Xah'Rith the Keywarden <span class="act-badge">Act 3</span></h4>
+                <div class="location">Stonefort</div>
+                <div class="waypoint">Drops: Key of War</div>
+            </div>
+            <div class="boss-card" data-type="keywarden">
+                <h4>Nekarat the Keywarden <span class="act-badge">Act 4</span></h4>
+                <div class="location">Gardens of Hope 2nd Tier</div>
+                <div class="waypoint">Drops: Key of Evil</div>
+            </div>
 
-        <div class="section">
-            <h2>🔨 Captain Crimson (Crafted)</h2>
-            <div class="item"><input type="checkbox" id="g10"><label for="g10">Plan: Captain Crimson's Trimmings</label></div>
-            <div class="item"><input type="checkbox" id="g11"><label for="g11">Craft Belt + Boots (braucht RoRG!)</label></div>
-            <p class="note">2pc: +20% CDR/RCR | 3pc: Damage + DR von CDR/RCR</p>
-        </div>
-
-        <div class="section">
-            <h2>🧙 Follower (Enchantress)</h2>
-            <div class="item"><input type="checkbox" id="f1"><label for="f1">Hand of the Prophet (alle 4 Skills)</label></div>
-            <div class="item"><input type="checkbox" id="f2"><label for="f2">Ring of Royal Grandeur (auf Follower!)</label></div>
-            <div class="item"><input type="checkbox" id="f3"><label for="f3">Oculus Ring (+85% Damage Circle)</label></div>
-            <div class="item"><input type="checkbox" id="f4"><label for="f4">Nemesis Bracers (Elites bei Shrines)</label></div>
-            <div class="item"><input type="checkbox" id="f5"><label for="f5">Gloves of Worship (10min Shrine buffs)</label></div>
-            <div class="item"><input type="checkbox" id="f6"><label for="f6">Cain's 2pc (+25% GR Keys)</label></div>
-            <div class="item"><input type="checkbox" id="f7"><label for="f7">Sage's 2pc (+1 Death's Breath)</label></div>
-        </div>
     </div>
 
     <!-- ALTAR TAB -->
     <div id="altar" class="content">
         <div class="section">
-            <h2>⛩️ Altar of Rites</h2>
-            <p class="note">📍 Location: Act I, New Tristram - links vom Waypoint</p>
+            <h2>Altar of Rites</h2>
+            <p class="note">Location: Act I, New Tristram - links vom Waypoint</p>
             <div class="info-box">
-                26 Seals + 3 Potion Powers | Alle Powers permanent für Season<br>
-                Powers wirken auf alle Season-Charaktere!
+                26 Seals + 3 Potion Powers | Alle Powers permanent für Season
             </div>
         </div>
 
         <div class="section">
-            <h2>📋 Optimale Unlock-Reihenfolge</h2>
+            <h2>Unlock-Reihenfolge</h2>
             <div class="altar-grid">
-                <div class="altar-item"><span>1.</span> Gateway - 2x Kill Streak</div>
-                <div class="altar-item"><span>2.</span> Mother - Pools permanent</div>
-                <div class="altar-item"><span>3.</span> Anointed - No Lvl Req</div>
-                <div class="altar-item"><span>4.</span> Force - +100 Avg Dmg</div>
-                <div class="altar-item"><span>5.</span> Resistance - -5% Missile</div>
-                <div class="altar-item"><span>6.</span> Haste - +10% Move (uncap)</div>
-                <div class="altar-item"><span>7.</span> Destruction - +5% Elite Dmg</div>
-                <div class="altar-item"><span>8.</span> Bulwark - Globe Shield</div>
-                <div class="altar-item"><span>9.</span> Fortitude - -5% Melee</div>
-                <div class="altar-item"><span>10.</span> Inferno - +5% Ele Dmg</div>
-                <div class="altar-item"><span>11.</span> Decimation - +5% Elite</div>
-                <div class="altar-item"><span>12.</span> Might - +5% Damage</div>
-                <div class="altar-item"><span>13.</span> Reaping - 2x Death's Breath</div>
-                <div class="altar-item"><span>14.</span> Vigor - Crit = Resource</div>
-                <div class="altar-item"><span>15.</span> Bounty - 2x Cache</div>
-                <div class="altar-item"><span>16.</span> Efficiency - Auto Progress</div>
-                <div class="altar-item"><span>17.</span> Protection - -5% Elite</div>
-                <div class="altar-item"><span>18.</span> Power - +5% Damage</div>
-                <div class="altar-item"><span>19.</span> Freedom - CC Immunity</div>
-                <div class="altar-item"><span>20.</span> Passability - Walk thru</div>
-                <div class="altar-item"><span>21.</span> Reaping Pets - DB Pickup</div>
-                <div class="altar-item"><span>22.</span> Progress - +1 Orb</div>
-                <div class="altar-item"><span>23.</span> Execution - +5% Boss</div>
-                <div class="altar-item"><span>24.</span> Salvage Pets - Auto salvage</div>
-                <div class="altar-item"><span>25.</span> Evasion - +5% Dodge</div>
-                <div class="altar-item"><span>26.</span> Gambling - 2x Kadala Leg</div>
+                <div class="altar-item"><span>1.</span> Gateway</div>
+                <div class="altar-item"><span>2.</span> Mother</div>
+                <div class="altar-item"><span>3.</span> Anointed</div>
+                <div class="altar-item"><span>4.</span> Force</div>
+                <div class="altar-item"><span>5.</span> Resistance</div>
+                <div class="altar-item"><span>6.</span> Haste</div>
+                <div class="altar-item"><span>7.</span> Destruction</div>
+                <div class="altar-item"><span>8.</span> Bulwark</div>
+                <div class="altar-item"><span>9.</span> Fortitude</div>
+                <div class="altar-item"><span>10.</span> Inferno</div>
+                <div class="altar-item"><span>11.</span> Decimation</div>
+                <div class="altar-item"><span>12.</span> Might</div>
+                <div class="altar-item"><span>13.</span> Reaping</div>
+                <div class="altar-item"><span>14.</span> Vigor</div>
+                <div class="altar-item"><span>15.</span> Bounty</div>
+                <div class="altar-item"><span>16.</span> Efficiency</div>
+                <div class="altar-item"><span>17.</span> Protection</div>
+                <div class="altar-item"><span>18.</span> Power</div>
+                <div class="altar-item"><span>19.</span> Freedom</div>
+                <div class="altar-item"><span>20.</span> Passability</div>
+                <div class="altar-item"><span>21.</span> Reaping Pets</div>
+                <div class="altar-item"><span>22.</span> Progress</div>
+                <div class="altar-item"><span>23.</span> Execution</div>
+                <div class="altar-item"><span>24.</span> Salvage Pets</div>
+                <div class="altar-item"><span>25.</span> Evasion</div>
+                <div class="altar-item"><span>26.</span> Gambling</div>
             </div>
         </div>
 
         <div class="section">
-            <h2>🧪 Potion Powers (Primordial Ashes)</h2>
+            <h2>Potion Powers</h2>
             <div class="info-box">
                 <strong>AA (55 Ashes):</strong> Runic circles - Dmg/CDR/RCR<br>
                 <strong>AB (110 Ashes):</strong> Enemies deal 25% less damage<br>
                 <strong>AC (165 Ashes):</strong> Random shrine effect<br>
-                <strong>AD (Auto):</strong> Double Primal drops (nach 26 Seals)
+                <strong>AD (Auto):</strong> Double Primal drops
             </div>
-            <p class="note">Primordial Ashes = Primal (rote) Items salvagen</p>
         </div>
 
         <div class="section">
-            <h2>💰 Teure Unlock-Kosten</h2>
-            <div class="item"><input type="checkbox" id="a1"><label for="a1">Tier 4: Any Class Set Helm</label></div>
-            <div class="item"><input type="checkbox" id="a2"><label for="a2">Tier 5: 20 Forgotten Souls + Bounty Mats</label></div>
-            <div class="item"><input type="checkbox" id="a3"><label for="a3">Tier 6: Uber Boss Materials (Hellfire)</label></div>
-            <div class="item"><input type="checkbox" id="a4"><label for="a4">Tier 10: Flawless Royal Ruby + RoRG</label></div>
-            <div class="item"><input type="checkbox" id="a5"><label for="a5">Tier 15: Challenge Rift Cache ⚠️</label></div>
-            <div class="item"><input type="checkbox" id="a6"><label for="a6">Tier 18: Ancient Hellfire Amulet</label></div>
-            <div class="item"><input type="checkbox" id="a7"><label for="a7">Tier 19: 4 Set Dungeon Pages</label></div>
-            <div class="item"><input type="checkbox" id="a8"><label for="a8">Tier 25: Staff of Herding 😱</label></div>
+            <h2>Teure Unlocks</h2>
+            <div class="item"><input type="checkbox" id="altar_tier_4"><label for="altar_tier_4">Tier 4: Any class Set Helm</label></div>
+            <div class="item"><input type="checkbox" id="altar_tier_5"><label for="altar_tier_5">Tier 5: 20 Forgotten Souls + all Bounty mats</label></div>
+            <div class="item"><input type="checkbox" id="altar_tier_6"><label for="altar_tier_6">Tier 6: Uber Boss Materials</label></div>
+            <div class="item"><input type="checkbox" id="altar_tier_10"><label for="altar_tier_10">Tier 10: Flawless Royal Ruby + Ring of Royal Grandeur</label></div>
+            <div class="item"><input type="checkbox" id="altar_tier_15"><label for="altar_tier_15">Tier 15: Challenge Rift Cache</label></div>
+            <div class="item"><input type="checkbox" id="altar_tier_18"><label for="altar_tier_18">Tier 18: Ancient Hellfire Amulet</label></div>
+            <div class="item"><input type="checkbox" id="altar_tier_19"><label for="altar_tier_19">Tier 19: 4 Set Dungeon achievement pages</label></div>
+            <div class="item"><input type="checkbox" id="altar_tier_25"><label for="altar_tier_25">Tier 25: Staff of Herding</label></div>
         </div>
     </div>
 
     <!-- FARM TAB -->
     <div id="farm" class="content">
         <div class="section">
-            <h2>🎰 Kadala Gambling (25 Shards)</h2>
-            <p class="note">Priorität von oben nach unten</p>
-            <div class="item"><input type="checkbox" id="k1"><label for="k1">1. Bracers → Cesar's Memento</label></div>
-            <div class="item"><input type="checkbox" id="k2"><label for="k2">2. Shoulders → Mantle of Channeling</label></div>
-            <div class="item"><input type="checkbox" id="k3"><label for="k3">3. Rings → CoE, Zodiac</label></div>
-        </div>
-
-        <div class="section">
-            <h2>🎲 Cube Upgrade (Rare → Legendary)</h2>
-            <p class="note">25 Death's Breath + 50 Mats pro Versuch</p>
-            <div class="item"><input type="checkbox" id="c1"><label for="c1">Fist Weapons → Vengeful Wind / WKL</label></div>
-            <div class="item"><input type="checkbox" id="c2"><label for="c2">Daibos → Balance</label></div>
-        </div>
-
-        <div class="section">
-            <h2>📦 Bounties</h2>
-            <div class="item"><input type="checkbox" id="b1"><label for="b1">Act 1 → Ring of Royal Grandeur</label></div>
-            <div class="item"><input type="checkbox" id="b2"><label for="b2">Act 2 → Gloves of Worship</label></div>
-            <div class="item"><input type="checkbox" id="b3"><label for="b3">Act 3 → Avarice Band</label></div>
-        </div>
-
-        <div class="section">
-            <h2>👹 Boss Locations (Season Journey)</h2>
+            <h2>Kadala Gambling</h2>
             <div class="info-box">
-                <strong>Skeleton King</strong> - A1: Royal Crypts (via Leoric's Passage)<br>
-                <strong>Rakanoth</strong> - A4: Library of Fate (Gardens of Hope 1)<br>
-                <strong>Adria</strong> - A5: Ruins of Corvus → The Great Hall 🔴<br>
-                <strong>Siegebreaker</strong> - A3: Edge of the Abyss (Ende Rakkis Crossing)<br>
-                <strong>Belial</strong> - A2: Imperial Palace (City of Caldeum)<br>
-                <strong>Ghom</strong> - A3: The Larder (via Keep Depths 3)
+                <strong>Billig (25):</strong> Helm, Gloves, Boots, Chest, Belt, Shoulders, Pants, Bracers<br>
+                <strong>Mittel (50):</strong> Rings<br>
+                <strong>Teuer (75+):</strong> Weapons, Amulet (100)
             </div>
-            <p class="note">🔴 = Demon Head Marker auf Waypoint Map</p>
+            <p class="note">Bracers/Belt haben kleinen Loot-Pool = bessere Chancen</p>
         </div>
 
         <div class="section">
-            <h2>🗝️ Keywarden Locations</h2>
+            <h2>Bounty Cache Items</h2>
+            <div class="item"><input type="checkbox" id="bounty_act_1"><label for="bounty_act_1">Act 1 → Ring of Royal Grandeur</label></div>
+            <div class="item"><input type="checkbox" id="bounty_act_2"><label for="bounty_act_2">Act 2 → Gloves of Worship</label></div>
+            <div class="item"><input type="checkbox" id="bounty_act_3"><label for="bounty_act_3">Act 3 → Avarice Band</label></div>
+        </div>
+
+        <div class="section">
+            <h2>Cube Upgrade (Rare → Legendary)</h2>
             <div class="info-box">
-                <strong>Act 1:</strong> Odeg - Fields of Misery<br>
-                <strong>Act 2:</strong> Sokahr - Dahlgur Oasis<br>
-                <strong>Act 3:</strong> Xah'Rith - Stonefort<br>
-                <strong>Act 4:</strong> Nekarat - Gardens of Hope 2nd Tier
+                25 Death's Breath + 50 jeder Mat-Art<br>
+                <strong>Tipp:</strong> Weapons hier upgraden, nicht bei Kadala!
             </div>
         </div>
     </div>
 
-    <button class="reset" onclick="resetAll()">🗑️ Alles zurücksetzen</button>
+    <!-- GLOSSARY TAB -->
+    <div id="glossary" class="content">
+        <div class="section">
+            <h2>Glossar / Abkürzungen</h2>
+            <input type="text" id="glossarySearch" class="search-box" placeholder="Suchen... (z.B. CHC, CDR, GR, Primal)">
+            <p class="note">94 Einträge</p>
+        </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">AD</h4>
+                <div style="color:#f4a460">Area Damage / Flächenschaden</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">20% Chance auf Splash-Damage an nahe Gegner</div>
+                <div class="notes" style="color:#888;font-size:0.8em;margin-top:3px">Skaliert mit Paragon (50 Punkte = 50%)</div>
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">AoE</h4>
+                <div style="color:#f4a460">Area of Effect / Flächeneffekt</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Skill trifft mehrere Gegner</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">AoTR</h4>
+                <div style="color:#f4a460">Archive of Tal Rasha / Archiv von Tal Rasha</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Cube Recipe: Extract Power</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Cube & Crafting</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">AR</h4>
+                <div style="color:#f4a460">All Resistance / Alle Widerstände</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Widerstand gegen alle Elemente</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">AS</h4>
+                <div style="color:#f4a460">Attack Speed / Angriffsgeschwindigkeit</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Erhöht Angriffsfrequenz</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Barb</h4>
+                <div style="color:#f4a460">Barbarian / Barbar</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Klassen</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">BiS</h4>
+                <div style="color:#f4a460">Best in Slot / Bestes Item für diesen Slot</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Optimales Item für einen Build</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">BoA</h4>
+                <div style="color:#f4a460">Bind on Account / Accountgebunden</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Item kann nicht gehandelt werden</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Game Content</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">BoP</h4>
+                <div style="color:#f4a460">Bane of the Powerful / Fluch der Mächtigen</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Legendary Gem (+20% nach Elite Kill)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">BoS</h4>
+                <div style="color:#f4a460">Bane of the Stricken / Fluch der Geplagten</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Legendary Gem (stacking Boss damage)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">BoT</h4>
+                <div style="color:#f4a460">Bane of the Trapped / Fluch der Gefangenen</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Legendary Gem (+60% vs Slowed)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Breakpoint</h4>
+                <div style="color:#f4a460">Breakpoint / Schwellenwert</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Punkt wo mehr Stat keinen Effekt hat</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">BS</h4>
+                <div style="color:#f4a460">Blood Shards / Blutscherben</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Währung für Kadala</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Carry</h4>
+                <div style="color:#f4a460">Carry / Boosting / Ziehen</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Schwacher Spieler wird mitgezogen</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">CC</h4>
+                <div style="color:#f4a460">Crowd Control / Massenkontrolle</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Stun, Freeze, Blind, etc.</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">CDR</h4>
+                <div style="color:#f4a460">Cooldown Reduction / Abklingzeitverringerung</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Reduziert Cooldowns aller Skills</div>
+                <div class="notes" style="color:#888;font-size:0.8em;margin-top:3px">Multiplikativ, nicht additiv</div>
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">CHC</h4>
+                <div style="color:#f4a460">Critical Hit Chance / Kritische Trefferchance</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Chance auf kritischen Treffer</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">CHD</h4>
+                <div style="color:#f4a460">Critical Hit Damage / Kritischer Trefferschaden</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Bonus-Schaden bei kritischem Treffer</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">CoE</h4>
+                <div style="color:#f4a460">Convention of Elements / Konvention der Elemente</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Ring mit rotierendem +200% Element</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">DB</h4>
+                <div style="color:#f4a460">Death's Breath / Hauch des Todes</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Crafting Material (Elites)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Dex</h4>
+                <div style="color:#f4a460">Dexterity / Geschicklichkeit</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Hauptstat für Monk, Demon Hunter</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">DH</h4>
+                <div style="color:#f4a460">Demon Hunter / Dämonenjäger</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Klassen</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">DoT</h4>
+                <div style="color:#f4a460">Damage over Time / Schaden über Zeit</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Tick-basierter Schaden</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">DPS</h4>
+                <div style="color:#f4a460">Damage Per Second / Schaden pro Sekunde</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Schadensoutput</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">DR</h4>
+                <div style="color:#f4a460">Damage Reduction / Schadensverringerung</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Prozentuale Schadensreduktion</div>
+                <div class="notes" style="color:#888;font-size:0.8em;margin-top:3px">Multiplikativ mit anderen DR-Quellen</div>
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Elite</h4>
+                <div style="color:#f4a460">Elite Pack / Elite-Gruppe</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Blaue/Gelbe Champion-Gruppen</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Emanate</h4>
+                <div style="color:#f4a460">Emanate / Ausstrahlen</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Follower-Item wirkt auf Spieler</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">EP</h4>
+                <div style="color:#f4a460">Exploding Palm / Explodierende Handfläche</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Monk DoT Skill</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">F+R</h4>
+                <div style="color:#f4a460">Focus + Restraint / Fokus + Fessel</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Ring Set (+100% Damage)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Fishing</h4>
+                <div style="color:#f4a460">Fishing / Fischen</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">GRs neustarten für bessere Map/Mobs</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">FS</h4>
+                <div style="color:#f4a460">Forgotten Soul / Vergessene Seele</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Crafting Material (Legendary Salvage)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">GG</h4>
+                <div style="color:#f4a460">Good Game / Godly Gear / Gutes Spiel / Perfektes Item</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">GL</h4>
+                <div style="color:#f4a460">Good Luck / Viel Glück</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">GoE</h4>
+                <div style="color:#f4a460">Gem of Ease / Edelstein der Mühelosigkeit</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Reduziert Level Requirement auf 1</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">GR</h4>
+                <div style="color:#f4a460">Greater Rift / Großer Rift</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Endgame Rift mit Timer und Scaling</div>
+                <div class="notes" style="color:#888;font-size:0.8em;margin-top:3px">Keine Drops bis Boss, Gem Upgrades</div>
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Game Content</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Group</h4>
+                <div style="color:#f4a460">Group Play / Gruppe</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">2-4 Spieler</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">HC</h4>
+                <div style="color:#f4a460">Hardcore</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Permadeath Modus</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Game Content</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">HoC</h4>
+                <div style="color:#f4a460">Hope of Cain / Hoffnung von Kain</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Cube Recipe: Upgrade Rare → Legendary</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Cube & Crafting</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">HoT</h4>
+                <div style="color:#f4a460">Heal over Time / Heilung über Zeit</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Tick-basierte Heilung</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">HPS</h4>
+                <div style="color:#f4a460">Healing Per Second / Heilung pro Sekunde</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Heilungsrate</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Int</h4>
+                <div style="color:#f4a460">Intelligence / Intelligenz</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Hauptstat für Wizard, Witch Doctor, Necromancer</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">KC</h4>
+                <div style="color:#f4a460">Kanai's Cube / Kanais Würfel</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Crafting Station in Town</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Cube & Crafting</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Leech</h4>
+                <div style="color:#f4a460">Leech</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Spieler der nur Loot sammelt</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">LFG</h4>
+                <div style="color:#f4a460">Looking for Group / Suche Gruppe</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">LFM</h4>
+                <div style="color:#f4a460">Looking for More / Suche Mitspieler</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">LoC</h4>
+                <div style="color:#f4a460">Law of Kulle / Gesetz von Kulle</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Cube Recipe: Reforge Legendary</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Cube & Crafting</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">LoH</h4>
+                <div style="color:#f4a460">Life on Hit / Leben bei Treffer</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Heilt bei jedem Treffer</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">LoN</h4>
+                <div style="color:#f4a460">Legacy of Nightmares / Erbe der Albträume</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Ring Set (Ancient Bonus)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">LpK</h4>
+                <div style="color:#f4a460">Life per Kill / Leben pro Kill</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Heilt bei jedem Kill</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">LpS</h4>
+                <div style="color:#f4a460">Life per Second / Leben pro Sekunde</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Passive Regeneration</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Meta</h4>
+                <div style="color:#f4a460">Most Effective Tactics Available / Meta</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Aktuell beste Strategie/Build</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">MH</h4>
+                <div style="color:#f4a460">Main Hand / Haupthand</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Primäre Waffe</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Monk</h4>
+                <div style="color:#f4a460">Monk / Mönch</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Klassen</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">MS</h4>
+                <div style="color:#f4a460">Movement Speed / Bewegungsgeschwindigkeit</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Laufgeschwindigkeit</div>
+                <div class="notes" style="color:#888;font-size:0.8em;margin-top:3px">Skills können über Cap hinaus erhöhen</div>
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Necro</h4>
+                <div style="color:#f4a460">Necromancer / Totenbeschwörer</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Klassen</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">NR</h4>
+                <div style="color:#f4a460">Nephalem Rift</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Standard Rift mit Loot</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Game Content</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Oculus</h4>
+                <div style="color:#f4a460">Oculus Ring Circle / Oculus-Kreis</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">+85% Damage Zone vom Follower</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">OH</h4>
+                <div style="color:#f4a460">Off Hand / Nebenhand</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Sekundäre Waffe/Schild/Source</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">ORotZ</h4>
+                <div style="color:#f4a460">Obsidian Ring of the Zodiac / Obsidianring des Tierkreises</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">CDR bei Resource Spending</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">PA</h4>
+                <div style="color:#f4a460">Primal Ancient / Uraltes Uritem</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Perfekt gerolltes Ancient Item</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Proc</h4>
+                <div style="color:#f4a460">Programmed Random Occurrence / Zufälliger Effekt</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Chance-basierter Trigger</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Prog</h4>
+                <div style="color:#f4a460">Progress / Progression / Fortschritt</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">GR Fortschrittsbalken</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Push</h4>
+                <div style="color:#f4a460">Push / Pushing / Pushen</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Höchstmögliche GR-Stufe spielen</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Pylon</h4>
+                <div style="color:#f4a460">Pylon</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">GR Power-Up (Speed, Power, etc.)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Quadfecta</h4>
+                <div style="color:#f4a460">Quadfecta</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">4 perfekte Offensive Stats</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Rat</h4>
+                <div style="color:#f4a460">Rathma Runs</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Schnelle GR Gruppe (4x Necro)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">RCR</h4>
+                <div style="color:#f4a460">Resource Cost Reduction / Ressourcenkostenverringerung</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Reduziert Kosten für Skills</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">RG</h4>
+                <div style="color:#f4a460">Rift Guardian / Rift-Wächter</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Endboss eines Rifts</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Game Content</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">RNG</h4>
+                <div style="color:#f4a460">Random Number Generator / Zufallsgenerator</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Glück/Pech bei Drops</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Game Content</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">RoRG</h4>
+                <div style="color:#f4a460">Ring of Royal Grandeur / Ring der königlichen Pracht</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Set-Bonus -1 Piece</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Sader</h4>
+                <div style="color:#f4a460">Crusader / Kreuzritter</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Klassen</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">SC</h4>
+                <div style="color:#f4a460">Softcore / Normal</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Standard Modus (kein Permadeath)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Game Content</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Snapshot</h4>
+                <div style="color:#f4a460">Snapshot</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Buff-Werte werden beim Cast fixiert</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Solo</h4>
+                <div style="color:#f4a460">Solo Play / Solo</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Alleine spielen</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Speed</h4>
+                <div style="color:#f4a460">Speed Run / Speedfarm / Speedfarm</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Schnelles Farmen auf niedriger Stufe</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Str</h4>
+                <div style="color:#f4a460">Strength / Stärke</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Hauptstat für Barbarian, Crusader</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">SW</h4>
+                <div style="color:#f4a460">Sweeping Wind / Wirbelwind</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Monk Buff Skill</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">SWK</h4>
+                <div style="color:#f4a460">Sunwuko / Monkey King's Garb / Sunwuko Set</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Monk Set (Sweeping Wind)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">T1-T16</h4>
+                <div style="color:#f4a460">Torment I - XVI / Qual I - XVI</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Schwierigkeitsgrade (T1=GR20, T16=GR90)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Game Content</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Tier</h4>
+                <div style="color:#f4a460">Tier List / Rangliste</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Ranking von Builds (S/A/B/C Tier)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">TR</h4>
+                <div style="color:#f4a460">Tempest Rush / Sturmansturm</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Monk Channeling Skill</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Trash</h4>
+                <div style="color:#f4a460">Trash Mobs / Trash</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Normale Gegner (keine Elites)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Trifecta</h4>
+                <div style="color:#f4a460">Trifecta</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">3 perfekte Offensive Stats</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Gameplay</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Vit</h4>
+                <div style="color:#f4a460">Vitality / Vitalität</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Erhöht maximales Leben</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Stats & Attribute</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">WD</h4>
+                <div style="color:#f4a460">Witch Doctor / Hexendoktor</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Klassen</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">Wiz</h4>
+                <div style="color:#f4a460">Wizard / Zauberer</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Klassen</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">WKL</h4>
+                <div style="color:#f4a460">Won Khim Lau</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Monk Fist Weapon (+600% TR)</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Items & Gear</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">WoC</h4>
+                <div style="color:#f4a460">Work of Cathan / Werk von Cathan</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Cube Recipe: Remove Level Requirement</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Cube & Crafting</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">WTB</h4>
+                <div style="color:#f4a460">Want to Buy / Möchte kaufen</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">WTS</h4>
+                <div style="color:#f4a460">Want to Sell / Möchte verkaufen</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px"></div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">zBarb</h4>
+                <div style="color:#f4a460">Support Barbarian / Support Barbar</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">IP Barb für Gruppen</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">zDPS</h4>
+                <div style="color:#f4a460">Zero DPS / Support / Support Build</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Build ohne Schaden, nur Buffs</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">zMonk</h4>
+                <div style="color:#f4a460">Support Monk / Support Mönch</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Inner Sanctuary Monk</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+            <div class="boss-card glossary-term">
+                <h4 style="color:#e94560">zNec</h4>
+                <div style="color:#f4a460">Support Necromancer / Support Necro</div>
+                <div style="color:#ccc;font-size:0.85em;margin-top:3px">Meist Curse-basiert</div>
+                
+                <div style="color:#666;font-size:0.7em;margin-top:5px">Community & Meta</div>
+            </div>
+
+        <script>
+            const glossarySearch = document.getElementById('glossarySearch');
+            if (glossarySearch) {
+                glossarySearch.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase();
+                    document.querySelectorAll('.glossary-term').forEach(card => {
+                        const text = card.textContent.toLowerCase();
+                        card.classList.toggle('hidden', !text.includes(query));
+                    });
+                });
+            }
+        </script>
+    </div>
+
+    <button class="reset" onclick="resetAll()">Alles zurücksetzen</button>
 
     <script>
         // Tab switching
@@ -470,7 +1307,6 @@
             const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
             const total = checkboxes.length;
             const percent = Math.round((checked / total) * 100);
-            
             document.getElementById('progressBar').style.width = percent + '%';
             document.getElementById('progressText').textContent = `${checked} / ${total} (${percent}%)`;
         }
@@ -480,11 +1316,11 @@
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
                 state[cb.id] = cb.checked;
             });
-            localStorage.setItem('d3s37monk', JSON.stringify(state));
+            localStorage.setItem('d3s37', JSON.stringify(state));
         }
 
         function loadState() {
-            const state = JSON.parse(localStorage.getItem('d3s37monk') || '{}');
+            const state = JSON.parse(localStorage.getItem('d3s37') || '{}');
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
                 if (state[cb.id] !== undefined) {
                     cb.checked = state[cb.id];
@@ -510,15 +1346,21 @@
                     cb.checked = false;
                     cb.closest('.item')?.classList.remove('checked');
                 });
-                // Re-check Balance as user has it
-                const balance = document.getElementById('g1');
-                if (balance) {
-                    balance.checked = true;
-                    balance.closest('.item')?.classList.add('checked');
-                }
                 saveState();
                 updateProgress();
             }
+        }
+
+        // Boss search
+        const searchBox = document.getElementById('bossSearch');
+        if (searchBox) {
+            searchBox.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                document.querySelectorAll('.boss-card').forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    card.classList.toggle('hidden', !text.includes(query));
+                });
+            });
         }
 
         loadState();

@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+d3_season_guide.egg-info/PKG-INFO
+d3_season_guide.egg-info/SOURCES.txt
+d3_season_guide.egg-info/dependency_links.txt
+d3_season_guide.egg-info/entry_points.txt
+d3_season_guide.egg-info/requires.txt
+d3_season_guide.egg-info/top_level.txt
