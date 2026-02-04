@@ -835,6 +835,36 @@ crafting_plans:
     notes: "Für Follower (Emanate)"
 
 # =============================================================================
+# KANAI'S CUBE SPECIAL ITEMS
+# =============================================================================
+cube_specials:
+  puzzle_ring:
+    name: "Puzzle Ring"
+    effect: "Öffnet Portal zum Vault (Greed's Realm)"
+    loot: "Tonnen Gold, Gems, Boon of the Hoarder Gem (von Greed)"
+    notes: "Portal schließt 60s nach Greed's Chest"
+
+  ancient_puzzle_ring:
+    name: "Ancient Puzzle Ring"
+    effect: "Öffnet Portal zum ANCIENT Vault"
+    loot: "Viel mehr Gold, Gems, Goblins als normal"
+    notes: "Dunkle Beleuchtung, massiv mehr Loot"
+
+  bovine_bardiche:
+    name: "Bovine Bardiche"
+    effect: "Öffnet Portal zu 'Not The Cow Level'"
+    loot: "Viele Resplendent Chests, alle Shrines, 2 Pools"
+    notes: "Nur 1x pro Game möglich!"
+    item_type: "Polearm"
+
+  petrified_scream:
+    name: "Petrified Scream"
+    effect: "Öffnet Echoing Nightmare"
+    loot: "Whisper of Atonement Gem (für Augments)"
+    notes: "Wellen-Event, je länger desto höher der Gem Rank"
+    source: "Dropt in GRs von Rift Guardian"
+
+# =============================================================================
 # KADALA GAMBLING COSTS
 # =============================================================================
 kadala:

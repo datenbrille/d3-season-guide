@@ -388,7 +388,11 @@ def _generate_build_html(build: dict) -> str:
     paragon_html = ''
     for cat in ['core', 'offense', 'defense', 'utility']:
         cat_data = paragon.get(cat, {})
-        items = ''.join([f'<li>{cat_data.get(str(i), "?")}</li>' for i in range(1, 5)])
+        # Try both int and string keys (YAML parses as int)
+        items = ''
+        for i in range(1, 5):
+            val = cat_data.get(i) or cat_data.get(str(i)) or '?'
+            items += f'<li>{val}</li>'
         paragon_html += f'''                <div class="paragon-box">
                     <h4>{cat.title()}</h4>
                     <ol>{items}</ol>
@@ -467,7 +471,385 @@ def _generate_gear_html(build: dict) -> str:
 
     return f'''        <div class="section">
             <h2>Gear Slots</h2>
-{slots_html}        </div>'''
+{slots_html}        </div>
+
+        <div class="section">
+            <h2>🔧 Gear verbessern (Paragon 300+)</h2>
+            <p class="note">Priorität: 1. Richtige Items → 2. Richtige Stats → 3. Ancient → 4. Augment</p>
+        </div>
+
+        <div class="section">
+            <h2>1. Enchanting (Mystic)</h2>
+            <div class="info-box">
+                <strong>Was ist das?</strong><br>
+                Bei der Mystic kannst du EINEN Stat auf einem Item neu würfeln.<br>
+                Der alte Stat wird durch einen zufälligen neuen ersetzt.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Enchanting Schritt-für-Schritt</h2>
+            <div class="info-box">
+                <strong>Schritt 1:</strong> Zur Mystic gehen (in jeder Stadt)<br><br>
+                <strong>Schritt 2:</strong> "Enchant" wählen<br><br>
+                <strong>Schritt 3:</strong> Item reinlegen<br><br>
+                <strong>Schritt 4:</strong> Stat zum Reroll auswählen<br>
+                → ⚠️ Dieser Stat ist PERMANENT markiert!<br>
+                → Du kannst später NUR diesen Stat rerolled<br><br>
+                <strong>Schritt 5:</strong> Aus 2 Optionen wählen<br>
+                → Oder "Keep Original" behalten<br><br>
+                <strong>Schritt 6:</strong> Wiederholen bis perfekter Roll
+            </div>
+            <p class="note">⚠️ WICHTIG: Einmal gewählt, kannst du nur noch DIESEN Stat ändern!</p>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Was sollte ich rerolled?</h2>
+            <div class="info-box">
+                <strong>Jewelry (Ring/Amulet) - Socket fehlt:</strong><br>
+                → Immer zuerst Socket rerolled!<br>
+                → Ohne Socket kein Legendary Gem!<br><br>
+                <strong>Waffen - Socket fehlt:</strong><br>
+                → NICHT rerolled! Ramaladni's Gift nutzen!<br>
+                → Gift gibt gratis Socket<br><br>
+                <strong>Fehlender Offensive Stat:</strong><br>
+                → CHC, CHD, CDR, Elemental% rerolled<br><br>
+                <strong>Falscher Mainstat:</strong><br>
+                → Int auf Monk Item → zu Dex rerolled<br><br>
+                <strong>Unnützer Stat:</strong><br>
+                → Life Regen, Thorns, Gold Find → weg damit
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 Enchanting pro Slot (Sunwuko Monk)</h2>
+        </div>
+
+        <div class="section">
+            <h2>⚔️ Waffen (Won Khim Lau / Vengeful Wind)</h2>
+            <div class="info-box">
+                <strong>Perfekte Stats:</strong> High Damage, Dex, Socket, +Damage%, Area Damage<br><br>
+                <strong>Beispiel - WKL hat:</strong> 2800 DPS, Dex, Vit, Life per Hit<br>
+                <strong>Problem:</strong> Vit und LpH sind nutzlos auf Waffe!<br><br>
+                <strong>Lösung:</strong><br>
+                1. Socket mit <strong>Ramaladni's Gift</strong> hinzufügen (NICHT rerolled!)<br>
+                2. Vit → <strong>+10% Damage</strong> rerolled<br>
+                → LpH bleibt leider (nur 1 Stat änderbar)<br><br>
+                <strong>⚠️ NIEMALS rerolled:</strong><br>
+                → Damage Range (die Würfelzahlen oben)<br>
+                → Das ist der wichtigste Stat!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>👑 Helm (Sunwuko's Crown)</h2>
+            <div class="info-box">
+                <strong>Perfekte Stats:</strong> Dex, Socket, CHC 6%, Tempest Rush %<br><br>
+                <strong>Beispiel hat:</strong> Dex, Socket, Vit, All Res<br>
+                <strong>Problem:</strong> Kein CHC, kein TR%!<br><br>
+                <strong>Lösung:</strong> All Res → <strong>CHC 6%</strong> rerolled<br>
+                → Vit ist okay für Toughness<br>
+                → TR% wäre nice aber CHC ist wichtiger<br><br>
+                <strong>Topaz im Socket:</strong> +12.5% RCR (Resource Cost Reduction)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🦺 Chest (Sunwuko's Soul)</h2>
+            <div class="info-box">
+                <strong>Perfekte Stats:</strong> Dex, Vit, 3 Sockets, Elite DR oder All Res<br><br>
+                <strong>Beispiel hat:</strong> Dex, Vit, 3 Sockets, Life Regen<br>
+                <strong>Problem:</strong> Life Regen ist fast nutzlos!<br><br>
+                <strong>Lösung:</strong> Life Regen → <strong>All Res</strong> oder <strong>Elite Damage Reduction</strong><br>
+                → Beides gut für Toughness<br>
+                → Elite DR besser für GR Push
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💪 Shoulders (Mantle of Channeling)</h2>
+            <div class="info-box">
+                <strong>Perfekte Stats:</strong> Dex, RCR 8%, CDR 8%, Area Damage 24%<br><br>
+                <strong>Beispiel hat:</strong> Dex, Vit, All Res, Life%<br>
+                <strong>Problem:</strong> Keine offensiven Stats!<br><br>
+                <strong>Lösung:</strong> Life% → <strong>RCR 8%</strong> rerolled<br>
+                → RCR wichtig für Tempest Rush Uptime<br>
+                → Vit + All Res = gute Defense, behalten
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧤 Gloves (Sunwuko's Paws)</h2>
+            <div class="info-box">
+                <strong>Perfekte Stats:</strong> Dex, CHC 10%, CHD 50%, RCR 8% oder AD<br><br>
+                <strong>Beispiel hat:</strong> Dex, CHC, Attack Speed, Vit<br>
+                <strong>Problem:</strong> AS ist okay, Vit verschwendet<br><br>
+                <strong>Lösung:</strong> Vit → <strong>CHD 50%</strong> rerolled<br>
+                → CHC + CHD zusammen = beste Combo<br>
+                → AS behalten (nicht schlecht für TR)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔮 Bracers (Cesar's Memento)</h2>
+            <div class="info-box">
+                <strong>Perfekte Stats:</strong> Cold% 20%, CHC 6%, Dex, LpH oder Vit<br><br>
+                <strong>Beispiel hat:</strong> Dex, CHC, Vit, Thorns<br>
+                <strong>Problem:</strong> Kein Cold%! Thorns nutzlos!<br><br>
+                <strong>Lösung:</strong> Thorns → <strong>Cold Damage 20%</strong> rerolled<br>
+                → Cold% ist RIESIGER Damage Boost!<br>
+                → Multipliziert mit allem anderen<br><br>
+                <strong>⚠️ Element MUSS zum Build passen!</strong><br>
+                → Sunwuko TR = Cold (Flurry Rune)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>👖 Pants (Sunwuko's Leggings)</h2>
+            <div class="info-box">
+                <strong>Perfekte Stats:</strong> Dex, Vit, 2 Sockets, Armor oder All Res<br><br>
+                <strong>Beispiel hat:</strong> Dex, Vit, 2 Sockets, Life Regen<br>
+                <strong>Problem:</strong> Life Regen wieder nutzlos<br><br>
+                <strong>Lösung:</strong> Life Regen → <strong>Armor</strong> oder <strong>All Res</strong><br>
+                → Hosen sind rein defensiv<br>
+                → Keine offensiven Stats möglich hier
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>👢 Boots (Captain Crimson's Waders)</h2>
+            <div class="info-box">
+                <strong>Perfekte Stats:</strong> Dex, Vit, All Res, Tempest Rush 15%<br><br>
+                <strong>Beispiel hat:</strong> Dex, Vit, Armor, Movement Speed<br>
+                <strong>Problem:</strong> MS kommt von Paragon! Verschwendet!<br><br>
+                <strong>Lösung:</strong> Movement Speed → <strong>Tempest Rush %</strong> rerolled<br>
+                → TR% ist 15% MEHR DAMAGE!<br>
+                → MS aus Paragon holen (gratis)
+            </div>
+            <p class="note">💡 Merke: Movement Speed NIE auf Gear wenn Paragon hoch genug!</p>
+        </div>
+
+        <div class="section">
+            <h2>🎀 Belt (Captain Crimson's Silk Girdle)</h2>
+            <div class="info-box">
+                <strong>Perfekte Stats:</strong> Dex, Vit, All Res, Life%<br><br>
+                <strong>Beispiel hat:</strong> Dex, Vit, Armor, Gold Find<br>
+                <strong>Problem:</strong> Gold Find komplett nutzlos!<br><br>
+                <strong>Lösung:</strong> Gold Find → <strong>All Res</strong> oder <strong>Life%</strong><br>
+                → Belt ist rein defensiv<br>
+                → Keine offensiven Stats möglich
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Reforging (Cube)</h2>
+            <div class="info-box">
+                <strong>Was ist das?</strong><br>
+                Du würfelst ein Legendary Item KOMPLETT neu.<br>
+                Alle Stats werden zufällig neu generiert.<br>
+                Das Item kann dabei Ancient oder sogar Primal werden!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Reforging Schritt-für-Schritt</h2>
+            <div class="info-box">
+                <strong>Schritt 1:</strong> Bounties farmen (alle 5 Acts)<br>
+                → Brauchst: 5x JEDES Bounty Material<br><br>
+                <strong>Schritt 2:</strong> Forgotten Souls farmen<br>
+                → Brauchst: 50 Forgotten Souls<br>
+                → (Legendaries salvagen)<br><br>
+                <strong>Schritt 3:</strong> Kanai's Cube → "Law of Kulle"<br><br>
+                <strong>Schritt 4:</strong> Item + Mats reinlegen<br><br>
+                <strong>Schritt 5:</strong> Transmute<br>
+                → 10% Chance auf Ancient<br>
+                → 0.25% Chance auf Primal
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Wann Reforgen?</h2>
+            <div class="info-box">
+                <strong>REFORGE wenn:</strong><br>
+                • Du ein wichtiges Item hast aber es ist nicht Ancient<br>
+                • Das Item ist Ancient aber Stats sind Müll<br>
+                • Du ein Primal willst (viel Glück!)<br><br>
+                <strong>NICHT REFORGE wenn:</strong><br>
+                • Das Item hat bereits gute Stats<br>
+                • Du wenig Bounty Mats hast<br>
+                • Das Item ist leicht zu farmen (→ lieber neu droppen)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 Reforge Beispiel (Monk Weapon)</h2>
+            <div class="info-box">
+                <strong>Situation:</strong> Won Khim Lau ist nicht Ancient<br>
+                <strong>Problem:</strong> Waffen-Damage ist wichtigster Stat<br>
+                → Ancient Weapon = ~15-20% mehr Damage!<br><br>
+                <strong>Lösung:</strong> WKL immer wieder reforgen<br>
+                → Bis Ancient mit gutem Damage Roll<br><br>
+                <strong>Kosten pro Versuch:</strong><br>
+                → 5x jedes Bounty Mat + 50 FS<br>
+                → ~10 Versuche für Ancient (im Schnitt)
+            </div>
+            <p class="note">💡 Waffen haben höchste Reforge-Priorität wegen Damage!</p>
+        </div>
+
+        <div class="section">
+            <h2>3. Augmenting (Caldesann's Despair)</h2>
+            <div class="info-box">
+                <strong>Was ist das?</strong><br>
+                Du "opferst" einen hochgelevelten Legendary Gem um einem Ancient Item<br>
+                permanent extra Mainstat zu geben. Der Gem wird dabei zerstört!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Augment Schritt-für-Schritt</h2>
+            <div class="info-box">
+                <strong>Schritt 1:</strong> Legendary Gem hochleveln<br>
+                → GRs farmen, nach jedem GR Gem upgraden<br>
+                → Ziel: mindestens Rank 50-100<br><br>
+                <strong>Schritt 2:</strong> Ancient Item besorgen<br>
+                → Nur ANCIENT (orange Rand) oder PRIMAL (rot) funktioniert!<br>
+                → Normale Legendaries können NICHT augmentiert werden<br><br>
+                <strong>Schritt 3:</strong> Kanai's Cube öffnen<br>
+                → Letztes Rezept: "Caldesann's Despair"<br><br>
+                <strong>Schritt 4:</strong> Items in den Cube legen<br>
+                → Das Ancient Item<br>
+                → Den Legendary Gem (wird zerstört!)<br>
+                → 3x Flawless Royal Gem (passend zum Mainstat)<br><br>
+                <strong>Schritt 5:</strong> Transmute drücken<br>
+                → Item bekommt permanent +5 Mainstat pro Gem Level
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💎 Welchen Gem für welche Klasse?</h2>
+            <div class="info-box">
+                <strong style="color:#4ade80">Emerald (Grün)</strong> → Dexterity → Monk, Demon Hunter<br>
+                <strong style="color:#ef4444">Ruby (Rot)</strong> → Strength → Barbarian, Crusader<br>
+                <strong style="color:#facc15">Topaz (Gelb)</strong> → Intelligence → Wizard, WD, Necro<br>
+                <strong style="color:#a78bfa">Amethyst (Lila)</strong> → Vitality → Alle (für Toughness)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔢 Beispielrechnung (Monk)</h2>
+            <div class="info-box">
+                <strong>Gem Rank 100 + Ancient Helm:</strong><br>
+                → 100 × 5 = <strong>+500 Dexterity</strong> permanent auf dem Helm!<br><br>
+                <strong>Alle 13 Slots mit Rank 100:</strong><br>
+                → 13 × 500 = <strong>+6500 Dexterity</strong> extra!<br><br>
+                <strong>Das entspricht ~650 Paragon Levels!</strong>
+            </div>
+            <p class="note">💡 Deshalb sind Augments so wichtig fürs Endgame</p>
+        </div>
+
+        <div class="section">
+            <h2>⚠️ Augment Regeln</h2>
+            <div class="info-box">
+                • <strong>Nur Ancient/Primal</strong> - normale Legendaries gehen nicht!<br>
+                • <strong>Gem wird zerstört</strong> - weg ist weg!<br>
+                • <strong>Überschreibbar</strong> - neuer Augment ersetzt alten<br>
+                • <strong>Minimum Gem Level:</strong><br>
+                &nbsp;&nbsp;→ Waffen: Rank 30<br>
+                &nbsp;&nbsp;→ Jewelry: Rank 40<br>
+                &nbsp;&nbsp;→ Armor: Rank 50
+            </div>
+            <p class="note">Tipp: Erst augmenten wenn Item wirklich gut ist! Sonst Gem verschwendet.</p>
+        </div>
+
+        <div class="section">
+            <h2>✅ Augment Tracker</h2>
+            <div class="item"><input type="checkbox" id="aug1"><label for="aug1">Weapon augmentiert (Rank 100+ = +500 Dex)</label></div>
+            <div class="item"><input type="checkbox" id="aug2"><label for="aug2">Helm augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug3"><label for="aug3">Chest augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug4"><label for="aug4">Pants augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug5"><label for="aug5">Boots augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug6"><label for="aug6">Gloves augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug7"><label for="aug7">Shoulders augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug8"><label for="aug8">Bracers augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug9"><label for="aug9">Belt augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug10"><label for="aug10">Amulet augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug11"><label for="aug11">Ring 1 augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug12"><label for="aug12">Ring 2 augmentiert</label></div>
+            <div class="item"><input type="checkbox" id="aug13"><label for="aug13">Offhand augmentiert</label></div>
+            <p class="note">💡 13 Slots × Rank 100 Gem = +6500 Mainstat!</p>
+        </div>
+
+        <div class="section">
+            <h2>4. Ancient vs Primal</h2>
+            <div class="info-box">
+                <strong style="color:#f4a460">Ancient (Orange Rand):</strong><br>
+                • ~10% höhere Stat Rolls als normal<br>
+                • 10% Drop-Chance bei jeder Legendary<br>
+                • Kann augmentiert werden<br><br>
+                <strong style="color:#ef4444">Primal (Roter Rand + Pentagram):</strong><br>
+                • PERFEKTE max Rolls auf allen Stats<br>
+                • Nur ~0.25% Chance (1 von 400 Legendaries!)<br>
+                • Kann augmentiert werden
+            </div>
+            <p class="note">⚠️ Wichtig: Schlechtes Ancient mit falschen Stats < Gutes Normal mit richtigen Stats!</p>
+        </div>
+
+        <div class="section">
+            <h2>🔓 Primals freischalten</h2>
+            <div class="info-box">
+                <strong>Requirement:</strong> Solo GR70 abschließen!<br><br>
+                • Muss SOLO sein (keine Gruppe)<br>
+                • Einmal pro Season/Modus nötig<br>
+                • Danach droppen Primals überall<br>
+                • Erster Primal ist GARANTIERT nach GR70!
+            </div>
+            <div class="item"><input type="checkbox" id="gr70"><label for="gr70"><strong>Solo GR70 geschafft</strong> → Primals freigeschaltet!</label></div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Primals "farmen"</h2>
+            <div class="info-box">
+                <strong>Schlechte Nachricht:</strong> Keine gezielte Farm möglich!<br>
+                <strong>Gute Nachricht:</strong> Mehr Legendaries = Mehr Chancen<br><br>
+                <strong>Beste Methoden:</strong><br>
+                1. <strong>Speed GRs (85-95)</strong> in unter 5 Min<br>
+                &nbsp;&nbsp;&nbsp;→ Meiste Legendaries pro Stunde<br><br>
+                2. <strong>Kadala Gambling</strong><br>
+                &nbsp;&nbsp;&nbsp;→ Kann Primal droppen!<br><br>
+                3. <strong>Cube Upgrade Rare</strong><br>
+                &nbsp;&nbsp;&nbsp;→ Kann Primal werden!<br><br>
+                4. <strong>Cube Reforge</strong><br>
+                &nbsp;&nbsp;&nbsp;→ 0.25% Chance auf Primal
+            </div>
+            <p class="note">📊 Statistik: ~2 Stunden Speed GR60 = 1 Primal (im Durchschnitt)</p>
+        </div>
+
+        <div class="section">
+            <h2>♻️ Primal salvagen = Primordial Ashes</h2>
+            <div class="info-box">
+                <strong>Primal Item salvagen:</strong> Gibt 55 Primordial Ashes<br>
+                <strong>Nutzen:</strong> Altar Potion Powers freischalten<br><br>
+                → Salvage unnütze Primals (falsche Klasse/Build)<br>
+                → Behalte nur Primals die du wirklich nutzt
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✅ Ancient Checklist</h2>
+            <div class="item"><input type="checkbox" id="anc1"><label for="anc1">Mainhand Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc2"><label for="anc2">Offhand Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc3"><label for="anc3">Helm Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc4"><label for="anc4">Chest Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc5"><label for="anc5">Shoulders Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc6"><label for="anc6">Gloves Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc7"><label for="anc7">Bracers Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc8"><label for="anc8">Belt Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc9"><label for="anc9">Pants Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc10"><label for="anc10">Boots Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc11"><label for="anc11">Amulet Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc12"><label for="anc12">Ring 1 Ancient</label></div>
+            <div class="item"><input type="checkbox" id="anc13"><label for="anc13">Ring 2 Ancient</label></div>
+        </div>'''
 
 
 def _generate_bosses_html(static: dict) -> str:
@@ -832,11 +1214,19 @@ def _generate_farm_html(static: dict, build: dict) -> str:
         </div>
 
         <div class="section">
+            <h2>🎲 Cube Portal Items</h2>
+            <p class="note">Diese Items im Cube transmuten (ohne weitere Zutaten):</p>
+            <div class="item"><input type="checkbox" id="cp1"><label for="cp1"><strong>Puzzle Ring</strong> → The Vault<br><span class="diff">Gold, Gems, Boon of the Hoarder von Greed</span></label></div>
+            <div class="item"><input type="checkbox" id="cp2"><label for="cp2"><strong>Ancient Puzzle Ring</strong> → Ancient Vault<br><span class="diff">Viel mehr Gold/Gems/Goblins!</span></label></div>
+            <div class="item"><input type="checkbox" id="cp3"><label for="cp3"><strong>Bovine Bardiche</strong> → Not The Cow Level<br><span class="diff">Chests, Shrines, Pools (1x pro Game!)</span></label></div>
+            <div class="item"><input type="checkbox" id="cp4"><label for="cp4"><strong>Petrified Scream</strong> → Echoing Nightmare<br><span class="diff">Whisper of Atonement für Augments</span></label></div>
+        </div>
+
+        <div class="section">
             <h2>🧙 Follower Crafting (Enchantress)</h2>
             <p class="note">⚠️ Auf INT-Char craften (Wiz/WD/Necro) für richtigen Mainstat!</p>
             <div class="item"><input type="checkbox" id="fc1"><label for="fc1"><strong>Cain's Destiny</strong> (2pc) - Helm + Boots<br><span class="diff">+25% GR Key Drops (Emanate)</span></label></div>
             <div class="item"><input type="checkbox" id="fc2"><label for="fc2"><strong>Sage's Journey</strong> (2pc) - Helm + Boots oder Gloves<br><span class="diff">+1 Death's Breath (Emanate)</span></label></div>
-            <div class="item"><input type="checkbox" id="fc3"><label for="fc3"><strong>Born's Command</strong> (2pc) - Chest + Shoulders<br><span class="diff">+20% XP, +15% CDR (Emanate)</span></label></div>
             <div class="info-box">
                 <strong>Weitere Emanate Items:</strong><br>
                 • Nemesis Bracers - Elite bei Shrine<br>
