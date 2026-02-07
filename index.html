@@ -40,6 +40,90 @@
         .item .diff { font-size: 0.75em; color: #888; margin-left: 5px; }
         .item.checked label { text-decoration: line-through; color: #666; }
         .note { font-size: 0.8em; color: #f4a460; margin-top: 5px; font-style: italic; }
+        .gear-checker .stat-checks { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+        .gear-checker .stat-checks label {
+            background: #1a1a2e;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            cursor: pointer;
+            border: 1px solid #333;
+            transition: all 0.2s;
+        }
+        .gear-checker .stat-checks label:has(input:checked) {
+            background: #2d5a3d;
+            border-color: #4a9;
+        }
+        .gear-checker .stat-checks input { margin-right: 5px; accent-color: #4a9; }
+        .reroll-advice {
+            background: #2a1a3e;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border-left: 3px solid #e94560;
+            font-size: 0.9em;
+        }
+        .reroll-advice.perfect { border-left-color: #4a9; background: #1a2e1a; }
+        .reroll-advice.good { border-left-color: #f4a460; background: #2e2a1a; }
+        /* Stat Calculator */
+        .stat-calculator .stat-inputs { display: flex; flex-direction: column; gap: 10px; }
+        .stat-input-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+        .stat-input-row label { font-size: 0.9em; flex: 1; }
+        .input-with-unit {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .stat-input-row input {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #1a1a2e;
+            color: #fff;
+            font-size: 1em;
+            text-align: right;
+        }
+        .stat-input-row input:focus {
+            outline: none;
+            border-color: #e94560;
+        }
+        .input-with-unit span { color: #888; font-size: 0.9em; width: 20px; }
+        /* Stat Results */
+        .stat-result {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+        .stat-result .stat-name { width: 60px; font-weight: bold; font-size: 0.85em; }
+        .stat-result .stat-bar {
+            flex: 1;
+            height: 20px;
+            background: #1a1a2e;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        .stat-result .stat-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s, background 0.3s;
+            width: 0%;
+        }
+        .stat-result .stat-value { width: 100px; text-align: right; font-size: 0.85em; }
+        .stat-fill.bad { background: linear-gradient(90deg, #e94560, #c73e54); }
+        .stat-fill.ok { background: linear-gradient(90deg, #f4a460, #d4843f); }
+        .stat-fill.good { background: linear-gradient(90deg, #4a9, #3a8070); }
+        #stat-recommendations { min-height: 60px; }
+        #stat-recommendations.has-issues { border-left-color: #e94560; background: #2e1a1a; }
+        #stat-recommendations.all-good { border-left-color: #4a9; background: #1a2e1a; }
         .progress { background: #333; border-radius: 10px; height: 20px; margin-bottom: 15px; overflow: hidden; }
         .progress-bar { background: linear-gradient(90deg, #e94560, #f4a460); height: 100%; transition: width 0.3s; }
         .progress-text { text-align: center; font-size: 0.8em; margin-top: 3px; color: #888; }
@@ -313,6 +397,232 @@
             <ul style="margin-left: 15px; font-size: 0.9em; line-height: 1.6;">
 <li>Flurry hat kleinen Explosion Radius - direkt auf Gegnern stehen!</li><li>Cyclone Strike wird automatisch durch Won Khim Lau gecastet</li><li>In Oculus Circles stehen für +85% Damage</li><li>Taeguk Stacks nicht verlieren - nicht zu lange pausieren</li>            </ul>
         </div>
+
+        <div class="section">
+            <h2>💀 Ich sterbe zu oft!</h2>
+            <div class="info-box">
+                <strong>Schnelle Fixes:</strong><br>
+                • Schwierigkeit runter (kein Shame!)<br>
+                • Epiphany aktiv halten (50% DR!)<br>
+                • Nicht stehen bleiben - TR = beweglich bleiben!<br>
+                • Lefebvre's Soliloquy Buff checken (aktiv?)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🛡️ Toughness verbessern</h2>
+            <div class="info-box">
+                <strong>1. Defensive Stats auf richtigen Slots:</strong><br>
+                → Vit auf: Helm, Chest, Belt, Pants, Boots<br>
+                → All Res auf: Chest, Belt, Pants, Boots<br>
+                → Armor auf: Shoulders, Chest, Belt<br><br>
+
+                <strong>2. Paragon Points:</strong><br>
+                → Defense Tab: Resist All zuerst!<br>
+                → Dann Life%, Armor, Life Regen<br><br>
+
+                <strong>3. Legendary Gems:</strong><br>
+                → Esoteric Alteration (All Res + DR unter 50% HP)<br>
+                → Molten Wildebeest's Gizzard (Shield)<br>
+                → ⚠️ Ersetzt einen Damage Gem!<br><br>
+
+                <strong>4. Skills/Passives checken:</strong><br>
+                → Epiphany IMMER aktiv (50% Damage Reduction!)<br>
+                → Mantra of Salvation + Agility Rune<br>
+                → Sixth Sense Passive (+25% Armor von Dex)<br>
+                → Near Death Experience (Cheat Death)<br><br>
+
+                <strong>5. Gear Cube Powers:</strong><br>
+                → Lefebvre's Soliloquy (Cyclone Strike = 50% DR)<br>
+                → Spirit Guards Bracers (Spirit Gen = 60% DR)
+            </div>
+            <p class="note">💡 Monk hat VIEL Damage Reduction - aber nur wenn Buffs aktiv sind!</p>
+        </div>
+
+        <div class="section">
+            <h2>⚡ Spirit geht aus!</h2>
+            <div class="info-box">
+                <strong>Das Problem verstehen:</strong><br>
+                Tempest Rush kostet Spirit pro Sekunde.<br>
+                Ohne genug RCR/Spirit Regen = leer = kein Damage!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔋 Spirit Management Fixes</h2>
+            <div class="info-box">
+                <strong>1. RCR (Resource Cost Reduction) stapeln:</strong><br>
+                → Shoulders: bis zu 8% RCR<br>
+                → Gloves: bis zu 8% RCR<br>
+                → Rings: bis zu 8% RCR<br>
+                → Amulet: bis zu 8% RCR<br>
+                → Captain Crimson Set: 20% CDR → auch RCR!<br>
+                → Paragon: 10% RCR (Offense Tab)<br><br>
+
+                <strong>2. Spirit Regen erhöhen:</strong><br>
+                → Templar Follower: Spirit Regen Buff!<br>
+                → Exalted Soul Passive: +100 Max Spirit, +2/s Regen<br>
+                → Air Ally: Spirit Regen + Active für Burst<br><br>
+
+                <strong>3. Epiphany uptime!</strong><br>
+                → Epiphany gibt Spirit Regen<br>
+                → Inner Fire Rune = mehr Regen<br>
+                → CDR erhöhen für mehr Uptime<br><br>
+
+                <strong>4. Helm Socket:</strong><br>
+                → <strong>Topaz</strong> = 12.5% RCR! (Nicht Diamond!)<br>
+                → Das ist RIESIG für Spirit!<br><br>
+
+                <strong>5. Gameplay anpassen:</strong><br>
+                → Nicht in leere Räume rushen<br>
+                → Mobs = Damage = overkill Spirit zurück<br>
+                → Balance zwischen Speed und Density
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 RCR Breakpoints</h2>
+            <div class="info-box">
+                <strong>Ziel: 50%+ RCR für smooth TR</strong><br><br>
+                Captain Crimson: ~20%<br>
+                Paragon: 10%<br>
+                Topaz Helm: 12.5%<br>
+                1x Gear Slot: 8%<br>
+                <strong>= ~50% RCR</strong><br><br>
+                → Wenn immer noch Probleme: 2. Gear Slot mit RCR
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔢 Build Stat Calculator</h2>
+            <p class="note">Trage deine aktuellen Stats ein (aus Details-Tab im Spiel) und sieh was du verbessern musst!</p>
+        </div>
+
+        <div class="section stat-calculator">
+            <h2>Deine Stats</h2>
+            <div class="stat-inputs">
+                <div class="stat-input-row">
+                    <label for="stat-cdr">CDR (Cooldown Reduction)</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="stat-cdr" step="0.1" min="0" max="100" placeholder="z.B. 50">
+                        <span>%</span>
+                    </div>
+                </div>
+                <div class="stat-input-row">
+                    <label for="stat-rcr">RCR (Resource Cost Reduction)</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="stat-rcr" step="0.1" min="0" max="100" placeholder="z.B. 43.3">
+                        <span>%</span>
+                    </div>
+                </div>
+                <div class="stat-input-row">
+                    <label for="stat-chc">CHC (Critical Hit Chance)</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="stat-chc" step="0.1" min="0" max="100" placeholder="z.B. 45">
+                        <span>%</span>
+                    </div>
+                </div>
+                <div class="stat-input-row">
+                    <label for="stat-chd">CHD (Critical Hit Damage)</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="stat-chd" step="1" min="0" max="1000" placeholder="z.B. 450">
+                        <span>%</span>
+                    </div>
+                </div>
+                <div class="stat-input-row">
+                    <label for="stat-cold">Cold Damage %</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="stat-cold" step="1" min="0" max="100" placeholder="z.B. 40">
+                        <span>%</span>
+                    </div>
+                </div>
+                <div class="stat-input-row">
+                    <label for="stat-ad">Area Damage</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="stat-ad" step="1" min="0" max="200" placeholder="z.B. 100">
+                        <span>%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 Auswertung</h2>
+            <div id="stat-results">
+                <div class="stat-result" id="result-cdr">
+                    <span class="stat-name">CDR</span>
+                    <span class="stat-bar"><span class="stat-fill" id="fill-cdr"></span></span>
+                    <span class="stat-value" id="value-cdr">-</span>
+                </div>
+                <div class="stat-result" id="result-rcr">
+                    <span class="stat-name">RCR</span>
+                    <span class="stat-bar"><span class="stat-fill" id="fill-rcr"></span></span>
+                    <span class="stat-value" id="value-rcr">-</span>
+                </div>
+                <div class="stat-result" id="result-chc">
+                    <span class="stat-name">CHC</span>
+                    <span class="stat-bar"><span class="stat-fill" id="fill-chc"></span></span>
+                    <span class="stat-value" id="value-chc">-</span>
+                </div>
+                <div class="stat-result" id="result-chd">
+                    <span class="stat-name">CHD</span>
+                    <span class="stat-bar"><span class="stat-fill" id="fill-chd"></span></span>
+                    <span class="stat-value" id="value-chd">-</span>
+                </div>
+                <div class="stat-result" id="result-cold">
+                    <span class="stat-name">Cold%</span>
+                    <span class="stat-bar"><span class="stat-fill" id="fill-cold"></span></span>
+                    <span class="stat-value" id="value-cold">-</span>
+                </div>
+                <div class="stat-result" id="result-ad">
+                    <span class="stat-name">AD</span>
+                    <span class="stat-bar"><span class="stat-fill" id="fill-ad"></span></span>
+                    <span class="stat-value" id="value-ad">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 Empfehlungen</h2>
+            <div id="stat-recommendations" class="info-box">
+                Trage oben deine Stats ein...
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📖 Breakpoints für Sunwuko TR</h2>
+            <div class="info-box">
+                <strong>CDR (Cooldown Reduction):</strong><br>
+                • <span style="color:#e94560">Minimum: 45%</span> - Epiphany alle ~13s<br>
+                • <span style="color:#f4a460">Gut: 50%</span> - Epiphany alle ~11s<br>
+                • <span style="color:#4a9">Perfekt: 55%+</span> - Fast permanente Uptime<br><br>
+
+                <strong>RCR (Resource Cost Reduction):</strong><br>
+                • <span style="color:#e94560">Minimum: 40%</span> - Spirit Probleme möglich<br>
+                • <span style="color:#f4a460">Gut: 50%</span> - Smooth Channeling<br>
+                • <span style="color:#4a9">Perfekt: 55%+</span> - Nie Spirit Probleme<br><br>
+
+                <strong>CHC (Critical Hit Chance):</strong><br>
+                • <span style="color:#e94560">Minimum: 40%</span> - Damage inconsistent<br>
+                • <span style="color:#f4a460">Gut: 50%</span> - Solide Crits<br>
+                • <span style="color:#4a9">Perfekt: 55%+</span> - Sehr consistent<br><br>
+
+                <strong>CHD (Critical Hit Damage):</strong><br>
+                • <span style="color:#e94560">Minimum: 350%</span> - Wenig Burst<br>
+                • <span style="color:#f4a460">Gut: 450%</span> - Solider Damage<br>
+                • <span style="color:#4a9">Perfekt: 500%+</span> - Fette Crits<br><br>
+
+                <strong>Cold Damage %:</strong><br>
+                • <span style="color:#e94560">Minimum: 20%</span> - Nur Bracers<br>
+                • <span style="color:#f4a460">Gut: 40%</span> - Bracers + Ammy<br>
+                • <span style="color:#4a9">Perfekt: 40%</span> - Max (2 Slots)<br><br>
+
+                <strong>Area Damage:</strong><br>
+                • <span style="color:#e94560">Minimum: 50%</span> - Basis<br>
+                • <span style="color:#f4a460">Gut: 100%</span> - Solide AoE<br>
+                • <span style="color:#4a9">Perfekt: 130%+</span> - Max AoE
+            </div>
+        </div>
     </div>
 
     <!-- GEAR TAB -->
@@ -414,6 +724,82 @@
                 <strong>Schritt 6:</strong> Wiederholen bis perfekter Roll
             </div>
             <p class="note">⚠️ WICHTIG: Einmal gewählt, kannst du nur noch DIESEN Stat ändern!</p>
+        </div>
+
+        <div class="section">
+            <h2>📖 Stat-Namen im Spiel (Mystic)</h2>
+            <div class="info-box">
+                <strong>Abkürzungen → Echter Name im Spiel:</strong><br><br>
+                <table style="width:100%; font-size:0.9em;">
+                    <tr><td><strong>All Res</strong></td><td>→ "Resistance to All Elements"</td></tr>
+                    <tr><td><strong>CHC</strong></td><td>→ "Critical Hit Chance"</td></tr>
+                    <tr><td><strong>CHD</strong></td><td>→ "Critical Hit Damage"</td></tr>
+                    <tr><td><strong>CDR</strong></td><td>→ "Cooldown Reduction"</td></tr>
+                    <tr><td><strong>RCR</strong></td><td>→ "Resource Cost Reduction"</td></tr>
+                    <tr><td><strong>AD</strong></td><td>→ "Area Damage"</td></tr>
+                    <tr><td><strong>IAS / AS</strong></td><td>→ "Attack Speed" oder "Attacks per Second"</td></tr>
+                    <tr><td><strong>Vit</strong></td><td>→ "Vitality"</td></tr>
+                    <tr><td><strong>LpH</strong></td><td>→ "Life per Hit"</td></tr>
+                    <tr><td><strong>LpS</strong></td><td>→ "Life Regeneration" oder "Regenerates X Life per Second"</td></tr>
+                    <tr><td><strong>Elite DR</strong></td><td>→ "Reduces damage from elites by X%"</td></tr>
+                    <tr><td><strong>Cold%</strong></td><td>→ "Cold skills deal X% more damage"</td></tr>
+                    <tr><td><strong>TR%</strong></td><td>→ "Tempest Rush deals X% more damage"</td></tr>
+                </table>
+            </div>
+            <p class="note">💡 Bei der Mystic: Scroll durch die Liste um den Stat zu finden!</p>
+        </div>
+
+        <div class="section">
+            <h2>🛡️ Defensive Stats - Was behalten?</h2>
+            <div class="info-box">
+                <strong>Resistenzen:</strong><br>
+                ✅ <strong>"Resistance to All Elements"</strong> = SEHR GUT<br>
+                &nbsp;&nbsp;&nbsp;→ Schützt gegen ALLE Damage-Typen<br><br>
+                ❌ <strong>"Arcane/Poison/Fire/etc. Resistance"</strong> = SCHLECHT<br>
+                &nbsp;&nbsp;&nbsp;→ Schützt nur gegen 1 von 6 Elementen<br>
+                &nbsp;&nbsp;&nbsp;→ IMMER zu "Resistance to All Elements" rerolled!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>❤️ Life Stats - Priorität</h2>
+            <div class="info-box">
+                <strong>Von BEST zu WORST:</strong><br><br>
+                1️⃣ <strong>Vitality</strong> = BEHALTEN ✅<br>
+                &nbsp;&nbsp;&nbsp;→ Mehr HP = mehr EHP<br>
+                &nbsp;&nbsp;&nbsp;→ Skaliert mit Life% Bonus<br>
+                &nbsp;&nbsp;&nbsp;→ Sehr wertvoll!<br><br>
+                2️⃣ <strong>Life per Hit</strong> = SITUATIV 🔄<br>
+                &nbsp;&nbsp;&nbsp;→ Heilt X HP pro Hit den du machst<br>
+                &nbsp;&nbsp;&nbsp;→ Gut wenn du viele Hits machst<br>
+                &nbsp;&nbsp;&nbsp;→ Für TR Monk: okay auf Bracers, nicht kritisch<br><br>
+                3️⃣ <strong>Life Regeneration</strong> = IMMER REROLLED ❌<br>
+                &nbsp;&nbsp;&nbsp;→ Heilt ~10.000 HP pro Sekunde<br>
+                &nbsp;&nbsp;&nbsp;→ Dein HP: 500.000+<br>
+                &nbsp;&nbsp;&nbsp;→ Ein Hit: 100.000+ Damage<br>
+                &nbsp;&nbsp;&nbsp;→ <strong>Komplett nutzlos in hohen GRs!</strong>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔄 Beispiele: Was rerolled wenn beide da sind?</h2>
+            <div class="info-box">
+                <strong>Hast: Dex, Vit, Life Regen, LpH</strong><br>
+                → Life Regen rerolled (schlechtester Stat)<br><br>
+
+                <strong>Hast: Dex, Vit, Life Regen, Armor</strong><br>
+                → Life Regen rerolled<br><br>
+
+                <strong>Hast: Dex, LpH, Life Regen, Armor</strong><br>
+                → Life Regen zu Vit rerolled (Vit > LpH)<br><br>
+
+                <strong>Hast: Dex, Vit, Poison Res, Armor</strong><br>
+                → Poison Res zu "Resistance to All Elements" rerolled<br><br>
+
+                <strong>Hast: Dex, Vit, All Res, Life Regen</strong><br>
+                → Life Regen zu Armor oder Life% rerolled
+            </div>
+            <p class="note">💡 Merke: Life Regen ist IMMER der erste Kandidat zum Rerolled!</p>
         </div>
 
         <div class="section">
@@ -735,6 +1121,188 @@
                 &nbsp;&nbsp;&nbsp;→ 0.25% Chance auf Primal
             </div>
             <p class="note">📊 Statistik: ~2 Stunden Speed GR60 = 1 Primal (im Durchschnitt)</p>
+        </div>
+
+        <div class="section">
+            <h2>🔍 Gear Checker - Was soll ich rerolled?</h2>
+            <p class="note">Wähle welche Stats dein Item HAT, dann siehst du was du rerolled sollst!</p>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>⚔️ Mainhand (Won Khim Lau)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="mh" data-stat="socket"> Socket</label>
+                <label><input type="checkbox" data-slot="mh" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="mh" data-stat="dmgpct"> +% Damage</label>
+                <label><input type="checkbox" data-slot="mh" data-stat="ad"> Area Damage</label>
+                <label><input type="checkbox" data-slot="mh" data-stat="vit"> Vit</label>
+                <label><input type="checkbox" data-slot="mh" data-stat="lph"> Life per Hit</label>
+                <label><input type="checkbox" data-slot="mh" data-stat="cdr"> CDR</label>
+                <label><input type="checkbox" data-slot="mh" data-stat="rcr"> RCR</label>
+            </div>
+            <div class="reroll-advice" id="advice-mh">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>⚔️ Offhand (Vengeful Wind)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="oh" data-stat="socket"> Socket</label>
+                <label><input type="checkbox" data-slot="oh" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="oh" data-stat="dmgpct"> +% Damage</label>
+                <label><input type="checkbox" data-slot="oh" data-stat="ad"> Area Damage</label>
+                <label><input type="checkbox" data-slot="oh" data-stat="vit"> Vit</label>
+                <label><input type="checkbox" data-slot="oh" data-stat="lph"> Life per Hit</label>
+                <label><input type="checkbox" data-slot="oh" data-stat="cdr"> CDR</label>
+                <label><input type="checkbox" data-slot="oh" data-stat="rcr"> RCR</label>
+            </div>
+            <div class="reroll-advice" id="advice-oh">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>👑 Helm (Sunwuko's Crown)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="helm" data-stat="socket"> Socket</label>
+                <label><input type="checkbox" data-slot="helm" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="helm" data-stat="chc"> CHC 6%</label>
+                <label><input type="checkbox" data-slot="helm" data-stat="skill"> TR% oder Skill%</label>
+                <label><input type="checkbox" data-slot="helm" data-stat="vit"> Vit</label>
+                <label><input type="checkbox" data-slot="helm" data-stat="allres"> All Res</label>
+            </div>
+            <div class="reroll-advice" id="advice-helm">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>💪 Shoulders (Mantle of Channeling)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="shoulders" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="shoulders" data-stat="rcr"> RCR 8%</label>
+                <label><input type="checkbox" data-slot="shoulders" data-stat="cdr"> CDR 8%</label>
+                <label><input type="checkbox" data-slot="shoulders" data-stat="ad"> Area Damage</label>
+                <label><input type="checkbox" data-slot="shoulders" data-stat="vit"> Vit</label>
+                <label><input type="checkbox" data-slot="shoulders" data-stat="allres"> All Res</label>
+                <label><input type="checkbox" data-slot="shoulders" data-stat="life"> Life%</label>
+            </div>
+            <div class="reroll-advice" id="advice-shoulders">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>🦺 Chest (Sunwuko's Soul)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="chest" data-stat="sockets"> 3 Sockets</label>
+                <label><input type="checkbox" data-slot="chest" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="chest" data-stat="vit"> Vit</label>
+                <label><input type="checkbox" data-slot="chest" data-stat="allres"> All Res</label>
+                <label><input type="checkbox" data-slot="chest" data-stat="elite"> Elite DR%</label>
+                <label><input type="checkbox" data-slot="chest" data-stat="armor"> Armor</label>
+                <label><input type="checkbox" data-slot="chest" data-stat="life"> Life%</label>
+            </div>
+            <div class="reroll-advice" id="advice-chest">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>🧤 Gloves (Sunwuko's Paws)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="gloves" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="gloves" data-stat="chc"> CHC 10%</label>
+                <label><input type="checkbox" data-slot="gloves" data-stat="chd"> CHD 50%</label>
+                <label><input type="checkbox" data-slot="gloves" data-stat="rcr"> RCR 8%</label>
+                <label><input type="checkbox" data-slot="gloves" data-stat="ad"> Area Damage</label>
+                <label><input type="checkbox" data-slot="gloves" data-stat="as"> Attack Speed</label>
+                <label><input type="checkbox" data-slot="gloves" data-stat="vit"> Vit</label>
+            </div>
+            <div class="reroll-advice" id="advice-gloves">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>🔮 Bracers (Cesar's Memento)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="bracers" data-stat="ele"> Cold% 20%</label>
+                <label><input type="checkbox" data-slot="bracers" data-stat="chc"> CHC 6%</label>
+                <label><input type="checkbox" data-slot="bracers" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="bracers" data-stat="vit"> Vit</label>
+                <label><input type="checkbox" data-slot="bracers" data-stat="lph"> Life per Hit</label>
+                <label><input type="checkbox" data-slot="bracers" data-stat="allres"> All Res</label>
+                <label><input type="checkbox" data-slot="bracers" data-stat="armor"> Armor</label>
+            </div>
+            <div class="reroll-advice" id="advice-bracers">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>🎀 Belt (Captain Crimson's Silk Girdle)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="belt" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="belt" data-stat="vit"> Vit</label>
+                <label><input type="checkbox" data-slot="belt" data-stat="allres"> All Res</label>
+                <label><input type="checkbox" data-slot="belt" data-stat="life"> Life%</label>
+                <label><input type="checkbox" data-slot="belt" data-stat="armor"> Armor</label>
+            </div>
+            <div class="reroll-advice" id="advice-belt">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>👖 Pants (Sunwuko's Leggings)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="pants" data-stat="sockets"> 2 Sockets</label>
+                <label><input type="checkbox" data-slot="pants" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="pants" data-stat="vit"> Vit</label>
+                <label><input type="checkbox" data-slot="pants" data-stat="allres"> All Res</label>
+                <label><input type="checkbox" data-slot="pants" data-stat="armor"> Armor</label>
+            </div>
+            <div class="reroll-advice" id="advice-pants">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>👢 Boots (Captain Crimson's Waders)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="boots" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="boots" data-stat="vit"> Vit</label>
+                <label><input type="checkbox" data-slot="boots" data-stat="skill"> TR% 15%</label>
+                <label><input type="checkbox" data-slot="boots" data-stat="allres"> All Res</label>
+                <label><input type="checkbox" data-slot="boots" data-stat="armor"> Armor</label>
+                <label><input type="checkbox" data-slot="boots" data-stat="ms"> Movement Speed</label>
+            </div>
+            <div class="reroll-advice" id="advice-boots">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>💍 Ring 1 (Ring of Royal Grandeur)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="ring1" data-stat="socket"> Socket</label>
+                <label><input type="checkbox" data-slot="ring1" data-stat="chc"> CHC</label>
+                <label><input type="checkbox" data-slot="ring1" data-stat="chd"> CHD</label>
+                <label><input type="checkbox" data-slot="ring1" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="ring1" data-stat="ad"> Area Damage</label>
+                <label><input type="checkbox" data-slot="ring1" data-stat="as"> Attack Speed</label>
+                <label><input type="checkbox" data-slot="ring1" data-stat="rcr"> RCR</label>
+            </div>
+            <div class="reroll-advice" id="advice-ring1">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>💍 Ring 2 (Obsidian Ring / CoE)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="ring2" data-stat="socket"> Socket</label>
+                <label><input type="checkbox" data-slot="ring2" data-stat="chc"> CHC</label>
+                <label><input type="checkbox" data-slot="ring2" data-stat="chd"> CHD</label>
+                <label><input type="checkbox" data-slot="ring2" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="ring2" data-stat="ad"> Area Damage</label>
+                <label><input type="checkbox" data-slot="ring2" data-stat="as"> Attack Speed</label>
+                <label><input type="checkbox" data-slot="ring2" data-stat="rcr"> RCR</label>
+            </div>
+            <div class="reroll-advice" id="advice-ring2">Wähle deine Stats...</div>
+        </div>
+
+        <div class="section gear-checker">
+            <h2>📿 Amulet (Squirt's / Flavor of Time)</h2>
+            <div class="stat-checks">
+                <label><input type="checkbox" data-slot="amulet" data-stat="socket"> Socket</label>
+                <label><input type="checkbox" data-slot="amulet" data-stat="ele"> Cold% 20%</label>
+                <label><input type="checkbox" data-slot="amulet" data-stat="chc"> CHC 10%</label>
+                <label><input type="checkbox" data-slot="amulet" data-stat="chd"> CHD 100%</label>
+                <label><input type="checkbox" data-slot="amulet" data-stat="dex"> Dex</label>
+                <label><input type="checkbox" data-slot="amulet" data-stat="rcr"> RCR</label>
+            </div>
+            <div class="reroll-advice" id="advice-amulet">Wähle deine Stats...</div>
         </div>
 
         <div class="section">
@@ -1130,6 +1698,116 @@
     <!-- FARM TAB -->
     <div id="farm" class="content">
         <div class="section">
+            <h2>🚀 Farming Grundregel</h2>
+            <div class="info-box">
+                <strong>SCHNELL > HOCH!</strong><br><br>
+                ❌ GR70 in 6 Minuten = wenig Loot pro Stunde<br>
+                ✅ GR55 in 2 Minuten = VIEL mehr Loot pro Stunde!<br><br>
+                <strong>Ziel:</strong> Das höchste GR in 2-3 Minuten clearen
+            </div>
+            <p class="note">💡 Mehr Runs = Mehr Drops = Mehr Upgrades + Mehr Ramaladni Chancen!</p>
+        </div>
+
+        <div class="section">
+            <h2>📊 Finde dein Speed-GR Level</h2>
+            <div class="info-box">
+                <strong>So findest du dein optimales Level:</strong><br><br>
+                1. Starte bei GR55<br>
+                2. War es unter 3 Min? → Das ist dein Farm-Level<br>
+                3. Zu leicht? → GR60 probieren<br>
+                4. Zu langsam? → GR50 probieren<br><br>
+                <strong>Ziel-Zeit pro GR:</strong> 2-3 Minuten
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎁 Ramaladni's Gift farmen</h2>
+            <div class="info-box">
+                <strong>Was ist das?</strong><br>
+                Fügt einer Waffe einen GRATIS Socket hinzu!<br>
+                Verbraucht keinen Reroll-Slot!<br><br>
+                <strong>Wo droppt es?</strong><br>
+                ✅ Greater Rifts (beste Methode!)<br>
+                ✅ Nephalem Rifts<br>
+                ✅ Überall als World Drop<br>
+                ❌ NICHT gezielt farmbar<br><br>
+                <strong>Wie bekomme ich es?</strong><br>
+                → Mehr Legendaries sehen = Mehr Chancen<br>
+                → Speed GRs/Rifts auf deinem schnellen Level<br>
+                → Einfach spielen, es kommt irgendwann!
+            </div>
+            <p class="note">⚠️ Ramaladni's Gift ist selten! Nicht aufgeben, weiterspielen!</p>
+        </div>
+
+        <div class="section">
+            <h2>📋 Aktivitäten - Wann was machen?</h2>
+            <div class="info-box">
+                <table style="width:100%; font-size:0.9em;">
+                    <tr style="border-bottom:1px solid #444"><td><strong>Speed GRs</strong></td><td>Hauptaktivität! Loot, Gems leveln, Paragon, Keys</td></tr>
+                    <tr style="border-bottom:1px solid #444"><td><strong>Nephalem Rifts</strong></td><td>GR Keys farmen, Death's Breath</td></tr>
+                    <tr style="border-bottom:1px solid #444"><td><strong>Bounties</strong></td><td>Nur wenn du Reforge-Mats brauchst</td></tr>
+                    <tr style="border-bottom:1px solid #444"><td><strong>Echoing Nightmare</strong></td><td>Augment-Gems (Whisper of Atonement)</td></tr>
+                    <tr><td><strong>Uber Bosses</strong></td><td>Hellfire Amulet (optional)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧱 Plateau durchbrechen</h2>
+            <div class="info-box">
+                <strong>Steckst du fest? Hier ist der Plan:</strong><br><br>
+                1️⃣ <strong>Runter mit dem GR Level!</strong><br>
+                &nbsp;&nbsp;&nbsp;→ Farm auf 2-3 Min Level, nicht am Limit<br><br>
+                2️⃣ <strong>Legendary Gems leveln</strong><br>
+                &nbsp;&nbsp;&nbsp;→ Bane of Trapped, Taeguk auf 80+<br>
+                &nbsp;&nbsp;&nbsp;→ Oft mehr Damage als Gear-Upgrades!<br><br>
+                3️⃣ <strong>Paragon sammeln</strong><br>
+                &nbsp;&nbsp;&nbsp;→ Jeder Paragon = +5 Mainstat<br>
+                &nbsp;&nbsp;&nbsp;→ Passiver, stetiger Power-Gewinn<br><br>
+                4️⃣ <strong>Cube Reforge für Ancient</strong><br>
+                &nbsp;&nbsp;&nbsp;→ Bounties für Mats<br>
+                &nbsp;&nbsp;&nbsp;→ Schlechte Items reforgen<br>
+                &nbsp;&nbsp;&nbsp;→ 10% Chance auf Ancient!<br><br>
+                5️⃣ <strong>Augments starten</strong><br>
+                &nbsp;&nbsp;&nbsp;→ Auch Level 80 Gems lohnen sich<br>
+                &nbsp;&nbsp;&nbsp;→ +400 Dex × 13 Slots = +5200 Dex!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚡ Quick Farm Session (30 Min)</h2>
+            <div class="info-box">
+                <strong>Ziel:</strong> Maximaler Loot in kurzer Zeit<br><br>
+                1. GR auf Speed-Level starten (2-3 Min)<br>
+                2. 10-15 GRs durchrushen<br>
+                3. Alle Legendaries mitnehmen<br>
+                4. Am Ende: Gems upgraden<br>
+                5. Schlechte Legs salvagen = Forgotten Souls<br><br>
+                <strong>Ergebnis:</strong><br>
+                • 50-100+ Legendaries gesehen<br>
+                • Paragon XP<br>
+                • Gem Level ups<br>
+                • Chance auf Ramaladni's Gift<br>
+                • Forgotten Souls für Reforge
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Was bringt am meisten Power?</h2>
+            <div class="info-box">
+                <strong>Ranking (von meiste zu wenigste Impact):</strong><br><br>
+                1. <strong>Richtige Items + Set</strong> → Hast du ✅<br>
+                2. <strong>Legendary Gems 80+</strong> → Riesiger Damage!<br>
+                3. <strong>Ancient Weapons</strong> → 15-20% mehr Damage<br>
+                4. <strong>Richtige Stats (CHC/CHD)</strong> → Enchanting<br>
+                5. <strong>Augments</strong> → +5000 Mainstat möglich<br>
+                6. <strong>Ancient Armor</strong> → Weniger Impact als Waffen<br>
+                7. <strong>Paragon</strong> → Langsam aber stetig<br>
+                8. <strong>Primal Items</strong> → Nice to have, nicht nötig
+            </div>
+        </div>
+
+        <div class="section">
             <h2>Torment Drop Rates</h2>
             <table class="skill-table">
                 <tr><th>Stufe</th><th>Leg%</th><th>Rift%</th><th>DB%</th><th>GR</th></tr>
@@ -1154,13 +1832,103 @@
         </div>
 
         <div class="section">
-            <h2>Kadala Gambling</h2>
+            <h2>🎰 Kadala Gambling Guide</h2>
             <div class="info-box">
-                <strong>Billig (25):</strong> Helm, Gloves, Boots, Chest, Belt, Shoulders, Pants, Bracers<br>
-                <strong>Mittel (50):</strong> Rings<br>
-                <strong>Teuer (75+):</strong> Weapons, Amulet (100)
+                <strong>Kosten pro Slot:</strong><br>
+                • <strong>25 Shards:</strong> Helm, Shoulders, Chest, Gloves, Belt, Pants, Boots, Bracers<br>
+                • <strong>50 Shards:</strong> Rings<br>
+                • <strong>75 Shards:</strong> 1H Weapons, Offhands, Shields<br>
+                • <strong>100 Shards:</strong> Amulet, 2H Weapons
             </div>
-            <p class="note">Bracers/Belt haben kleinen Loot-Pool = bessere Chancen</p>
+        </div>
+
+        <div class="section">
+            <h2>✅ Bei Kadala gamblen (kleine Pools)</h2>
+            <div class="info-box">
+                <strong>Bracers - BESTE Kadala Slot!</strong><br>
+                → Nur ~15 mögliche Legendaries<br>
+                → Cesar's Memento relativ leicht zu bekommen<br>
+                → Spirit Guards auch hier<br><br>
+
+                <strong>Belt - Sehr guter Slot</strong><br>
+                → Kleiner Pool ~20 Items<br>
+                → Witching Hour, Kyoshiro's Soul, etc.<br><br>
+
+                <strong>Helm - Okay</strong><br>
+                → Sunwuko's Crown, Eye of Peshkov<br>
+                → Mittlerer Pool<br><br>
+
+                <strong>Gloves/Boots/Shoulders/Chest/Pants</strong><br>
+                → Set-Teile hier gamblen<br>
+                → Mittlerer Pool, okay Chancen
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>❌ NICHT bei Kadala (große Pools / teuer)</h2>
+            <div class="info-box">
+                <strong>Waffen - NIEMALS bei Kadala!</strong><br>
+                → Riesiger Loot Pool (100+ Legendaries!)<br>
+                → 75 Shards pro Versuch<br>
+                → Chance auf spezifische Waffe = winzig<br>
+                → <strong>IMMER im Cube upgraden!</strong><br><br>
+
+                <strong>Ringe - Nur wenn verzweifelt</strong><br>
+                → 50 Shards, großer Pool<br>
+                → Cube Upgrade ist besser<br><br>
+
+                <strong>Amulet - Fast nie</strong><br>
+                → 100 Shards pro Versuch!<br>
+                → Riesiger Pool<br>
+                → Cube Upgrade nutzen
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚗️ Cube Upgrade statt Kadala</h2>
+            <div class="info-box">
+                <strong>Rezept:</strong> Rare (Yellow) + 25 DB + 50 jeder Mat<br>
+                <strong>Ergebnis:</strong> Zufällige Legendary DERSELBEN Kategorie<br><br>
+
+                <strong>Warum besser für Waffen?</strong><br>
+                → 1H Fist Weapons = nur ~8 mögliche!<br>
+                → Kadala 1H Weapons = 100+ möglich!<br>
+                → Chance auf Won Khim Lau/Vengeful Wind viel höher!<br><br>
+
+                <strong>So geht's:</strong><br>
+                1. Rare Fist Weapon beim Blacksmith craften<br>
+                2. Im Cube: "Upgrade Rare Item"<br>
+                3. Wird zu random Legendary Fist Weapon<br>
+                4. Wiederholen bis WKL/VW
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Sunwuko Monk - Wo was farmen?</h2>
+            <div class="info-box">
+                <strong>KADALA (gamblen):</strong><br>
+                ✅ Bracers → Cesar's Memento, Spirit Guards<br>
+                ✅ Belt → Kyoshiro's Soul<br>
+                ✅ Helm → Sunwuko's Crown<br>
+                ✅ Boots → Sunwuko's Shines, Crudest Boots<br>
+                ✅ Shoulders → Sunwuko's Balance, Mantle of Channeling<br>
+                ✅ Chest → Sunwuko's Soul<br>
+                ✅ Gloves → Sunwuko's Paws<br>
+                ✅ Pants → Sunwuko's Leggings<br><br>
+
+                <strong>CUBE UPGRADE (nicht Kadala!):</strong><br>
+                ⚗️ Fist Weapons → Won Khim Lau, Vengeful Wind<br>
+                ⚗️ Rings → Ring of Royal Grandeur (oder A1 Bounty)<br>
+                ⚗️ Amulet → Squirt's Necklace, Flavor of Time<br><br>
+
+                <strong>BOUNTIES:</strong><br>
+                🎁 Act 1 → Ring of Royal Grandeur<br>
+                🎁 Act 2 → Gloves of Worship (Follower)<br>
+                🎁 Act 3 → Avarice Band (Follower)<br><br>
+
+                <strong>RANDOM DROP:</strong><br>
+                💀 Balance Daibo → überall (World Drop)
+            </div>
         </div>
 
         <div class="section">
@@ -1918,7 +2686,8 @@
         function saveState() {
             const state = {};
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                state[cb.id] = cb.checked;
+                const key = cb.id || (cb.dataset.slot + '_' + cb.dataset.stat);
+                if (key) state[key] = cb.checked;
             });
             localStorage.setItem('d3s37', JSON.stringify(state));
         }
@@ -1926,14 +2695,17 @@
         function loadState() {
             const state = JSON.parse(localStorage.getItem('d3s37') || '{}');
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                if (state[cb.id] !== undefined) {
-                    cb.checked = state[cb.id];
+                const key = cb.id || (cb.dataset.slot + '_' + cb.dataset.stat);
+                if (key && state[key] !== undefined) {
+                    cb.checked = state[key];
                 }
                 if (cb.checked) {
                     cb.closest('.item')?.classList.add('checked');
                 }
             });
             updateProgress();
+            // Update all gear checker advice on load
+            ['mh','oh','helm','shoulders','chest','gloves','bracers','belt','pants','boots','ring1','ring2','amulet'].forEach(updateGearAdvice);
         }
 
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
@@ -1967,6 +2739,306 @@
             });
         }
 
+        // Gear Checker Logic
+        const gearAdvice = {
+            mh: {
+                priority: ['socket', 'dex', 'dmgpct', 'ad'],
+                optional: ['cdr', 'rcr'],
+                bad: ['vit', 'lph'],
+                socketNote: '⚠️ Socket mit Ramaladnis Gift hinzufügen, NICHT rerolled!',
+                getAdvice: (has) => {
+                    if (!has.socket) return { text: '🎁 Ramaladnis Gift für Socket nutzen! Dann schlechtesten Stat rerolled.', cls: '' };
+                    if (!has.dex) return { text: '❌ Dex fehlt → anderer Stat zu DEX rerolled', cls: '' };
+                    if (!has.dmgpct && (has.vit || has.lph)) return { text: '🔄 ' + (has.vit ? 'Vit' : 'LpH') + ' → +10% Damage rerolled', cls: '' };
+                    if (!has.dmgpct && !has.ad) return { text: '🔄 Schlechtesten Stat → +10% Damage rerolled', cls: '' };
+                    if (has.vit || has.lph) return { text: '🔄 ' + (has.vit ? 'Vit' : 'LpH') + ' → Area Damage rerolled', cls: 'good' };
+                    if (has.socket && has.dex && has.dmgpct && has.ad) return { text: '✅ PERFEKT! Nichts rerolled nötig!', cls: 'perfect' };
+                    return { text: '👍 Gute Stats! Optional: +AD oder CDR', cls: 'good' };
+                }
+            },
+            oh: {
+                priority: ['socket', 'dex', 'dmgpct', 'ad'],
+                getAdvice: (has) => {
+                    if (!has.socket) return { text: '🎁 Ramaladnis Gift für Socket nutzen!', cls: '' };
+                    if (!has.dex) return { text: '❌ Dex fehlt → rerolled zu DEX', cls: '' };
+                    if (!has.dmgpct && (has.vit || has.lph)) return { text: '🔄 ' + (has.vit ? 'Vit' : 'LpH') + ' → +10% Damage', cls: '' };
+                    if (has.vit || has.lph) return { text: '🔄 ' + (has.vit ? 'Vit' : 'LpH') + ' → Area Damage', cls: 'good' };
+                    if (has.socket && has.dex && has.dmgpct) return { text: '✅ Sehr gut! Optional: AD', cls: 'perfect' };
+                    return { text: '👍 Okay Stats', cls: 'good' };
+                }
+            },
+            helm: {
+                priority: ['socket', 'dex', 'chc', 'skill'],
+                getAdvice: (has) => {
+                    if (!has.socket) return { text: '❌ Socket fehlt! → Reroll zu Socket (für Topaz = RCR!)', cls: '' };
+                    if (!has.dex) return { text: '❌ Dex fehlt → rerolled zu DEX', cls: '' };
+                    if (!has.chc && has.allres) return { text: '🔄 All Res → CHC 6% rerolled', cls: '' };
+                    if (!has.chc && has.vit) return { text: '🔄 Vit → CHC 6% rerolled (Defense woanders holen)', cls: '' };
+                    if (!has.chc) return { text: '🔄 Schlechtesten Stat → CHC 6%', cls: '' };
+                    if (has.socket && has.dex && has.chc && has.skill) return { text: '✅ PERFEKT!', cls: 'perfect' };
+                    if (has.socket && has.dex && has.chc) return { text: '👍 Sehr gut! TR% wäre Bonus', cls: 'good' };
+                    return { text: '👍 Okay', cls: 'good' };
+                }
+            },
+            shoulders: {
+                priority: ['dex', 'rcr', 'cdr', 'ad'],
+                getAdvice: (has) => {
+                    if (!has.dex) return { text: '❌ Dex fehlt → rerolled', cls: '' };
+                    if (!has.rcr && has.life) return { text: '🔄 Life% → RCR 8% (Spirit Management!)', cls: '' };
+                    if (!has.rcr && !has.cdr) return { text: '🔄 Defensiven Stat → RCR 8% oder CDR 8%', cls: '' };
+                    if (has.dex && has.rcr && has.cdr && has.ad) return { text: '✅ PERFEKT!', cls: 'perfect' };
+                    if (has.dex && (has.rcr || has.cdr)) return { text: '👍 Gut! Vit/AllRes okay für Defense', cls: 'good' };
+                    return { text: '👍 Okay', cls: 'good' };
+                }
+            },
+            chest: {
+                priority: ['sockets', 'dex', 'vit', 'allres'],
+                getAdvice: (has) => {
+                    if (!has.sockets) return { text: '❌ 3 Sockets fehlen! → Reroll!', cls: '' };
+                    if (!has.dex) return { text: '❌ Dex fehlt → rerolled', cls: '' };
+                    if (!has.vit) return { text: '🔄 Schlechtesten Stat → Vit', cls: '' };
+                    if (!has.allres && !has.elite && has.life) return { text: '🔄 Life% → All Res oder Elite DR%', cls: '' };
+                    if (has.sockets && has.dex && has.vit && (has.allres || has.elite)) return { text: '✅ PERFEKT!', cls: 'perfect' };
+                    return { text: '👍 Gut! Chest ist defensiv', cls: 'good' };
+                }
+            },
+            gloves: {
+                priority: ['dex', 'chc', 'chd', 'rcr'],
+                getAdvice: (has) => {
+                    if (!has.dex) return { text: '❌ Dex fehlt!', cls: '' };
+                    if (!has.chc && !has.chd) return { text: '❌ CHC UND CHD fehlen! Gloves sind OFFENSIV! → CHC rerolled', cls: '' };
+                    if (!has.chc) return { text: '🔄 Schlechtesten Stat → CHC 10%', cls: '' };
+                    if (!has.chd && has.vit) return { text: '🔄 Vit → CHD 50% (Gloves = Offense!)', cls: '' };
+                    if (!has.chd) return { text: '🔄 Schlechtesten Stat → CHD 50%', cls: '' };
+                    if (has.dex && has.chc && has.chd && (has.rcr || has.ad)) return { text: '✅ PERFEKT!', cls: 'perfect' };
+                    if (has.dex && has.chc && has.chd) return { text: '👍 Core Stats da! 4. Stat: RCR/AD ideal', cls: 'good' };
+                    return { text: '👍 Okay', cls: 'good' };
+                }
+            },
+            bracers: {
+                priority: ['ele', 'chc', 'dex', 'vit'],
+                getAdvice: (has) => {
+                    if (!has.ele && !has.chc) return { text: '❌ Cold% UND CHC fehlen! → Cold% 20% rerolled (riesiger DMG Boost!)', cls: '' };
+                    if (!has.ele) return { text: '🔄 Schlechtesten Stat → Cold% 20% (WICHTIG!)', cls: '' };
+                    if (!has.chc) return { text: '🔄 Schlechtesten Stat → CHC 6%', cls: '' };
+                    if (!has.dex) return { text: '🔄 → Dex', cls: '' };
+                    if (has.ele && has.chc && has.dex && (has.vit || has.lph)) return { text: '✅ PERFEKT!', cls: 'perfect' };
+                    return { text: '👍 Gut!', cls: 'good' };
+                }
+            },
+            belt: {
+                priority: ['dex', 'vit', 'allres', 'life'],
+                getAdvice: (has) => {
+                    if (!has.dex) return { text: '❌ Dex fehlt', cls: '' };
+                    if (!has.vit) return { text: '🔄 → Vit', cls: '' };
+                    if (!has.allres && !has.life) return { text: '🔄 Schlechtesten → All Res oder Life%', cls: '' };
+                    if (has.dex && has.vit && has.allres) return { text: '✅ PERFEKT! Belt ist rein defensiv', cls: 'perfect' };
+                    return { text: '👍 Gut! Belt = Defense', cls: 'good' };
+                }
+            },
+            pants: {
+                priority: ['sockets', 'dex', 'vit', 'allres'],
+                getAdvice: (has) => {
+                    if (!has.sockets) return { text: '❌ 2 Sockets fehlen!', cls: '' };
+                    if (!has.dex) return { text: '❌ Dex fehlt', cls: '' };
+                    if (!has.vit) return { text: '🔄 → Vit', cls: '' };
+                    if (!has.allres && !has.armor) return { text: '🔄 → All Res oder Armor', cls: '' };
+                    if (has.sockets && has.dex && has.vit && has.allres) return { text: '✅ PERFEKT!', cls: 'perfect' };
+                    return { text: '👍 Gut! Pants = Defense', cls: 'good' };
+                }
+            },
+            boots: {
+                priority: ['dex', 'vit', 'skill', 'allres'],
+                getAdvice: (has) => {
+                    if (!has.dex) return { text: '❌ Dex fehlt', cls: '' };
+                    if (has.ms) return { text: '🔄 Movement Speed → TR% 15%! (MS aus Paragon!)', cls: '' };
+                    if (!has.skill) return { text: '🔄 Schlechtesten Stat → TR% 15% (mehr Damage!)', cls: '' };
+                    if (!has.vit) return { text: '🔄 → Vit', cls: '' };
+                    if (has.dex && has.vit && has.skill && has.allres) return { text: '✅ PERFEKT!', cls: 'perfect' };
+                    return { text: '👍 Gut!', cls: 'good' };
+                }
+            },
+            ring1: {
+                priority: ['socket', 'chc', 'chd', 'dex'],
+                getAdvice: (has) => {
+                    if (!has.socket) return { text: '❌ Socket fehlt! → IMMER zuerst Socket rerolled!', cls: '' };
+                    if (!has.chc && !has.chd) return { text: '🔄 → CHC oder CHD', cls: '' };
+                    if (has.socket && has.chc && has.chd) return { text: '✅ Top Stats! Dex/AD wäre Bonus', cls: 'perfect' };
+                    if (has.socket && (has.chc || has.chd)) return { text: '👍 Okay, Socket + 1 Crit Stat', cls: 'good' };
+                    return { text: '👍 Socket da = nutzbar', cls: 'good' };
+                }
+            },
+            ring2: {
+                priority: ['socket', 'chc', 'chd', 'dex'],
+                getAdvice: (has) => {
+                    if (!has.socket) return { text: '❌ Socket fehlt! → IMMER zuerst Socket!', cls: '' };
+                    if (!has.chc && !has.chd) return { text: '🔄 → CHC oder CHD', cls: '' };
+                    if (has.socket && has.chc && has.chd) return { text: '✅ Top Stats!', cls: 'perfect' };
+                    if (has.socket && (has.chc || has.chd)) return { text: '👍 Okay', cls: 'good' };
+                    return { text: '👍 Socket da = nutzbar', cls: 'good' };
+                }
+            },
+            amulet: {
+                priority: ['socket', 'ele', 'chc', 'chd'],
+                getAdvice: (has) => {
+                    if (!has.socket) return { text: '❌ Socket fehlt! → IMMER zuerst Socket für Legendary Gem!', cls: '' };
+                    if (!has.ele && !has.chc && !has.chd) return { text: '🔄 → Cold% 20% (bester Stat für Ammy!)', cls: '' };
+                    if (!has.chc && !has.chd) return { text: '🔄 → CHC 10% oder CHD 100%', cls: '' };
+                    if (has.socket && has.ele && has.chc && has.chd) return { text: '✅ PERFEKT! Traumhaftes Amulet!', cls: 'perfect' };
+                    if (has.socket && ((has.ele && has.chc) || (has.ele && has.chd) || (has.chc && has.chd))) return { text: '👍 Sehr gut! 3 gute Stats', cls: 'good' };
+                    return { text: '👍 Socket da = nutzbar', cls: 'good' };
+                }
+            }
+        };
+
+        function updateGearAdvice(slot) {
+            const checks = document.querySelectorAll(`[data-slot="${slot}"]`);
+            const has = {};
+            checks.forEach(cb => { has[cb.dataset.stat] = cb.checked; });
+
+            const adviceEl = document.getElementById(`advice-${slot}`);
+            if (adviceEl && gearAdvice[slot]) {
+                const result = gearAdvice[slot].getAdvice(has);
+                adviceEl.textContent = result.text;
+                adviceEl.className = 'reroll-advice ' + (result.cls || '');
+            }
+        }
+
+        document.querySelectorAll('.gear-checker input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', () => {
+                updateGearAdvice(cb.dataset.slot);
+            });
+        });
+
+        // Stat Calculator Logic
+        const statBreakpoints = {
+            cdr: { min: 45, good: 50, perfect: 55, max: 80, unit: '%' },
+            rcr: { min: 40, good: 50, perfect: 55, max: 80, unit: '%' },
+            chc: { min: 40, good: 50, perfect: 55, max: 65, unit: '%' },
+            chd: { min: 350, good: 450, perfect: 500, max: 600, unit: '%' },
+            cold: { min: 20, good: 40, perfect: 40, max: 40, unit: '%' },
+            ad: { min: 50, good: 100, perfect: 130, max: 150, unit: '%' }
+        };
+
+        const statNames = {
+            cdr: 'CDR',
+            rcr: 'RCR',
+            chc: 'CHC',
+            chd: 'CHD',
+            cold: 'Cold%',
+            ad: 'Area Damage'
+        };
+
+        const statTips = {
+            cdr: {
+                low: 'CDR zu niedrig! Epiphany hat keine Uptime. → CDR auf Shoulders, Gloves, Rings, Amulet, Paragon',
+                ok: 'CDR okay, aber mehr wäre besser für Epiphany Uptime',
+                good: 'CDR perfekt! Epiphany hat fast 100% Uptime'
+            },
+            rcr: {
+                low: 'RCR zu niedrig! Spirit Probleme! → Topaz in Helm, RCR auf Shoulders/Gloves, Paragon',
+                ok: 'RCR okay, evtl. noch Spirit Probleme bei langen Fights',
+                good: 'RCR perfekt! Smooth Tempest Rush'
+            },
+            chc: {
+                low: 'CHC zu niedrig! Damage sehr inkonsistent. → CHC auf Helm, Gloves, Bracers, Rings, Amulet',
+                ok: 'CHC okay, Damage ist consistent genug',
+                good: 'CHC perfekt! Crits überall'
+            },
+            chd: {
+                low: 'CHD zu niedrig! Crits sind schwach. → CHD auf Gloves, Rings, Amulet + Emeralds in Weapons',
+                ok: 'CHD okay, guter Crit Damage',
+                good: 'CHD perfekt! Fette Crits!'
+            },
+            cold: {
+                low: 'Cold% fehlt! → Cold% auf Bracers (20%) und Amulet (20%)',
+                ok: 'Cold% nur auf einem Slot. Amulet oder Bracers fehlt',
+                good: 'Cold% perfekt! Max aus Bracers + Amulet'
+            },
+            ad: {
+                low: 'Area Damage niedrig. → AD auf Shoulders, Gloves, Rings, Weapons, Paragon',
+                ok: 'Area Damage okay für AoE',
+                good: 'Area Damage perfekt! Explosive AoE Kills'
+            }
+        };
+
+        function updateStatCalculator() {
+            const stats = ['cdr', 'rcr', 'chc', 'chd', 'cold', 'ad'];
+            const recommendations = [];
+            let allGood = true;
+
+            stats.forEach(stat => {
+                const input = document.getElementById(`stat-${stat}`);
+                const fill = document.getElementById(`fill-${stat}`);
+                const value = document.getElementById(`value-${stat}`);
+                const bp = statBreakpoints[stat];
+
+                if (!input || !fill || !value) return;
+
+                const val = parseFloat(input.value) || 0;
+                const percent = Math.min(100, (val / bp.max) * 100);
+
+                fill.style.width = percent + '%';
+
+                let status, cls;
+                if (val < bp.min) {
+                    status = '❌ Niedrig';
+                    cls = 'bad';
+                    recommendations.push(statTips[stat].low);
+                    allGood = false;
+                } else if (val < bp.good) {
+                    status = '⚠️ Okay';
+                    cls = 'ok';
+                    if (stat !== 'cold' && stat !== 'ad') {
+                        recommendations.push(statTips[stat].ok);
+                    }
+                } else if (val >= bp.perfect) {
+                    status = '✅ Perfekt';
+                    cls = 'good';
+                } else {
+                    status = '👍 Gut';
+                    cls = 'good';
+                }
+
+                fill.className = `stat-fill ${cls}`;
+                value.textContent = val > 0 ? `${val}${bp.unit} - ${status}` : '-';
+
+                // Save to localStorage
+                localStorage.setItem(`stat_${stat}`, val);
+            });
+
+            const recEl = document.getElementById('stat-recommendations');
+            if (recEl) {
+                if (recommendations.length === 0) {
+                    recEl.innerHTML = '✅ <strong>Alle Stats sind gut!</strong><br><br>Dein Build ist solide. Fokus jetzt auf:<br>• Ancient Gear farmen<br>• Augments hinzufügen<br>• Paragon leveln';
+                    recEl.className = 'info-box all-good';
+                } else {
+                    recEl.innerHTML = '<strong>🔧 Verbesserungen:</strong><br><br>' + recommendations.map(r => '• ' + r).join('<br><br>');
+                    recEl.className = 'info-box has-issues';
+                }
+            }
+        }
+
+        function loadStatCalculator() {
+            ['cdr', 'rcr', 'chc', 'chd', 'cold', 'ad'].forEach(stat => {
+                const saved = localStorage.getItem(`stat_${stat}`);
+                const input = document.getElementById(`stat-${stat}`);
+                if (saved && input) {
+                    input.value = saved;
+                }
+            });
+            updateStatCalculator();
+        }
+
+        // Add listeners to stat inputs
+        ['cdr', 'rcr', 'chc', 'chd', 'cold', 'ad'].forEach(stat => {
+            const input = document.getElementById(`stat-${stat}`);
+            if (input) {
+                input.addEventListener('input', updateStatCalculator);
+            }
+        });
+
+        loadStatCalculator();
         loadState();
     </script>
 </body>
