@@ -818,7 +818,7 @@ def _generate_build_html(build: dict) -> str:
         <div class="section">
             <h2>Kanai's Cube</h2>
             <div class="cube-slot"><strong>Weapon:</strong> {cube.get('weapon', {}).get('item', '?')} - {cube.get('weapon', {}).get('power', '')}</div>
-            <div class="cube-slot"><strong>Armor:</strong> {cube.get('armor', {}).get('primary', {}).get('item', '?')} - {cube.get('armor', {}).get('primary', {}).get('notes', '')}</div>
+            <div class="cube-slot"><strong>Armor:</strong> {(cube.get('armor', {}).get('primary') or cube.get('armor', {})).get('item', '?')} - {(cube.get('armor', {}).get('primary') or cube.get('armor', {})).get('notes', '')}</div>
             <div class="cube-slot"><strong>Jewelry:</strong> {cube.get('jewelry', {}).get('item', '?')} - {cube.get('jewelry', {}).get('power', '')}</div>
         </div>
 
