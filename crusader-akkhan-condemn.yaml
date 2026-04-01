@@ -1,0 +1,527 @@
+# Diablo 3 Crusader - Akkhan Condemn Build
+# Aktuell für Season 38 (Ethereal Memory)
+# Letzte Aktualisierung: 2026-03
+
+build:
+  name: "Akkhan Condemn"
+  short_name: "AKK Condemn"
+  class: "Crusader"
+  damage_type: "Holy"
+  playstyle: "Melee AoE"
+  difficulty: "Easy"
+
+  viable_for:
+    speed_farming: true
+    gr_pushing: true
+    bounties: true
+    key_farming: true
+
+  gr_target: 90
+  notes: |
+    Sehr tanky dank Akarat's Champion (Prophet) - stirbt kaum.
+    Phalanx-Avatare casten Condemn automatisch, massiver AoE-Schaden.
+    Keine komplexe Rotation, keine Timing-Fenster. Einfachste Mechaniken.
+    Boss-Kills bei GR 90 sind schnell - kein Stricken-Gem nötig.
+
+# =============================================================================
+# SKILLS
+# =============================================================================
+skills:
+  active:
+    - slot: "LMB"
+      skill: "Justice"
+      rune: "Sword of Justice"
+      notes: "Wrath-Generator. Immer casten wenn kein Wrath mehr."
+
+    - slot: "RMB"
+      skill: "Condemn"
+      rune: "Unleashed"
+      notes: "Hauptschaden für GR. Wrath-Spender statt Cooldown (dank Frydehr's Wrath)."
+      rune_alternative:
+        name: "Shattering Explosion"
+        use_case: "T16 Nephalem Rifts - größerer Explosionsradius"
+
+    - slot: "1"
+      skill: "Phalanx"
+      rune: "Shield Bearers"
+      notes: "KERN DES BUILDS. Avatare casten dauerhaft Condemn auf alle Gegner in der Nähe."
+
+    - slot: "2"
+      skill: "Judgment"
+      rune: "Alle Runen gleichzeitig (Akkhan Bonus)"
+      notes: "Debufft alle Gegner im Radius. Alle 6 Sekunden neu casten."
+
+    - slot: "3"
+      skill: "Akarat's Champion"
+      rune: "Prophet"
+      notes: "ÜBERLEBENSWICHTIG. Fast permanente Uptime. Prophet = kostenlose Auferstehung."
+
+    - slot: "4"
+      skill: "Laws of Valor"
+      rune: "Unstoppable Force"
+      notes: "Bufft Angriffsgeschwindigkeit. Long Arm of the Law Passive verlängert Uptime."
+
+  passives:
+    required:
+      - name: "Fervor"
+        effect: "15% CDR + 15% Angriffsgeschwindigkeit (mit 1H-Waffe)"
+        notes: "Pflicht für Akarat's Champion Uptime"
+
+      - name: "Finery"
+        effect: "~15% mehr Schaden + ~12% Toughness pro Set-Bonus"
+        notes: "Stärkster generischer Crusader Passive"
+
+      - name: "Long Arm of the Law"
+        effect: "Law-Buff Dauer erhöht"
+        notes: "Laws of Valor bleibt länger aktiv"
+
+    recommended:
+      - name: "Lord Commander"
+        effect: "+Phalanx Schaden, Kosten reduziert"
+        notes: "Für mehr Damage. Tauschen gegen Indestructible wenn nötig."
+
+    alternatives:
+      - name: "Indestructible"
+        effect: "Cheat Death + kurze Unverwundbarkeit"
+        notes: "Tauscht gegen Lord Commander wenn du noch stirbst"
+
+# =============================================================================
+# GEAR
+# =============================================================================
+gear:
+  worn:
+    helm:
+      item: "Helm of Akkhan"
+      set: "Armor of Akkhan"
+      stats_priority:
+        - "Critical Hit Chance"
+        - "Socket (Flawless Royal Diamond)"
+        - "Strength"
+        - "Vitality"
+      gem: "Flawless Royal Diamond"
+      gem_effect: "Cooldown Reduction"
+
+    shoulders:
+      item: "Pauldrons of Akkhan"
+      set: "Armor of Akkhan"
+      stats_priority:
+        - "Cooldown Reduction"
+        - "Condemn Damage %"
+        - "Strength"
+        - "All Resistance"
+
+    chest:
+      item: "Breastplate of Akkhan"
+      set: "Armor of Akkhan"
+      stats_priority:
+        - "3 Sockets"
+        - "Condemn Damage %"
+        - "Elite Damage Reduction"
+        - "Strength"
+      gems: "3x Flawless Royal Topaz (Vitality) oder Diamond (AR)"
+
+    gloves:
+      item: "Gauntlets of Akkhan"
+      set: "Armor of Akkhan"
+      stats_priority:
+        - "Critical Hit Chance"
+        - "Cooldown Reduction"
+        - "Critical Hit Damage"
+        - "Attack Speed"
+      notes: "Kein Area Damage! Wirkt nicht mit Phalanx-Condemns."
+
+    bracers:
+      item: "Strongarm Bracers"
+      legendary_power: "+Schaden nach Knockback auf Gegner"
+      stats_priority:
+        - "Holy Damage %"
+        - "Critical Hit Chance"
+        - "Strength"
+        - "Vitality"
+      notes: "Solo BiS. Knockback-Synergy mit Judgment."
+
+    belt:
+      item: "Captain Crimson's Silk Girdle"
+      set: "Captain Crimson's Trimmings"
+      crafted: true
+      stats_priority:
+        - "All Resistance"
+        - "Strength"
+        - "Vitality"
+        - "Life %"
+
+    pants:
+      item: "Cuisses of Akkhan"
+      set: "Armor of Akkhan"
+      stats_priority:
+        - "2 Sockets"
+        - "All Resistance"
+        - "Strength"
+        - "Vitality"
+      gems: "2x Flawless Royal Topaz (Vitality)"
+
+    boots:
+      item: "Sabatons of Akkhan"
+      set: "Armor of Akkhan"
+      stats_priority:
+        - "All Resistance"
+        - "Strength"
+        - "Vitality"
+        - "Armor"
+
+    amulet:
+      item: "The Traveler's Pledge"
+      set: "Endless Walk"
+      stats_priority:
+        - "Socket"
+        - "Critical Hit Damage"
+        - "Holy Damage %"
+        - "Critical Hit Chance"
+      notes: "Set mit Compass Rose. +100% Schaden wenn man steht."
+
+    ring_1:
+      item: "The Compass Rose"
+      set: "Endless Walk"
+      stats_priority:
+        - "Socket"
+        - "Cooldown Reduction"
+        - "Critical Hit Damage"
+        - "Critical Hit Chance"
+      notes: "Set mit Traveler's Pledge. +100% DR wenn man läuft."
+
+    ring_2:
+      item: "Rechel's Ring of Larceny"
+      legendary_power: "+Bewegungsgeschwindigkeit nach Fearful Hit"
+      stats_priority:
+        - "Socket"
+        - "Cooldown Reduction"
+        - "Critical Hit Damage"
+        - "Critical Hit Chance"
+      notes: "Hohe Bewegungsgeschwindigkeit für schnelleres Farming."
+
+    weapon:
+      item: "Blade of Prophecy"
+      type: "Two-Handed Sword"
+      legendary_power: "Condemn erzeugt bis zu 2 zusätzliche Explosionen"
+      stats_priority:
+        - "Damage Range (hoch)"
+        - "Socket (Ramaladni's Gift)"
+        - "Cooldown Reduction"
+        - "Strength"
+      gem: "Flawless Royal Emerald"
+      gem_effect: "+130% Crit Damage"
+      notes: "Verdoppelt effektiv den Condemn-Schaden. BiS Waffe."
+      ethereal_note: "Ethereal Waffe als Alternative wenn verfügbar (Season Theme)"
+
+    offhand:
+      item: "Unrelenting Phalanx"
+      type: "Shield"
+      legendary_power: "Verdoppelt Phalanx-Avatare + 60% Phalanx Schaden"
+      stats_priority:
+        - "Critical Hit Chance"
+        - "Condemn Damage %"
+        - "Cooldown Reduction"
+        - "Strength"
+      notes: "Mehr Avatare = mehr Condemn-Procs = mehr Schaden."
+
+  set_bonuses:
+    akkhan_6pc:
+      pieces_required: 6
+      pieces_worn: 5
+      rorg_required: true
+      bonus_2pc: "Akarat's Champion Kosten auf 0 reduziert"
+      bonus_4pc: "Akarat's Champion gewährt +1500% Schaden + 50% DR"
+      bonus_6pc: "Phalanx-Avatare casten Condemn bei jedem Treffer"
+      notes: "6pc via 5 Teile + Ring of Royal Grandeur (Cube)"
+
+    captain_crimson_3pc:
+      pieces_required: 3
+      pieces_worn: 2
+      rorg_required: true
+      bonus_2pc: "20% CDR + 20% RCR"
+      bonus_3pc: "Schaden erhöht um CDR%. DR erhöht um RCR%."
+      notes: "Belt + Boots. Ermöglicht permanenten Akarat's Champion."
+
+# =============================================================================
+# KANAI'S CUBE
+# =============================================================================
+kanais_cube:
+  weapon:
+    item: "Frydehr's Wrath"
+    type: "Crusader Shield"
+    power: "Condemn hat keinen Cooldown mehr, kostet stattdessen Wrath"
+    notes: "Macht Condemn zu einem Spam-Skill. Cooldown fixiert auf 0.5s - CDR hat hier keinen Effekt."
+
+  armor:
+    item: "Ring of Royal Grandeur"
+    power: "Set-Bonus Anforderung -1"
+    source: "Act 1 Bounty Cache"
+    notes: "PFLICHT. Ermöglicht 5pc Akkhan + 2pc Captain Crimson gleichzeitig."
+
+  jewelry:
+    item: "Blade of Prophecy"
+    power: "Condemn erzeugt bis zu 2 zusätzliche Explosionen"
+    notes: "Wird gecubed wenn Frydehr's Wrath als Waffe getragen wird (T16 Variante)."
+    variant_note: "Im GR-Build: Blade of Prophecy als Waffe tragen, Frydehr's im Cube."
+
+# =============================================================================
+# LEGENDARY GEMS
+# =============================================================================
+legendary_gems:
+  primary:
+    - name: "Bane of the Trapped"
+      effect: "+60% Schaden auf verlangsamte/CC'd Gegner"
+      rank_25_bonus: "Slow-Aura in 15 Yards Radius"
+      notes: "Judgment slow procs diesen Gem automatisch"
+      socket: "Jewelry"
+
+    - name: "Enforcer"
+      effect: "+60% Pet-Schaden"
+      rank_25_bonus: "Pets nehmen 90% weniger Schaden"
+      notes: "Phalanx-Avatare gelten als Pets - massiver Damage-Boost"
+      socket: "Jewelry"
+
+    - name: "Bane of the Powerful"
+      effect: "+20% Schaden nach Elite-Kill (30 Sekunden)"
+      rank_25_bonus: "+15% Schaden gegen Elites"
+      notes: "Für GR 90 Farming - Boss-Kills schnell ohne Stricken nötig"
+      socket: "Jewelry"
+
+  pushing_alternative:
+    - name: "Bane of the Stricken"
+      effect: "+2% Schaden pro Treffer auf dasselbe Ziel (stackt)"
+      rank_25_bonus: "+25% Schaden gegen Rift Guardians"
+      notes: "NUR nötig für GR 100+. Für GR 90 nicht erforderlich."
+      socket: "Jewelry"
+
+# =============================================================================
+# STAT PRIORITIES
+# =============================================================================
+stat_priorities:
+  offensive:
+    1: "Cooldown Reduction (CDR) - auf jedem möglichen Slot!"
+    2: "Holy Damage % (Bracers, Amulet)"
+    3: "Condemn Damage % (Offhand, Shoulders, Chest)"
+    4: "Critical Hit Chance"
+    5: "Critical Hit Damage"
+    6: "Strength"
+
+  defensive:
+    1: "All Resistance"
+    2: "Vitality"
+    3: "Armor"
+    4: "Life %"
+
+  never_roll:
+    - stat: "Area Damage"
+      reason: "Phalanx-Condemns procen kein Area Damage - komplett wertlos für diesen Build"
+
+  breakpoints:
+    cdr_goal: "So viel wie möglich"
+    cdr_notes: "Kein fester Breakpoint - jedes % CDR = mehr Akarat's Champion Uptime"
+    cdr_sources:
+      - "Paragon: 10%"
+      - "Fervor Passive: 15%"
+      - "Captain Crimson 2pc: 20%"
+      - "Diamond in Helm: 12.5%"
+      - "Shoulders, Gloves, Ringe: je ~8%"
+
+    life_target: 600000
+    life_notes: "Mit Akarat's Champion und Traveler's Pledge gut erreichbar"
+
+# =============================================================================
+# PARAGON POINTS
+# =============================================================================
+paragon:
+  core:
+    1: "Movement Speed (bis 25% Cap)"
+    2: "Strength"
+    3: "Vitality"
+    4: "Maximum Wrath"
+    notes: "MS Cap zuerst, dann Strength"
+
+  offense:
+    1: "Cooldown Reduction"
+    2: "Critical Hit Chance"
+    3: "Critical Hit Damage"
+    4: "Attack Speed"
+    notes: "CDR ist wichtigster Offense-Stat für diesen Build"
+
+  defense:
+    1: "All Resistance"
+    2: "Life %"
+    3: "Armor"
+    4: "Life Regeneration"
+
+  utility:
+    1: "Resource Cost Reduction"
+    2: "Life on Hit"
+    3: "Gold Find"
+    4: "Area Damage"
+    notes: "Area Damage ZULETZT - wirkt nicht mit Phalanx-Condemns"
+
+# =============================================================================
+# GAMEPLAY
+# =============================================================================
+gameplay:
+  core_concept: |
+    Die Akkhan 6-teilig Bonus lässt Phalanx-Avatare bei jedem Treffer
+    automatisch Condemn casten. Das macht hunderte Explosionen pro Sekunde.
+    Du musst nur Phalanx aktiv halten und alles explodiert von selbst.
+
+  rotation:
+    - step: 1
+      action: "Phalanx casten"
+      notes: "Avatare spawnen und beginnen sofort Condemn zu casten. Regelmäßig erneuern."
+
+    - step: 2
+      action: "Akarat's Champion aktiv halten"
+      notes: "Wenn der grüne Balken über dem Skill verschwindet, sofort neu casten. Fast kein Cooldown."
+
+    - step: 3
+      action: "Judgment auf Gegner casten"
+      notes: "Alle 6 Sekunden erneuern. Debufft alle Gegner im Radius."
+
+    - step: 4
+      action: "Laws of Valor aktiv halten"
+      notes: "Wie Akarat's Champion - bei Ablauf sofort neu casten."
+
+    - step: 5
+      action: "Condemn spammen"
+      notes: "Durch Frydehr's Wrath (Cube) kostet Condemn Wrath statt Cooldown. Spam so schnell wie möglich."
+
+    - step: 6
+      action: "Justice casten wenn Wrath leer"
+      notes: "Generator zum Wrath auffüllen. Nicht zu oft nötig."
+
+  elite_strategy:
+    - "Minimum 3 Gegner sammeln bevor Angriff - Blade of Prophecy braucht mehrere Ziele"
+    - "Elites mit Judgment debufften und Phalanx drauf schicken"
+    - "Gefährliche Elite-Affixe (Illusionist, Shielding, 5er Blaue Packs) - überspringen!"
+    - "Stattdessen schnell killbare Elites priorisieren"
+
+  boss_strategy:
+    - "Power Pylon für Boss-Kampf aufheben wenn möglich"
+    - "In einer Ecke/an der Wand stehen - Avatare stacken sich und casten mehr Condemns auf einen Punkt"
+    - "Akarat's Champion aktiv halten - Prophet Rune gibt gratis Auferstehung"
+    - "Bei GR 90 ist der Boss-Kill mit Bane of the Powerful sehr schnell"
+
+  tips:
+    - "Avatare auf ELITES stellen, nicht auf Trash - Elites triggern mehr Condemn-Procs"
+    - "Oculus Ring Circle (+85% Schaden vom Follower) immer betreten"
+    - "Traveler's Pledge Bonus: Stehen = mehr Schaden, Laufen = mehr DR"
+    - "Shrines immer mitnehmen - Power Shrine für Boss aufsparen"
+
+  common_mistakes:
+    - "Akarat's Champion ablaufen lassen - immer im grünen Bereich halten"
+    - "Phalanx vergessen zu erneuern - ohne Avatare kein Schaden"
+    - "Area Damage auf Gear rollen - wirkt nicht, verschwendet Slot"
+    - "Judgment vergessen - ohne Debuff deutlich weniger Schaden"
+    - "Zu wenig CDR - Akarat's Champion läuft zu oft ab"
+
+# =============================================================================
+# VARIANTS
+# =============================================================================
+variants:
+  gr_farming:
+    name: "GR 70-90 Farming (Hauptbuild)"
+    gems:
+      - "Bane of the Trapped"
+      - "Enforcer"
+      - "Bane of the Powerful"
+    notes: "Schnelle Clears, schnelle Boss-Kills. Kein Stricken nötig."
+
+  t16_speed:
+    name: "T16 / Nephalem Rifts Speed"
+    skill_change:
+      skill: "Condemn"
+      rune: "Shattering Explosion"
+      reason: "Größerer AoE Radius für Trash-Clearing"
+    cube_swap:
+      jewelry: "In-Geom statt Blade of Prophecy"
+      reason: "CDR nach Elite-Kill für schnellere Akarat's Champion Resets"
+    notes: "Für maximale Farming-Geschwindigkeit auf T16"
+
+  pushing:
+    name: "GR 100+ Push (Referenz)"
+    gem_swap:
+      remove: "Bane of the Powerful"
+      add: "Bane of the Stricken"
+    notes: "Nur relevant wenn GR 90 Ziel überschritten wird. Boss-Kills dauern länger."
+
+# =============================================================================
+# FOLLOWER RECOMMENDATION
+# =============================================================================
+follower:
+  recommended: "Enchantress"
+  reason: "CDR-Buff, Slow für Bane of the Trapped, Enfeeble für DR"
+
+  enchantress_setup:
+    unique_item: "Hand of the Prophet (alle Skills)"
+    skills:
+      - "Temporal Pulse (Slow - procs Bane of the Trapped)"
+      - "Prophetic Harmony (CDR-Buff)"
+      - "Powered Shield (DR)"
+      - "Focused Mind (AS-Buff)"
+    ring: "Oculus Ring"
+    ring_effect: "+85% Schaden Zone - immer betreten!"
+    notes: "Follower kann nicht sterben mit Enchantress Token"
+
+# =============================================================================
+# GETTING THE GEAR (Season Start)
+# =============================================================================
+season_setup:
+  haedrig_gift:
+    class: "Crusader"
+    set: "Armor of Akkhan"
+    how: "Season Journey Chapter 2 (2pc), Chapter 3 (4pc), Chapter 4 (6pc)"
+    notes: "Alle 6 Set-Teile kostenlos durch Season Journey"
+
+  priority_order:
+    - step: 1
+      action: "Season Journey bis Chapter 4 abschließen"
+      reward: "Komplettes 6pc Akkhan Set (Haedrig's Gift)"
+
+    - step: 2
+      action: "Ring of Royal Grandeur farmen"
+      source: "Act 1 Bounty Cache"
+      cube: true
+      notes: "PFLICHT - ohne RoRG kein Captain Crimson gleichzeitig"
+
+    - step: 3
+      action: "Captain Crimson's Belt + Boots craften"
+      source: "Blacksmith - Recipe aus Act Bounties"
+      notes: "Recipe droppt aus Horadric Caches"
+
+    - step: 4
+      action: "Blade of Prophecy farmen/upgraden"
+      method: "Cube: Rare Two-Handed Sword upgraden (Hope of Cain)"
+      notes: "Wichtigste nicht-Set Waffe"
+
+    - step: 5
+      action: "Frydehr's Wrath farmen"
+      method: "Kadala: Blood Shards auf Crusader Shield ausgeben"
+      notes: "Alternativ: Cube Rare Crusader Shield"
+
+    - step: 6
+      action: "Unrelenting Phalanx farmen"
+      method: "Kadala: Blood Shards auf Crusader Shield"
+      notes: "Wie Frydehr's Wrath - gleicher Slot"
+
+    - step: 7
+      action: "Endless Walk Set farmen"
+      method: "Kadala: Amulett + Ring"
+      notes: "Traveler's Pledge + Compass Rose"
+
+# =============================================================================
+# POTION
+# =============================================================================
+potion:
+  recommended: "Bottomless Potion of the Tower"
+  effect: "+10% Armor für 5 Sekunden"
+  notes: "Extra Toughness. Waller ist für Crusader kein Problem (keine Mobility-Abhängigkeit)."
+
+  alternatives:
+    - name: "Bottomless Potion of Rejuvenation"
+      effect: "Heilt über Zeit"
+      use_case: "Falls mehr Heilung benötigt"
